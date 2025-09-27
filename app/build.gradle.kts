@@ -4,17 +4,16 @@ plugins {
 }
 
 android {
-    namespace = "com.thechance.qurio"
-    compileSdk = 36
+    namespace = libs.versions.namespace.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.thechance.qurio"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = libs.versions.applicationId.get()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
+        testInstrumentationRunner = libs.versions.testRunner.get()
     }
 
     buildTypes {
@@ -26,12 +25,14 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.javaVersion.get()
     }
 }
 

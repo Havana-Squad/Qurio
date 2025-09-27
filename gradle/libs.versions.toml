@@ -1,4 +1,14 @@
 [versions]
+compileSdk = "36"
+targetSdk = "36"
+minSdk = "24"
+versionCode = "1"
+versionName = "1.0"
+javaVersion = "11"
+applicationId = "com.thechance.qurio"
+namespace = "com.thechance.qurio"
+testRunner = "androidx.test.runner.AndroidJUnitRunner"
+
 agp = "8.13.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
