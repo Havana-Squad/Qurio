@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_question_card_back"
+        style="@style/QuestionCardStyle"
+        android:layout_width="328dp"
+        android:layout_height="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
+    ,
+    <View
+        android:layout_width="25dp"
+        android:layout_height="10dp"
+        android:background="@drawable/triangle_bottom"
+        app:layout_constraintEnd_toEndOf="@id/card_question_card_back"
+        app:layout_constraintStart_toStartOf="@id/card_question_card_back"
+        app:layout_constraintTop_toBottomOf="@id/star"
+        app:layout_constraintBottom_toBottomOf="@id/card_question_card_back"
+        android:layout_marginBottom="-10dp"
+        android:elevation="1dp"
+        />
+
+    <ImageView
+        android:id="@+id/hexa"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="-16dp"
+        android:elevation="1dp"
+        android:src="@drawable/ic_hexagon"
+        app:layout_constraintEnd_toEndOf="@id/card_question_card_back"
+        app:layout_constraintStart_toStartOf="@id/card_question_card_back"
+        app:layout_constraintTop_toTopOf="@id/card_question_card_back" />
+
+    <TextView
+        android:id="@+id/question_date_text"
+        style="@style/Title.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="1dp"
+        android:text=""
+        android:textColor="@color/shade_primary"
+        app:layout_constraintEnd_toEndOf="@id/hexa"
+        app:layout_constraintStart_toStartOf="@id/hexa"
+        app:layout_constraintTop_toTopOf="@id/hexa"
+        tools:text="31/05/2005" />
+
+    <TextView
+        android:id="@+id/genre"
+        style="@style/Body.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:lines="1"
+        android:text=""
+        android:textColor="@color/on_primary"
+        app:layout_constraintEnd_toEndOf="@id/hexa"
+        app:layout_constraintStart_toStartOf="@id/hexa"
+        app:layout_constraintTop_toBottomOf="@id/hexa"
+        tools:text="Science and Natural" />
+
+    <TextView
+        android:id="@+id/coin"
+        style="@style/Label.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="1dp"
+        android:layout_marginStart="16dp"
+        android:text=""
+        android:textColor="@color/shade_primary"
+        app:drawableStartCompat="@drawable/ic_coin"
+        app:layout_constraintEnd_toStartOf="@+id/star"
+        app:layout_constraintStart_toStartOf="@id/card_question_card_back"
+        app:layout_constraintTop_toBottomOf="@id/genre"
+        tools:text="777" />
+
+    <View
+        android:layout_width="20dp"
+        android:layout_height="1dp"
+        android:alpha="1"
+        android:background="#0AFFFFFF"
+        android:elevation="1dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/coin"
+        app:layout_constraintEnd_toStartOf="@id/star"
+        app:layout_constraintStart_toEndOf="@id/coin"
+        app:layout_constraintTop_toTopOf="@id/coin" />
+
+    <TextView
+        android:id="@+id/star"
+        style="@style/Label.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:elevation="1dp"
+        android:text=""
+        android:textColor="@color/shade_primary"
+        app:drawableStartCompat="@drawable/ic_star"
+        app:layout_constraintEnd_toStartOf="@+id/time"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/coin"
+        app:layout_constraintTop_toTopOf="@id/coin"
+        tools:text="7" />
+
+    <View
+        android:layout_width="20dp"
+        android:layout_height="1dp"
+        android:alpha="1"
+        android:background="#0AFFFFFF"
+        android:elevation="1dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/star"
+        app:layout_constraintEnd_toStartOf="@id/time"
+        app:layout_constraintStart_toEndOf="@id/star"
+        app:layout_constraintTop_toTopOf="@id/star" />
+
+    <TextView
+        android:id="@+id/time"
+        style="@style/Label.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="1dp"
+        android:text=""
+        android:textColor="@color/shade_primary"
+        app:drawableStartCompat="@drawable/ic_time"
+        app:layout_constraintEnd_toEndOf="@id/card_question_card_back"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star"
+        app:layout_constraintTop_toTopOf="@id/star"
+        tools:text="777" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
