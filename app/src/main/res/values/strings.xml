@@ -3,4 +3,13 @@
     <string name="lives">lives</string>
     <string name="points">Points</string>
     <string name="awards">Awards</string>
+    <string name="great_job">Great Job</string>
+    <string name="result_ribbon">result ribbon</string>
+    <string name="result_shadow">result shadow</string>
+    <string name="correct">Correct</string>
+    <string name="star">star</string>
+    <string name="reward">reward</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="skipped">Skipped</string>
+    <string name="you_lose">You Lose</string>
 </resources>
