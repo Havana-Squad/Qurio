@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Qurio</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="t">T</string>
+    <string name="w">W</string>
+    <string name="th">Th</string>
+    <string name="f">F</string>
 </resources>
