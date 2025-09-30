@@ -26,7 +26,7 @@
         android:layout_marginEnd="8dp"
         android:elevation="1dp"
         android:scaleType="fitCenter"
-        android:src=""
+        android:src="@drawable/test_image"
         app:layout_constraintBottom_toBottomOf="@id/card_question_card_back"
         app:layout_constraintEnd_toEndOf="@id/card_question_card_back"
         app:layout_constraintStart_toStartOf="@id/card_question_card_back"
