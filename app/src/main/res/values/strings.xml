@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Qurio</string>
+    <string name="lives">lives</string>
+    <string name="points">Points</string>
+    <string name="awards">Awards</string>
     <string name="great_job">Great Job</string>
     <string name="result_ribbon">result ribbon</string>
     <string name="result_shadow">result shadow</string>
