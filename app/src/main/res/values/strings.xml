@@ -8,4 +8,5 @@
     <string name="reward">reward</string>
     <string name="incorrect">Incorrect</string>
     <string name="skipped">Skipped</string>
+    <string name="you_lose">You Lose</string>
 </resources>
