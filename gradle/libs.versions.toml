@@ -9,7 +9,7 @@ applicationId = "com.thechance.qurio"
 namespace = "com.thechance.qurio"
 testRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-agp = "8.13.0"
+agp = "8.12.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
