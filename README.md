@@ -1,30 +1,28 @@
-#Qurio - Trivia Challenge Game 🧠
-A modern Android trivia quiz application where users can challenge their knowledge across multiple categories, earn points, build streaks, and compete with friends!
-#📱 About
-Qurio is an engaging trivia game that combines learning with fun. Players can choose from various categories like Music, Food & Drink, Geography, History, and more. Answer questions quickly to earn points, maintain daily streaks, and unlock unique characters.
-Key Features
+# Qurio
 
-Multiple Categories: Play across diverse trivia topics
-Character Selection: Choose from unique heroes with different styles
-Points & Rewards: Earn coins for correct answers
-Daily Streaks: Build momentum with consecutive daily plays
-Game History: Track your past performances
-Time-Based Scoring: Answer quickly for maximum points
-Beautiful UI: Modern, animated interface with smooth transitions
+A modern Android trivia quiz application built with **MVP architecture** where users challenge their knowledge across multiple categories, earn points, build daily streaks, and unlock unique characters.
 
-#🏗️ Architecture & Tech Stack
-Architecture Pattern
+---
 
-MVP (Model-View-Presenter) - Clean separation of concerns
+## ✨ Features
+- 🎵 Multiple trivia categories (Music, Food & Drink, Geography, History, and more)  
+- 🧑‍🎨 Character selection system with unique avatars  
+- ⭐ Points and rewards system  
+- 🔥 Daily streak tracking  
+- 📊 Game history and performance tracking  
+- ⏱️ Time-based scoring system  
+- 🎬 Smooth animations and modern UI  
 
-Technologies Used
+---
 
-Kotlin - Primary programming language
-XML Layouts - UI design
-Fragments - Screen navigation
-View Binding - Type-safe view access
-Jetpack Navigation - Fragment navigation
-Retrofit - REST API integration
-Room Database - Local data persistence
-Dagger 2 - Dependency injection
-Open Trivia DB API - Trivia questions source
+## 🛠 Tech Stack
+- **Language:** Kotlin  
+- **Architecture:** MVP (Model-View-Presenter)  
+- **UI:** XML Layouts, Fragments, View Binding  
+- **Navigation:** Jetpack Navigation Component  
+- **Networking:** Retrofit  
+- **Database:** Room  
+- **Dependency Injection:** Dagger 2  
+- **API:** https://opentdb.com/api_config.php
+
+---
