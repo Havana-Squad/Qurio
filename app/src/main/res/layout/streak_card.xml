@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <View
+        android:id="@+id/cardBackground"
+        android:layout_width="328dp"
+        android:layout_height="89dp"
+        android:background="@drawable/streak_card_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <TextView
+        android:id="@+id/streakDay"
+        style="@style/Label.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:text=""
+        android:layout_marginTop="7dp"
+        android:textColor="@color/shade_primary"
+        app:layout_constraintEnd_toEndOf="@id/cardBackground"
+        app:layout_constraintTop_toTopOf="@id/cardBackground"
+        tools:text="0 day streak, start make a series" />
+
+    <TextView
+        android:id="@+id/textMotivationOrSmthIDK"
+        style="@style/Label.XSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/shade_secondary"
+        app:layout_constraintStart_toStartOf="@id/streakDay"
+        app:layout_constraintTop_toBottomOf="@id/streakDay"
+        tools:text="Every day count!" />
+
+    <ImageView
+        android:id="@+id/fire"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:elevation="1dp"
+        android:src=""
+        android:layout_marginBottom="-16dp"
+        app:layout_constraintBottom_toBottomOf="@id/extraCircle"
+        app:layout_constraintEnd_toEndOf="@id/extraCircle"
+        app:layout_constraintStart_toStartOf="@id/extraCircle"
+        tools:src="@drawable/ic_fire" />
+
+    <View
+        android:id="@+id/extraCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/circle_with_fire"
+        app:layout_constraintBottom_toBottomOf="@id/cardBackground"
+        app:layout_constraintStart_toStartOf="@id/cardBackground"
+        app:layout_constraintTop_toBottomOf="@+id/textMotivationOrSmthIDK" />
+
+    <View
+        android:id="@+id/sunCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/circle_with_fire"
+        app:layout_constraintBottom_toBottomOf="@+id/extraCircle"
+        app:layout_constraintEnd_toStartOf="@+id/monCircle"
+        app:layout_constraintStart_toEndOf="@+id/extraCircle"
+        app:layout_constraintTop_toTopOf="@+id/extraCircle" />
+
+    <ImageView
+        android:id="@+id/fire_active"
+        android:layout_width="16dp"
+        android:layout_height="23dp"
+        android:elevation="1dp"
+        android:src=""
+        app:layout_constraintBottom_toBottomOf="@id/sunCircle"
+        app:layout_constraintEnd_toEndOf="@id/sunCircle"
+        app:layout_constraintStart_toStartOf="@id/sunCircle"
+        tools:src="@drawable/ic_fire" />
+    <TextView
+        android:id="@+id/sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/s"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/sunCircle"
+        app:layout_constraintStart_toStartOf="@id/sunCircle"
+        app:layout_constraintEnd_toEndOf="@id/sunCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/monCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/tueCircle"
+        app:layout_constraintStart_toEndOf="@+id/sunCircle"
+        app:layout_constraintTop_toTopOf="@+id/sunCircle" />
+    <TextView
+        android:id="@+id/monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/monCircle"
+        app:layout_constraintStart_toStartOf="@id/monCircle"
+        app:layout_constraintEnd_toEndOf="@id/monCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/tueCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/wedCircle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/monCircle"
+        app:layout_constraintTop_toTopOf="@+id/monCircle" />
+    <TextView
+        android:id="@+id/tueday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/t"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/tueCircle"
+        app:layout_constraintStart_toStartOf="@id/tueCircle"
+        app:layout_constraintEnd_toEndOf="@id/tueCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/wedCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/thuCircle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tueCircle"
+        app:layout_constraintTop_toTopOf="@+id/tueCircle" />
+    <TextView
+        android:id="@+id/wenday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/w"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/wedCircle"
+        app:layout_constraintStart_toStartOf="@id/wedCircle"
+        app:layout_constraintEnd_toEndOf="@id/wedCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/thuCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/friCircle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/wedCircle"
+        app:layout_constraintTop_toTopOf="@+id/wedCircle" />
+    <TextView
+        android:id="@+id/thuday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/th"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/thuCircle"
+        app:layout_constraintStart_toStartOf="@id/thuCircle"
+        app:layout_constraintEnd_toEndOf="@id/thuCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/friCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/satCircle"
+        app:layout_constraintStart_toEndOf="@+id/thuCircle"
+        app:layout_constraintTop_toTopOf="@+id/thuCircle" />
+    <TextView
+        android:id="@+id/friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/f"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/friCircle"
+        app:layout_constraintStart_toStartOf="@id/friCircle"
+        app:layout_constraintEnd_toEndOf="@id/friCircle"
+        android:elevation="1dp"
+        />
+    <View
+        android:id="@+id/satCircle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="@id/cardBackground"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/friCircle"
+        app:layout_constraintTop_toTopOf="@+id/friCircle" />
+    <TextView
+        android:id="@+id/staday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/s"
+        style="@style/Label.XSmall"
+        android:textColor="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/satCircle"
+        app:layout_constraintStart_toStartOf="@id/satCircle"
+        app:layout_constraintEnd_toEndOf="@id/satCircle"
+        android:elevation="1dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
