@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_app_bar"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--    TODO replace text with the selected character image-->
+    <ImageView
+        android:id="@+id/icon_go_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_arrow_right_circle"
+        android:rotationY="180"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Games"
+        style="@style/Title.Medium"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/shade_primary"
+        app:layout_constraintTop_toTopOf="@id/icon_go_back"
+        app:layout_constraintBottom_toBottomOf="@id/icon_go_back"
+        app:layout_constraintStart_toEndOf="@id/icon_go_back"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
