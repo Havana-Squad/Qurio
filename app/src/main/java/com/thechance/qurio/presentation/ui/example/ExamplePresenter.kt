@@ -1,5 +1,6 @@
 package com.thechance.qurio.presentation.ui.example
 
+import com.thechance.qurio.presentation.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.presentation.domain.repository.ExampleRepository
 import com.thechance.qurio.presentation.ui.base.BasePresenter
 
@@ -26,5 +27,13 @@ class ExamplePresenter(
 
     private fun onGetDataError(throwable: Throwable) {
         view.updateMessage("Error: ${throwable.message}")
+    }
+
+    /*
+    * temporary builder. will be replaced with di in actual features*/
+    companion object {
+        fun createInstance(): ExamplePresenter {
+            return ExamplePresenter(ExampleRepositoryImpl())
+        }
     }
 }

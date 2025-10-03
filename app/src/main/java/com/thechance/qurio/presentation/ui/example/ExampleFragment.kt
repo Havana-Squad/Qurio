@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.thechance.qurio.R
 
 class ExampleFragment : Fragment(), ExampleView {
-    private lateinit var presenter: ExamplePresenter
+    private val presenter: ExamplePresenter = ExamplePresenter.createInstance()
     private lateinit var messageTextView: TextView
     private lateinit var button: Button
 
@@ -28,6 +28,12 @@ class ExampleFragment : Fragment(), ExampleView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViews(view)
+    }
+
+    private fun setupViews(view: View) {
+        button = view.findViewById(R.id.btnGetData)
+        messageTextView = view.findViewById(R.id.txtMessage)
         button.setOnClickListener {
             onButtonClick()
         }

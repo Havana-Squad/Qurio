@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 abstract class BasePresenter<V: BaseView> {
     private var _view: V? = null
@@ -37,12 +38,15 @@ abstract class BasePresenter<V: BaseView> {
         onFinish: (suspend () -> Unit)? = null,
         dispatcher: CoroutineDispatcher = Dispatchers.IO,
     ): Job {
-        return presenterScope.launch(dispatcher) {
+        return presenterScope.launch(Dispatchers.Main) {
             try {
                 onStart?.invoke()
-                runCatching { callee.invoke() }
-                    .onSuccess { result -> onSuccess?.invoke(result) }
-                    .onFailure { throwable -> onError?.invoke(throwable) }
+                withContext(dispatcher) {
+                    runCatching {
+                        callee.invoke()
+                    }
+                }.onSuccess { result -> onSuccess.invoke(result) }
+                .onFailure { throwable -> onError.invoke(throwable) }
             } finally {
                 onFinish?.invoke()
             }
