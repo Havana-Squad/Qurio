@@ -19,4 +19,6 @@
     <string name="w">W</string>
     <string name="th">Th</string>
     <string name="f">F</string>
+    <string name="submit">submit</string>
+    <string name="play_now">PLAY NOW</string>
 </resources>
