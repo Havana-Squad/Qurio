@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -54,5 +55,7 @@ dependencies {
     // splash api
     implementation(libs.androidx.core.splashscreen)
 
-    
+    // Dagger2
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

@@ -1,5 +1,7 @@
 [versions]
 compileSdk = "36"
+dagger = "2.57.2"
+daggerCompiler = "2.57.2"
 targetSdk = "36"
 minSdk = "28"
 versionCode = "1"
@@ -22,8 +24,11 @@ constraintlayout = "2.2.1"
 
 coreSplashscreen = "1.0.1"
 
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
