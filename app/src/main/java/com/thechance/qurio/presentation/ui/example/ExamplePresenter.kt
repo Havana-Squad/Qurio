@@ -1,7 +1,7 @@
 package com.thechance.qurio.presentation.ui.example
 
-import com.thechance.qurio.presentation.data.repository.ExampleRepositoryImpl
-import com.thechance.qurio.presentation.domain.repository.ExampleRepository
+import com.thechance.qurio.data.repository.ExampleRepositoryImpl
+import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.presentation.ui.base.BasePresenter
 
 class ExamplePresenter(

@@ -1,6 +1,6 @@
-package com.thechance.qurio.presentation.data.repository
+package com.thechance.qurio.data.repository
 
-import com.thechance.qurio.presentation.domain.repository.ExampleRepository
+import com.thechance.qurio.domain.repository.ExampleRepository
 import kotlinx.coroutines.delay
 
 class ExampleRepositoryImpl : ExampleRepository {
