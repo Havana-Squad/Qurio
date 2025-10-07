@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.thechance.qurio.presentation.ui.base.BasePresenter
-import com.thechance.qurio.presentation.ui.base.BaseView
 
-abstract class BaseFragment<VDB : ViewDataBinding, P : BasePresenter<BaseView>>
+abstract class BaseFragment<VDB : ViewDataBinding, V: BaseView, P : BasePresenter<V>>
     : Fragment(), BaseView {
 
     abstract val layoutIdFragment: Int
@@ -40,8 +38,9 @@ abstract class BaseFragment<VDB : ViewDataBinding, P : BasePresenter<BaseView>>
 
     protected open fun setupViews() {}
 
+    @Suppress("UNCHECKED_CAST")
     private fun attachPresenter() {
-        presenter.attachView(this)
+        presenter.attachView(this as V)
     }
 
     override fun onDestroyView() {

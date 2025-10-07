@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/exampleFragment"
-        android:name="com.thechance.qurio.presentation.ui.example.ExampleFragment"
+        android:name="com.thechance.qurio.presentation.screen.example.ExampleFragment"
         android:label="ExampleFragment" />
 </navigation>
