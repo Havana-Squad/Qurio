@@ -1,6 +1,9 @@
 package com.thechance.qurio.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.thechance.qurio.data.remote.service.GameService
+import com.thechance.qurio.data.repository.GameRepositoryImpl
+import com.thechance.qurio.domain.repository.GameRepository
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -12,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 class DataModule {
-    companion object {
+    companion object{
         const val BASE_URL = "https://opentdb.com/"
         private val contentType = "application/json".toMediaType()
         private const val TIMEOUT = 20L
@@ -42,5 +45,18 @@ class DataModule {
                 .client(okHttpClient)
                 .build()
         }
+
+        @Provides
+        @Singleton
+        fun provideGameService(retrofit: Retrofit): GameService {
+            return retrofit.create(GameService::class.java)
+        }
+
+        @Provides
+        @Singleton
+        fun provideGameRepository(gameService: GameService): GameRepository {
+            return GameRepositoryImpl(gameService)
+        }
     }
+
 }
