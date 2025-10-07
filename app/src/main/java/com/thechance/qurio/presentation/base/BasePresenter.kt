@@ -1,4 +1,4 @@
-package com.thechance.qurio.presentation.ui.base
+package com.thechance.qurio.presentation.base
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
