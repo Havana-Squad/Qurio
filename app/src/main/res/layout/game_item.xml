@@ -6,18 +6,43 @@
 
     <ImageView
         android:id="@+id/game_img"
-        android:src="@drawable/aori"
+        android:src="@drawable/img_game_category_art"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/game_title"
         android:text="test1"
+        android:textColor="@color/on_primary"
+        style="@style/Title.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/game_img"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/play_btn"
+        app:layout_constraintStart_toStartOf="@id/game_img"
+        app:layout_constraintEnd_toEndOf="@id/game_img"
+        android:layout_marginBottom="12dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/play_btn"
+        android:background="@drawable/union_button_shape"
+        android:layout_width="168dp"
+        android:layout_height="44dp"
+        app:layout_constraintBottom_toBottomOf="@id/game_img"
+        app:layout_constraintStart_toStartOf="@id/game_img"
+        app:layout_constraintEnd_toEndOf="@id/game_img">
+        <TextView
+            android:text="Play Now"
+            android:textColor="@color/on_primary"
+            style="@style/Title.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

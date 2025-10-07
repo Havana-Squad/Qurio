@@ -26,6 +26,7 @@ class GamesAdapter(val games: List<GamesScreenState.GameItemUiState>): RecyclerV
     ) {
         holder.binding.apply {
             gameTitle.text = games[position].title
+            gameImg.setImageResource(games[position].img)
         }
     }
 
