@@ -109,6 +109,12 @@
         <item name="android:foreground">@drawable/question_card</item>
     </style>
 
+    <style name="CuttedCornersCardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:foreground">@drawable/cutted_corner_card_shape</item>
+    </style>
+
     <style name="Primary_Button" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">@font/fredoka_medium</item>
         <item name="android:background">@drawable/primary_button_shape</item>
