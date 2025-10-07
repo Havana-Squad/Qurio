@@ -57,8 +57,9 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     // Dagger2
-    implementation(libs.dagger)
+    implementation(libs.bundles.dagger)
     kapt(libs.dagger.compiler)
+    kapt(libs.dagger.android.processor)
 
     // Navigation
     implementation(libs.navigation.fragment.ktx)
