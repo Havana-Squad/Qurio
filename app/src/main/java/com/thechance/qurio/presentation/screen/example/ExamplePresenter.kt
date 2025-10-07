@@ -3,8 +3,9 @@ package com.thechance.qurio.presentation.screen.example
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.presentation.base.BasePresenter
+import javax.inject.Inject
 
-class ExamplePresenter(
+class ExamplePresenter @Inject constructor(
     private val repository: ExampleRepository
 ): BasePresenter<ExampleView>() {
 
@@ -27,13 +28,5 @@ class ExamplePresenter(
 
     private fun onGetDataError(throwable: Throwable) {
         view.updateMessage("Error: ${throwable.message}")
-    }
-
-    /*
-    * temporary builder. will be replaced with di in actual features*/
-    companion object {
-        fun createInstance(): ExamplePresenter {
-            return ExamplePresenter(ExampleRepositoryImpl())
-        }
     }
 }

@@ -10,11 +10,14 @@ import android.widget.TextView
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentExampleBinding
 import com.thechance.qurio.presentation.base.BaseFragment
+import javax.inject.Inject
 
 class ExampleFragment : BaseFragment<FragmentExampleBinding, ExampleView, ExamplePresenter>(), ExampleView {
     override val layoutIdFragment: Int
         get() = R.layout.fragment_example
-    override val presenter: ExamplePresenter by lazy { ExamplePresenter.createInstance() }
+
+    @Inject
+    override lateinit var presenter: ExamplePresenter
 
     override fun setupViews() {
         binding.btnGetData.setOnClickListener {
