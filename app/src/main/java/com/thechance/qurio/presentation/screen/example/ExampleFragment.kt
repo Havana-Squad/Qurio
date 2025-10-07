@@ -8,40 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.thechance.qurio.R
+import com.thechance.qurio.databinding.FragmentExampleBinding
+import com.thechance.qurio.presentation.base.BaseFragment
 
-class ExampleFragment : Fragment(), ExampleView {
-    private val presenter: ExamplePresenter = ExamplePresenter.createInstance()
-    private lateinit var messageTextView: TextView
-    private lateinit var button: Button
+class ExampleFragment : BaseFragment<FragmentExampleBinding, ExampleView, ExamplePresenter>(), ExampleView {
+    override val layoutIdFragment: Int
+        get() = R.layout.fragment_example
+    override val presenter: ExamplePresenter by lazy { ExamplePresenter.createInstance() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter.attachView(this)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_example, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViews(view)
-    }
-
-    private fun setupViews(view: View) {
-        button = view.findViewById(R.id.btnGetData)
-        messageTextView = view.findViewById(R.id.txtMessage)
-        button.setOnClickListener {
+    override fun setupViews() {
+        binding.btnGetData.setOnClickListener {
             onButtonClick()
         }
-    }
-
-    override fun onDestroy() {
-        presenter.detachView()
-        super.onDestroy()
     }
 
     override fun onButtonClick() {
@@ -49,6 +27,6 @@ class ExampleFragment : Fragment(), ExampleView {
     }
 
     override fun updateMessage(message: String) {
-        messageTextView.text = message
+        binding.txtMessage.text = message
     }
 }
