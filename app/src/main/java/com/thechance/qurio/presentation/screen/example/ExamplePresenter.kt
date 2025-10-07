@@ -1,8 +1,8 @@
-package com.thechance.qurio.presentation.ui.example
+package com.thechance.qurio.presentation.screen.example
 
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.domain.repository.ExampleRepository
-import com.thechance.qurio.presentation.ui.base.BasePresenter
+import com.thechance.qurio.presentation.base.BasePresenter
 
 class ExamplePresenter(
     private val repository: ExampleRepository

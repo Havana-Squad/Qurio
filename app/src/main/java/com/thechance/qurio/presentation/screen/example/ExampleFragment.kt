@@ -1,4 +1,4 @@
-package com.thechance.qurio.presentation.ui.example
+package com.thechance.qurio.presentation.screen.example
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

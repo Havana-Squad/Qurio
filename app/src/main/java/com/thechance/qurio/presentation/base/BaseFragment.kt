@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.thechance.qurio.presentation.ui.base.BasePresenter
-import com.thechance.qurio.presentation.ui.base.BaseView
 
 abstract class BaseFragment<VDB : ViewDataBinding, P : BasePresenter<BaseView>>
     : Fragment(), BaseView {
