@@ -6,7 +6,7 @@ import okio.IOException
 import retrofit2.Response
 import java.net.ConnectException
 
-suspend inline fun <T> saveApiCall(
+suspend inline fun <T> safeApiCall(
     crossinline execute: suspend () -> Response<T>
 ): T {
     try {
@@ -26,8 +26,6 @@ suspend inline fun <T> saveApiCall(
                 else -> throw UnknownException()
             }
         }
-    } catch (_: ConnectException) {
-        throw NoInternetException()
     } catch (_: IOException) {
         throw NoInternetException()
     } catch (_: Throwable) {
