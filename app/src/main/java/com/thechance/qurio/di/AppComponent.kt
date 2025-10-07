@@ -12,5 +12,4 @@ import javax.inject.Singleton
 interface AppComponent : AndroidInjector<QurioApp> {
     @Component.Factory
     interface Factory : AndroidInjector.Factory<QurioApp>
-    fun inject(activity: MainActivity)
 }
