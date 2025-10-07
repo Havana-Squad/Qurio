@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -63,4 +64,14 @@ dependencies {
     // Navigation
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    //OkHttp
+    implementation(libs.okhttp)
+    //Kotlinx Serialization
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    //gson
+    implementation(libs.gson)
 }
