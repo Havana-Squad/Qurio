@@ -1,5 +1,6 @@
 package com.thechance.qurio.presentation.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import dagger.android.support.AndroidSupportInjection
 
 abstract class BaseFragment<VDB : ViewDataBinding, V: BaseView, P : BasePresenter<V>>
     : Fragment(), BaseView {
@@ -34,6 +36,11 @@ abstract class BaseFragment<VDB : ViewDataBinding, V: BaseView, P : BasePresente
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         attachPresenter()
+    }
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 
     protected open fun setupViews() {}
