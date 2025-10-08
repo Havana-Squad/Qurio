@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="SvgProgressView">
+        <attr name="progress" format="float" />
+        <attr name="centerText" format="string" />
+        <attr name="android:textAppearance" />
+    </declare-styleable>
+</resources>
