@@ -56,6 +56,8 @@ class TimerComponent @JvmOverloads constructor(
         color = Color.WHITE
         textSize = 10f * resources.displayMetrics.density
         textAlign = Paint.Align.CENTER
+        typeface = Typeface.DEFAULT_BOLD
+        isFakeBoldText = true
 
     }
 
