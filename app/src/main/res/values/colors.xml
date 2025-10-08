@@ -28,5 +28,8 @@
     <color name="yellow_op12">#FFEB3B</color>
     <color name="green">#739E61</color>
     <color name="red">#E12F32</color>
+    <color name="orange50">#80DC6A43</color>
+    <color name="border_color">#151D26</color>
+
 
 </resources>
