@@ -11,7 +11,7 @@ import com.thechance.qurio.R
 import kotlin.math.max
 import kotlin.math.min
 
-class SvgProgressView @JvmOverloads constructor(
+class TimerComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
