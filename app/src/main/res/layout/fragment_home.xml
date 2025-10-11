@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        tools:context=".presentation.screen.home.HomeFragment">
+
+        <ImageView
+            android:id="@+id/image_selected_character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            tools:src="@drawable/rika"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_qurio_explorer"
+            style="@style/Body.Small"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/shade_secondary"
+            app:layout_constraintTop_toTopOf="@id/image_selected_character"
+            app:layout_constraintBottom_toTopOf="@id/text_character_name"
+            app:layout_constraintStart_toEndOf="@id/image_selected_character"/>
+
+
+        <!--    TODO replace text with the selected character name-->
+        <TextView
+            android:id="@+id/text_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Rika"
+            style="@style/Label.Medium"
+            android:textColor="@color/shade_primary"
+            app:layout_constraintStart_toStartOf="@id/text_welcome"
+            app:layout_constraintTop_toBottomOf="@+id/text_welcome"
+            app:layout_constraintBottom_toBottomOf="@id/image_selected_character"
+            app:layout_constraintStart_toEndOf="@id/image_selected_character"/>
+
+
+        <ImageView
+            android:id="@+id/button_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lives_container"
+            android:layout_width="96dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_lives"
+            app:layout_constraintBottom_toBottomOf="@id/points_container"
+            app:layout_constraintEnd_toStartOf="@+id/points_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_plus_circle"
+                android:translationX="-2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lives_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/lives"
+                android:textAppearance="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/lives_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_gold_heart"
+                app:layout_constraintEnd_toStartOf="@+id/lives_count"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lives_label" />
+
+
+            <TextView
+                android:id="@+id/lives_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:textAppearance="@style/Label.Medium"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintBottom_toBottomOf="@id/lives_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lives_icon"
+                app:layout_constraintTop_toTopOf="@id/lives_icon"
+                tools:text="4" />
+
+
+            <View
+                android:layout_width="48dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="0.5dp"
+                android:background="@drawable/bg_statistics_indicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/points_container"
+            android:layout_width="144dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/bg_points"
+            app:layout_constraintEnd_toStartOf="@+id/awards_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/lives_container"
+            app:layout_constraintTop_toBottomOf="@id/image_selected_character">
+            <!--        TODO: Show if points >= 10000-->
+            <ImageView
+                android:id="@+id/points_crown"
+                android:layout_width="24dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_crown"
+                android:translationY="-10dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/points_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="@string/points"
+                android:textAppearance="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/points_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_points"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/points_count"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_label" />
+
+            <TextView
+                android:id="@+id/points_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:textAppearance="@style/Label.Medium"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintBottom_toBottomOf="@id/points_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/points_icon"
+                app:layout_constraintTop_toTopOf="@id/points_icon"
+                tools:text="5200" />
+
+            <View
+                android:layout_width="67dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="0.5dp"
+                android:background="@drawable/bg_statistics_indicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/awards_container"
+            android:layout_width="96dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_awards"
+            app:layout_constraintBottom_toBottomOf="@id/points_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/points_container">
+
+            <TextView
+                android:id="@+id/awards_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/awards"
+                android:textAppearance="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/awards_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_trophy"
+                app:layout_constraintEnd_toStartOf="@+id/awards_count"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/awards_label" />
+
+            <TextView
+                android:id="@+id/awards_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:textAppearance="@style/Label.Medium"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintBottom_toBottomOf="@id/awards_icon"
+                app:layout_constraintEnd_toStartOf="@id/btn_upgrade_awards"
+                app:layout_constraintStart_toEndOf="@+id/awards_icon"
+                app:layout_constraintTop_toTopOf="@id/awards_icon"
+                tools:text="2" />
+
+            <ImageView
+                android:id="@+id/btn_upgrade_awards"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_arrow_right_circle"
+                app:layout_constraintBottom_toBottomOf="@id/awards_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/awards_count"
+                app:layout_constraintTop_toTopOf="@id/awards_icon" />
+
+            <View
+                android:layout_width="48dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="0.5dp"
+                android:background="@drawable/bg_statistics_indicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/streak_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/points_container"
+            android:layout_marginTop="24dp">
+
+            <View
+                android:id="@+id/cardBackground"
+                android:layout_width="328dp"
+                android:layout_height="89dp"
+                android:background="@drawable/streak_card_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.546"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.52" />
+
+            <TextView
+                android:id="@+id/streakDay"
+                style="@style/Label.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="56dp"
+                android:text=""
+                android:layout_marginTop="7dp"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintEnd_toEndOf="@id/cardBackground"
+                app:layout_constraintTop_toTopOf="@id/cardBackground"
+                tools:text="0 day streak, start make a series" />
+
+            <TextView
+                android:id="@+id/textMotivationOrSmthIDK"
+                style="@style/Label.XSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/shade_secondary"
+                app:layout_constraintStart_toStartOf="@id/streakDay"
+                app:layout_constraintTop_toBottomOf="@id/streakDay"
+                tools:text="Every day count!" />
+
+            <ImageView
+                android:id="@+id/fire"
+                android:layout_width="40dp"
+                android:layout_height="70dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:layout_marginBottom="-16dp"
+                app:layout_constraintBottom_toBottomOf="@id/extraCircle"
+                app:layout_constraintEnd_toEndOf="@id/extraCircle"
+                app:layout_constraintStart_toStartOf="@id/extraCircle"
+                tools:src="@drawable/ic_fire" />
+
+            <View
+                android:id="@+id/extraCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/circle_with_fire"
+                app:layout_constraintBottom_toBottomOf="@id/cardBackground"
+                app:layout_constraintStart_toStartOf="@id/cardBackground"
+                app:layout_constraintTop_toBottomOf="@+id/textMotivationOrSmthIDK" />
+
+            <View
+                android:id="@+id/sunCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/circle_with_fire"
+                app:layout_constraintBottom_toBottomOf="@+id/extraCircle"
+                app:layout_constraintEnd_toStartOf="@+id/monCircle"
+                app:layout_constraintStart_toEndOf="@+id/extraCircle"
+                app:layout_constraintTop_toTopOf="@+id/extraCircle" />
+
+            <ImageView
+                android:id="@+id/fire_active"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                app:layout_constraintBottom_toBottomOf="@id/sunCircle"
+                app:layout_constraintEnd_toEndOf="@id/sunCircle"
+                app:layout_constraintStart_toStartOf="@id/sunCircle"
+                tools:src="@drawable/ic_fire" />
+            <TextView
+                android:id="@+id/sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/s"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/sunCircle"
+                app:layout_constraintStart_toStartOf="@id/sunCircle"
+                app:layout_constraintEnd_toEndOf="@id/sunCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/monCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toStartOf="@+id/tueCircle"
+                app:layout_constraintStart_toEndOf="@+id/sunCircle"
+                app:layout_constraintTop_toTopOf="@+id/sunCircle" />
+            <TextView
+                android:id="@+id/monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/monCircle"
+                app:layout_constraintStart_toStartOf="@id/monCircle"
+                app:layout_constraintEnd_toEndOf="@id/monCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/tueCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toStartOf="@+id/wedCircle"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/monCircle"
+                app:layout_constraintTop_toTopOf="@+id/monCircle" />
+            <TextView
+                android:id="@+id/tueday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/t"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/tueCircle"
+                app:layout_constraintStart_toStartOf="@id/tueCircle"
+                app:layout_constraintEnd_toEndOf="@id/tueCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/wedCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toStartOf="@+id/thuCircle"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tueCircle"
+                app:layout_constraintTop_toTopOf="@+id/tueCircle" />
+            <TextView
+                android:id="@+id/wenday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/w"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/wedCircle"
+                app:layout_constraintStart_toStartOf="@id/wedCircle"
+                app:layout_constraintEnd_toEndOf="@id/wedCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/thuCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toStartOf="@+id/friCircle"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/wedCircle"
+                app:layout_constraintTop_toTopOf="@+id/wedCircle" />
+            <TextView
+                android:id="@+id/thuday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/th"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/thuCircle"
+                app:layout_constraintStart_toStartOf="@id/thuCircle"
+                app:layout_constraintEnd_toEndOf="@id/thuCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/friCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toStartOf="@+id/satCircle"
+                app:layout_constraintStart_toEndOf="@+id/thuCircle"
+                app:layout_constraintTop_toTopOf="@+id/thuCircle" />
+            <TextView
+                android:id="@+id/friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/friCircle"
+                app:layout_constraintStart_toStartOf="@id/friCircle"
+                app:layout_constraintEnd_toEndOf="@id/friCircle"
+                android:elevation="1dp"
+                />
+            <View
+                android:id="@+id/satCircle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="@id/cardBackground"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/friCircle"
+                app:layout_constraintTop_toTopOf="@+id/friCircle" />
+            <TextView
+                android:id="@+id/staday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/s"
+                style="@style/Label.XSmall"
+                android:textColor="@color/shade_tertiary"
+                app:layout_constraintTop_toBottomOf="@id/satCircle"
+                app:layout_constraintStart_toStartOf="@id/satCircle"
+                app:layout_constraintEnd_toEndOf="@id/satCircle"
+                android:elevation="1dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/games"
+            android:id="@+id/games_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/streak_container"
+            android:textAppearance="@style/Title.Small"
+            android:textColor="@color/on_primary"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_games_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/games_label"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:textAppearance="@style/Label.Small"
+                android:textColor="@color/on_primary"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_arrow_right_circle"/>
+        </LinearLayout>
+
+<!--        TODO: Add Games Pager-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_games"
+            android:id="@+id/last_games_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/games_label"
+            android:textAppearance="@style/Title.Small"
+            android:textColor="@color/on_primary"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_games_all_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/last_games_label"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:textAppearance="@style/Label.Small"
+                android:textColor="@color/on_primary"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_arrow_right_circle"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/last_games_label"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_last_game"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

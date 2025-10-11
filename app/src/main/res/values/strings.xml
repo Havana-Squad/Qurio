@@ -26,4 +26,11 @@
     <string name="buy_life">Buy life</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
+    <string name="games">Games</string>
+    <string name="all">All</string>
+    <string name="last_games">Last Games</string>
+    <string name="zero_streak_title">0 day streak, start make a series</string>
+    <string name="zero_streak_subtitle">Every day count!</string>
+    <string name="numbered_streak_title">%1$d day streak, make a big series</string>
+    <string name="numbered_streak_subtitle">KEEP IT UP!</string>
 </resources>
