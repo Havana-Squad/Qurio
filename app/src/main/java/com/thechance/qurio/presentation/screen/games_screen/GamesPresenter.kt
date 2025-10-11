@@ -19,7 +19,7 @@ class GamesPresenter(
     }
 
     private fun onGetGamesSuccess(games: List<GameCategory>) {
-        view.updateGames(games.map { it.toUi() })
+        view.updateGames(games.shuffled().map { it.toUi() })
     }
 
     private fun onGetGamesError(throwable: Throwable) {

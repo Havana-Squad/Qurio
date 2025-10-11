@@ -5,4 +5,5 @@ import com.thechance.qurio.presentation.base.BaseView
 interface GamesView : BaseView {
     fun onGameItemClick(gameId: Int)
     fun updateGames(games: List<GamesScreenState.GameItemUiState>)
+    fun navigateBack()
 }

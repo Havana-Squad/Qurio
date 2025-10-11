@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.GameItemBinding
 
-class GamesAdapter(val games: List<GamesScreenState.GameItemUiState>): RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
+class GamesAdapter(
+    val games: List<GamesScreenState.GameItemUiState>,
+    val listener: GamesView
+    ): RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,7 +29,11 @@ class GamesAdapter(val games: List<GamesScreenState.GameItemUiState>): RecyclerV
     ) {
         holder.binding.apply {
             gameTitle.text = games[position].title
-            gameImg.setImageResource(games[position].img)
+            gameImg.setImageResource(games[position].drawables.img)
+            gradientBackground.setBackgroundResource(games[position].drawables.shadow)
+        }
+        holder.binding.root.setOnClickListener {
+            listener.onGameItemClick(games[position].id)
         }
     }
 
