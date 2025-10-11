@@ -1,9 +1,7 @@
 package com.thechance.qurio.presentation.screen.games_screen
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentGamesBinding
 import com.thechance.qurio.presentation.base.BaseFragment
@@ -19,10 +17,9 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.attachView(this)
-        callbacks()
     }
 
-    fun callbacks() {
+    override fun setupViews() {
         binding.iconGoBack.setOnClickListener {
             navigateBack()
         }
