@@ -88,21 +88,20 @@
 
         <ImageView
             android:id="@+id/img_celebration"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="90dp"
+            android:layout_height="88dp"
             android:layout_marginTop="-30dp"
-            android:layout_marginEnd="-16dp"
             android:contentDescription="@string/celebration"
+            android:visibility="gone"
             android:src="@drawable/celebration"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
             android:id="@+id/img_achievement"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/achievement"
             android:paddingEnd="12dp"
             android:src="@drawable/explorer"
