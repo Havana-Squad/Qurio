@@ -2,6 +2,7 @@
 compileSdk = "36"
 dagger = "2.57.2"
 daggerCompiler = "2.57.2"
+flexbox = "3.0.0"
 targetSdk = "36"
 minSdk = "28"
 versionCode = "1"
@@ -33,6 +34,7 @@ serializationKotlin = "2.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
