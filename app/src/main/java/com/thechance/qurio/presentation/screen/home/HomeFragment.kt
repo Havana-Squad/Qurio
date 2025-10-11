@@ -1,16 +1,17 @@
 package com.thechance.qurio.presentation.screen.home
 
 import android.graphics.drawable.Drawable
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
 import com.thechance.qurio.presentation.base.BaseFragment
+import com.thechance.qurio.presentation.screen.home.adapter.GamePagerItemDecoration
+import com.thechance.qurio.presentation.screen.home.adapter.GamePagerLayoutManager
+import com.thechance.qurio.presentation.screen.home.adapter.GamesPagerAdapter
 import jakarta.inject.Inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView {
@@ -18,6 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     override val layoutIdFragment: Int
         get() = R.layout.fragment_home
 
+    private val gamesAdapter: GamesPagerAdapter by lazy { GamesPagerAdapter() }
     @Inject
     override lateinit var presenter: HomePresenter
 
@@ -26,6 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         setupBuyLivesButton()
         setupAwardsButton()
         setupAllGamesButton()
+        setupGamesRecyclerView()
         setupAllLastGamesButton()
     }
 
@@ -39,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
 
 
     private fun setupAwardsButton() {
-        TODO("Not yet implemented")
+        TODO("show achievements dialog")
     }
 
     private fun setupAllGamesButton() {
@@ -48,6 +51,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
 
     private fun setupAllLastGamesButton() {
         TODO("navigate to last games screen")
+    }
+
+    private fun setupGamesRecyclerView() {
+        val layoutManager = GamePagerLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.gamesPager.layoutManager = layoutManager
+        binding.gamesPager.adapter = gamesAdapter
+
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.gamesPager)
+
+        val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+        binding.gamesPager.addItemDecoration(GamePagerItemDecoration(spacing))
     }
 
     override fun setUserCharacter(character: String) {
@@ -91,7 +106,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun setGames(games: List<String>) {
-        TODO("Not yet implemented")
+        gamesAdapter.setItems(games)
     }
 
     override fun setUserLastGames(lastGames: List<String>) {
