@@ -5,7 +5,6 @@ import android.view.View
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentGamesBinding
 import com.thechance.qurio.presentation.base.BaseFragment
-import com.thechance.qurio.presentation.main.QurioApp
 import jakarta.inject.Inject
 
 class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView {
@@ -17,7 +16,6 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (requireActivity().application as QurioApp).appComponent.inject(this)
         presenter.attachView(this)
     }
 
