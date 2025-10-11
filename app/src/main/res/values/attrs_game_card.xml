@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GameCard">
+        <attr name="cardSrc" format="reference"/>
+        <attr name="cardBorderColor" format="reference"/>
+        <attr name="cardBorderWidth" format="dimension"/>
+        <attr name="cardBottomGradient" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -1,6 +1,7 @@
 package com.thechance.qurio.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.thechance.qurio.data.ApiService
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -41,6 +42,11 @@ class DataModule {
                 .addConverterFactory(json.asConverterFactory(contentType))
                 .client(okHttpClient)
                 .build()
+        }
+        @Provides
+        @Singleton
+        fun provideApiService(retrofit: Retrofit): ApiService {
+            return retrofit.create(ApiService::class.java)
         }
     }
 }

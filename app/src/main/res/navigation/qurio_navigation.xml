@@ -2,10 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/qurio_navigation"
-    app:startDestination="@id/exampleFragment">
+    app:startDestination="@id/startGame">
 
     <fragment
         android:id="@+id/exampleFragment"
         android:name="com.thechance.qurio.presentation.screen.example.ExampleFragment"
         android:label="ExampleFragment" />
+    <fragment
+        android:id="@+id/startGame"
+        android:name="com.thechance.qurio.presentation.screen.results.StartPlayFragment"
+        android:label="StartGame"/>
 </navigation>

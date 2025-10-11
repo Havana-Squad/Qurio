@@ -11,9 +11,22 @@
     <style name="Base.Theme.Qurio" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
     </style>
+    <style name="PrimaryButtonText">
+        <item name="android:textAppearance">@style/Label.Medium</item>
+        <item name="android:textColor">@color/on_primary</item>
+    </style>
+    <style name="TextButton">
+        <item name="android:textAppearance">@style/Label.Medium</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
 
     <style name="Theme.Qurio" parent="Base.Theme.Qurio" />
 
+    <style name="AnswerStyle">
+        <item name="cornerRadius">12dp</item>
+        <item name="borderWidth">1dp</item>
+        <item name="cardBorderColor">@color/shade_quad</item>
+    </style>
 
     <!-- Headline -->
     <style name="Headline">

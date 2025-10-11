@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OutlineTextView">
+        <attr name="outlineColor" format="color" />
+        <attr name="outlineWidth" format="dimension" />
+        <attr name="gradientStartColor" format="color" />
+        <attr name="gradientEndColor" format="color" />
+        <attr name="gradientAngle" format="integer" />
+
+        <attr name="shadowColor" format="color" />
+        <attr name="shadowRadius" format="dimension" />
+        <attr name="shadowDx" format="dimension" />
+        <attr name="shadowDy" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="TextButton">
+        <attr name="textButtonEnabled" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SecondaryButton">
+        <attr name="secondaryButtonEnabled" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="PrimaryButton">
+        <attr name="primaryButtonEnabled" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTimeComponent">
+        <attr name="progress" format="float" />
+        <attr name="centerText" format="string" />
+    </declare-styleable>
+    <declare-styleable name="QuestionTextCard">
+        <attr name="questionText" format="string" />
+        <attr name="questionNumber" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="StatisticsCustomCardView">
+        <!-- Fill color -->
+        <attr name="fillColor" format="color" />
+        <!-- Stroke (border) color -->
+        <attr name="strokeColor" format="color" />
+        <!-- Stroke width -->
+        <attr name="strokeWidth" format="dimension" />
+        <!-- SVG path resource (string resource name) -->
+        <attr name="pathData" format="string|reference" />
+    </declare-styleable>
+</resources>
