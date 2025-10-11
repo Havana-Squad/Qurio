@@ -12,16 +12,14 @@ class AchievementsRepositoryImpl(private val context: Context) : AchievementsRep
 
     override suspend fun getAllAchievements(): List<Achievement> = withContext(Dispatchers.IO) {
         val unlocked = prefs.getStringSet(KEY_UNLOCKED, emptySet()) ?: emptySet()
-        AchievementsDataSource.getAllAchievements(context).map { achievement ->
-            achievement.copy(
-                isUnlocked = achievement.isUnlocked || unlocked.contains(achievement.id.toString())
-            )
-        }
+        AchievementsDataSource.getAllAchievements(context)
+            .map { achievement -> achievement.copy(isUnlocked = unlocked.contains(achievement.id.toString())) }
     }
 
-    override suspend fun getAchievementById(id: Int): Achievement? = withContext(Dispatchers.IO) {
-        getAllAchievements().firstOrNull { it.id == id }
-    }
+    override suspend fun getAchievementById(id: Int): Achievement? =
+        withContext(Dispatchers.IO) {
+            getAllAchievements().firstOrNull { it.id == id }
+        }
 
     override suspend fun unlockAchievement(id: Int) = withContext(Dispatchers.IO) {
         val currentAchievementsSet =

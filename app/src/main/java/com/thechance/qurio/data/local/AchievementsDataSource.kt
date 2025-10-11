@@ -14,7 +14,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_quiz_rookie_unlocked),
             imageLockedRes = R.drawable.quiz_rookie_shadow,
             imageUnlockedRes = R.drawable.quiz_rookie,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_quiz_rookie_requirement)
         ),
         Achievement(
@@ -24,7 +24,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_streak_starter_unlocked),
             imageLockedRes = R.drawable.streak_starter_shadow,
             imageUnlockedRes = R.drawable.streak_starter,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_streak_starter_requirement)
         ),
         Achievement(
@@ -34,7 +34,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_lucky_guess_unlocked),
             imageLockedRes = R.drawable.lucky_guess_shadow,
             imageUnlockedRes = R.drawable.lucky_guess,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_lucky_guess_requirement)
         ),
         Achievement(
@@ -44,7 +44,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_explorer_unlocked),
             imageLockedRes = R.drawable.explorer_shadow,
             imageUnlockedRes = R.drawable.explorer,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_explorer_requirement)
         ),
         Achievement(
@@ -54,7 +54,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_trivia_champ_unlocked),
             imageLockedRes = R.drawable.trivia_champ_shadow,
             imageUnlockedRes = R.drawable.trivia_champ,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_trivia_champ_requirement)
         ),
         Achievement(
@@ -64,7 +64,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_collector_unlocked),
             imageLockedRes = R.drawable.collector_shadow,
             imageUnlockedRes = R.drawable.collector,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_collector_requirement)
         ),
         Achievement(
@@ -74,7 +74,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_legend_unlocked),
             imageLockedRes = R.drawable.legend_shadow,
             imageUnlockedRes = R.drawable.legend,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_legend_requirement)
         ),
         Achievement(
@@ -84,7 +84,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_untouchable_unlocked),
             imageLockedRes = R.drawable.untouchable_shadow,
             imageUnlockedRes = R.drawable.untouchable,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_untouchable_requirement)
         ),
         Achievement(
@@ -94,7 +94,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_quick_thinker_unlocked),
             imageLockedRes = R.drawable.quick_thinker_shadow,
             imageUnlockedRes = R.drawable.quick_thinker,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_quick_thinker_requirement)
         ),
         Achievement(
@@ -104,7 +104,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_perfect_game_unlocked),
             imageLockedRes = R.drawable.collector_shadow,
             imageUnlockedRes = R.drawable.collector,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_perfect_game_requirement)
         ),
         Achievement(
@@ -114,7 +114,7 @@ object AchievementsDataSource {
             descriptionUnlocked = context.getString(R.string.achievement_knowledge_seeker_unlocked),
             imageLockedRes = R.drawable.lucky_guess2_shadow,
             imageUnlockedRes = R.drawable.lucky_guess2,
-            isUnlocked = true,
+            isUnlocked = false,
             requirement = context.getString(R.string.achievement_knowledge_seeker_requirement)
         )
     )

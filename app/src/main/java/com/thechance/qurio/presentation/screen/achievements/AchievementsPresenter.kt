@@ -28,8 +28,8 @@ class AchievementsPresenter @Inject constructor(
                 achievementsRepository.unlockAchievement(achievementId)
                 achievementsRepository.getAllAchievements()
             },
-            onSuccess = { updated ->
-                view.showAchievements(updated)
+            onSuccess = { updatedAchievements ->
+                view.showAchievements(updatedAchievements)
             },
             onError = { t -> view.showError(t.message ?: "Failed to unlock") }
         )
