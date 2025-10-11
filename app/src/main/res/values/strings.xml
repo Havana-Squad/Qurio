@@ -85,4 +85,6 @@
     <string name="achievement_perfect_game_requirement">Finish any quiz without a single wrong answer.</string>
     <string name="achievement_knowledge_seeker_requirement">Answer 100 questions in total.</string>
 
+    <string name="share_achievement_text">I just unlocked the "%1$s" achievement in Quiro! 🎉</string>
+    <string name="share_via">Share via</string>
 </resources>
