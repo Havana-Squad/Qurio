@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
@@ -39,14 +40,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun setUserStreak(streak: Int) {
-        //set title
         if(streak == 0) {
-            getString(R.string.cancel)
+            binding.streakDay.text = getString(R.string.zero_streak_title)
+            binding.streakSubtitle.text = getString(R.string.zero_streak_subtitle)
         } else {
-            getString(R.string.cancel)
+            binding.streakDay.text = getString(R.string.numbered_streak_title, streak)
+            binding.streakSubtitle.text = getString(R.string.zero_streak_subtitle)
+
+            val fireIcons = listOf(
+                binding.sundayFire,
+                binding.mondayFire,
+                binding.tuesdayFire,
+                binding.wednesdayFire,
+                binding.thursdayFire,
+                binding.fridayFire,
+                binding.satCircleFire
+            )
+
+            fireIcons.forEach { it.visibility = View.INVISIBLE }
+
+            fireIcons.take(streak.coerceIn(0, fireIcons.size)).forEach {
+                it.visibility = View.VISIBLE
+            }
         }
-        //set subtitle
-        //set streaks
     }
 
     override fun setGames(games: List<String>) {
@@ -58,7 +74,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     private fun getDrawable(resId: Int): Drawable? {

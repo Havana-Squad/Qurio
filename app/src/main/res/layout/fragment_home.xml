@@ -310,7 +310,7 @@
                 tools:text="0 day streak, start make a series" />
 
             <TextView
-                android:id="@+id/textMotivationOrSmthIDK"
+                android:id="@+id/streakSubtitle"
                 style="@style/Label.XSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -342,7 +342,7 @@
                 android:background="@drawable/circle_with_fire"
                 app:layout_constraintBottom_toBottomOf="@id/cardBackground"
                 app:layout_constraintStart_toStartOf="@id/cardBackground"
-                app:layout_constraintTop_toBottomOf="@+id/textMotivationOrSmthIDK" />
+                app:layout_constraintTop_toBottomOf="@+id/streakSubtitle" />
 
             <View
                 android:id="@+id/sunCircle"
@@ -356,11 +356,12 @@
                 app:layout_constraintTop_toTopOf="@+id/extraCircle" />
 
             <ImageView
-                android:id="@+id/fire_active"
+                android:id="@+id/sunday_fire"
                 android:layout_width="16dp"
                 android:layout_height="23dp"
                 android:elevation="1dp"
                 android:src="@drawable/ic_fire"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/sunCircle"
                 app:layout_constraintEnd_toEndOf="@id/sunCircle"
                 app:layout_constraintStart_toStartOf="@id/sunCircle"
@@ -377,6 +378,17 @@
                 app:layout_constraintEnd_toEndOf="@id/sunCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/monday_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/monCircle"
+                app:layout_constraintEnd_toEndOf="@id/monCircle"
+                app:layout_constraintStart_toStartOf="@id/monCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/monCircle"
                 android:layout_width="28dp"
@@ -398,6 +410,17 @@
                 app:layout_constraintEnd_toEndOf="@id/monCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/tuesday_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/tueCircle"
+                app:layout_constraintEnd_toEndOf="@id/tueCircle"
+                app:layout_constraintStart_toStartOf="@id/tueCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/tueCircle"
                 android:layout_width="28dp"
@@ -420,6 +443,17 @@
                 app:layout_constraintEnd_toEndOf="@id/tueCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/wednesday_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/wedCircle"
+                app:layout_constraintEnd_toEndOf="@id/wedCircle"
+                app:layout_constraintStart_toStartOf="@id/wedCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/wedCircle"
                 android:layout_width="28dp"
@@ -442,6 +476,17 @@
                 app:layout_constraintEnd_toEndOf="@id/wedCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/thursday_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/thuCircle"
+                app:layout_constraintEnd_toEndOf="@id/thuCircle"
+                app:layout_constraintStart_toStartOf="@id/thuCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/thuCircle"
                 android:layout_width="28dp"
@@ -464,6 +509,17 @@
                 app:layout_constraintEnd_toEndOf="@id/thuCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/friday_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/friCircle"
+                app:layout_constraintEnd_toEndOf="@id/friCircle"
+                app:layout_constraintStart_toStartOf="@id/friCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/friCircle"
                 android:layout_width="28dp"
@@ -485,6 +541,17 @@
                 app:layout_constraintEnd_toEndOf="@id/friCircle"
                 android:elevation="1dp"
                 />
+            <ImageView
+                android:id="@+id/satCircle_fire"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                android:elevation="1dp"
+                android:src="@drawable/ic_fire"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/satCircle"
+                app:layout_constraintEnd_toEndOf="@id/satCircle"
+                app:layout_constraintStart_toStartOf="@id/satCircle"
+                tools:src="@drawable/ic_fire" />
             <View
                 android:id="@+id/satCircle"
                 android:layout_width="28dp"
