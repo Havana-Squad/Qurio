@@ -22,7 +22,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     override lateinit var presenter: HomePresenter
 
     override fun setupViews() {
-        binding.buttonSettings.setOnClickListener { onSettingsClicked() }
+        setupSettingsButton()
+        setupBuyLivesButton()
+        setupAwardsButton()
+        setupAllGamesButton()
+        setupAllLastGamesButton()
+    }
+
+    private fun setupSettingsButton() {
+        TODO("Show settings dialog")
+    }
+
+    private fun setupBuyLivesButton() {
+        TODO("navigate to buy lives screen")
+    }
+
+
+    private fun setupAwardsButton() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setupAllGamesButton() {
+        TODO("navigate to games screen")
+    }
+
+    private fun setupAllLastGamesButton() {
+        TODO("navigate to last games screen")
     }
 
     override fun setUserCharacter(character: String) {
@@ -83,9 +108,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
 
     private fun getDrawable(resId: Int): Drawable? {
         return AppCompatResources.getDrawable(context ?: requireContext(), resId)
-    }
-
-    private fun onSettingsClicked(){
-        //todo: show settings dialog
     }
 }
