@@ -27,10 +27,9 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
 
     override fun onGameItemClick(gameId: Int) {
         //navigate to play screen
-        TODO("Not yet implemented")
     }
 
-    override fun updateGames(games: List<GamesScreenState.GameItemUiState>) {
+    override fun updateGames(games: List<GameItem>) {
         val adapter = GamesAdapter(games, this)
         binding.gamesRecycler.adapter = adapter
     }

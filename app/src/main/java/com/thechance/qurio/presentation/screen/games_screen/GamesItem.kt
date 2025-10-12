@@ -3,18 +3,12 @@ package com.thechance.qurio.presentation.screen.games_screen
 import androidx.annotation.DrawableRes
 import com.thechance.qurio.R
 
-data class GamesScreenState(
-    val isLoading: Boolean,
-    val isError: Boolean,
-    val games: List<GameItemUiState>
-) {
-    data class GameItemUiState(
-        val id: Int,
-        val title: String,
-        val drawables: GameItemDrawablesUiState
-    )
-
-    enum class GameItemDrawablesUiState(
+data class GameItem(
+    val id: Int,
+    val title: String,
+    val drawables: GameItemDrawables
+){
+    enum class GameItemDrawables(
         @DrawableRes val img: Int,
         @DrawableRes val shadow: Int,
     ) {
