@@ -1,9 +1,11 @@
 package com.thechance.qurio.presentation
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.PathParser
 import androidx.core.graphics.toColorInt
@@ -15,7 +17,8 @@ class TimerComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
-    var progress: Float = 0f
+
+    private var progress: Float = 0f
         set(value) {
             field = value.coerceIn(0f, 1f)
             invalidate()
@@ -27,6 +30,10 @@ class TimerComponent @JvmOverloads constructor(
             invalidate()
         }
 
+    private var animator: ValueAnimator? = null
+    private var durationMs: Long = 15000L
+    private var isRunning = false
+
     init {
         context.theme.obtainStyledAttributes(
             attrs,
@@ -34,8 +41,13 @@ class TimerComponent @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                progress = getFloat(R.styleable.SvgProgressView_progress, 0f)
                 centerText = getString(R.styleable.SvgProgressView_centerText)
+                centerText?.let { text ->
+                    val seconds = text.replace(Regex("[^0-9]"), "").toIntOrNull()
+                    if (seconds != null) {
+                        durationMs = seconds * 1000L
+                    }
+                }
             } finally {
                 recycle()
             }
@@ -58,7 +70,6 @@ class TimerComponent @JvmOverloads constructor(
         textAlign = Paint.Align.CENTER
         typeface = Typeface.DEFAULT_BOLD
         isFakeBoldText = true
-
     }
 
     private val pathDataList = listOf(
@@ -160,7 +171,6 @@ class TimerComponent @JvmOverloads constructor(
             val color = pathColors.getOrElse(i) { Color.WHITE }
             fillPaint.color = color
 
-
             if (i == 2) {
                 fillPaint.color = "#000000".toColorInt()
                 canvas.drawPath(path, fillPaint)
@@ -172,31 +182,20 @@ class TimerComponent @JvmOverloads constructor(
                     val targetWidth = originalWidth * progress
 
                     val dynamicPath = Path()
-
                     dynamicPath.moveTo(pts[0].x, pts[0].y)
-
                     dynamicPath.lineTo(pts[1].x, pts[1].y)
                     val newRightX = pts[0].x + targetWidth
 
-
                     dynamicPath.lineTo(newRightX - (pts[3].x - pts[2].x), pts[2].y)
-
-
                     dynamicPath.lineTo(newRightX, pts[3].y)
-
                     dynamicPath.lineTo(newRightX - (pts[3].x - pts[4].x), pts[4].y)
-
                     dynamicPath.lineTo(pts[5].x, pts[5].y)
-
                     dynamicPath.close()
 
                     val transformedPath = Path()
                     dynamicPath.transform(matrix, transformedPath)
                     canvas.drawPath(transformedPath, fillPaint)
-
                 }
-
-
             } else {
                 if (i == 0) {
                     canvas.drawPath(path, strokePaint)
@@ -210,5 +209,69 @@ class TimerComponent @JvmOverloads constructor(
             val y = height / 2f - (textPaint.descent() + textPaint.ascent()) / 2f
             canvas.drawText(it, x, y, textPaint)
         }
+    }
+
+    /**
+     * Start the timer animation with the specified duration
+     * @param durationSeconds Duration in seconds
+     * @param onTick Optional callback called every second with remaining time
+     * @param onComplete Optional callback when timer completes
+     */
+    fun startTimer(
+        durationSeconds: Int,
+        onTick: ((remainingSeconds: Int) -> Unit)? = null,
+        onComplete: (() -> Unit)? = null
+    ) {
+        stopTimer()
+
+        durationMs = durationSeconds * 1000L
+        centerText = "$durationSeconds Sec"
+        isRunning = true
+
+        animator = ValueAnimator.ofFloat(1f, 0f).apply {
+            duration = durationMs
+            interpolator = LinearInterpolator()
+
+            addUpdateListener { animation ->
+                progress = animation.animatedValue as Float
+
+                val remainingMs = (progress * durationMs).toLong()
+                val remainingSec = (remainingMs / 1000).toInt() + 1
+                centerText = "$remainingSec Sec"
+                onTick?.invoke(remainingSec)
+            }
+
+            start()
+        }
+
+        postDelayed({
+            isRunning = false
+            onComplete?.invoke()
+        }, durationMs)
+    }
+
+    fun stopTimer() {
+        animator?.cancel()
+        animator = null
+        isRunning = false
+    }
+
+    fun pauseTimer() {
+        if (isRunning) {
+            animator?.pause()
+        }
+    }
+
+    fun resumeTimer() {
+        if (isRunning) {
+            animator?.resume()
+        }
+    }
+
+    fun isTimerRunning(): Boolean = isRunning
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        stopTimer()
     }
 }
