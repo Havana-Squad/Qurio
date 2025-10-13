@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">كريو</string>
+    <string name="lives">محاولات</string>
+    <string name="points">نقاط</string>
+    <string name="awards">جوائز</string>
+    <string name="welcome_qurio_explorer">مرحباً بك يا مستكشف كريو</string>
+    <string name="great_job">عمل رائع</string>
+    <string name="result_ribbon">شريط النتائج</string>
+    <string name="result_shadow">ظل النتيجة</string>
+    <string name="correct">إجابة صحيحة</string>
+    <string name="star">نجمة</string>
+    <string name="reward">مكافأة</string>
+    <string name="incorrect">إجابة خاطئة</string>
+    <string name="skipped">تم التخطي</string>
+    <string name="you_lose">لقد خسرت</string>
+    <string name="s">الأحد</string>
+    <string name="m">الإثنين</string>
+    <string name="t">الثلاثاء</string>
+    <string name="w">الأربعاء</string>
+    <string name="th">الخميس</string>
+    <string name="f">الجمعة</string>
+    <string name="submit">إرسال</string>
+    <string name="play_now">العب الآن</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">مرحباً بالمكون الفارغ</string>
+    <string name="buy_life">شراء محاولة</string>
+    <string name="buy">شراء</string>
+    <string name="cancel">إلغاء</string>
+    <string name="swipe_up_to_play">اسحب للأعلى للعب!</string>
+
+</resources>
