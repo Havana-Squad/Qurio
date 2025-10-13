@@ -2,6 +2,7 @@ package com.thechance.qurio.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.thechance.qurio.data.ApiService
+import com.thechance.qurio.data.util.LoggingInterceptor
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -21,11 +22,12 @@ class DataModule {
         @Provides
         @Singleton
         fun provideOkHttpClient(): OkHttpClient {
-            return OkHttpClient.Builder()
-                .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-                .build()
+            return OkHttpClient.Builder().apply {
+                addInterceptor(LoggingInterceptor())
+                connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                readTimeout(TIMEOUT, TimeUnit.SECONDS)
+                writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+            }.build()
         }
 
         @Provides
@@ -43,6 +45,7 @@ class DataModule {
                 .client(okHttpClient)
                 .build()
         }
+
         @Provides
         @Singleton
         fun provideApiService(retrofit: Retrofit): ApiService {

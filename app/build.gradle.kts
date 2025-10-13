@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.retrofit)
     //OkHttp
     implementation(libs.okhttp)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.airbnb.android:lottie:6.1.0")
     //Kotlinx Serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
