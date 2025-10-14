@@ -1,23 +1,25 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="328dp"
     android:height="261dp"
     android:viewportWidth="328"
-    android:viewportHeight="261">
+    android:viewportHeight="261"
+    tools:ignore="VectorRaster">
     <path
-        android:fillColor="#00000000"
-        android:pathData="M0,0h328v261h-328z" />
-
+        android:fillColor="#FF0B0F14"
+        android:pathData="M328 22.62v221.29L308.1 261H22.36L0 244.13V20.31L21.41 1h284.61L328 22.62Z"/>
     <path
-        android:fillColor="@color/surface_high"
-        android:pathData="M328 21L328 243.91L308.1 261H22.36L0 244.13V20.31L21.41 1H308Z" />
+        android:strokeColor="#0AFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M305.81 1.5l21.69 21.33v220.85l-19.58 16.82H22.52L0.5 243.88V20.53L21.6 1.5h284.21Z"/>
     <path
         android:strokeWidth="1"
-        android:pathData="M235 0.5L328 0.5">
+        android:pathData="M235 0.5L291 0.5">
         <aapt:attr name="android:strokeColor">
             <gradient
                 android:type="linear"
-                android:startX="328"
+                android:startX="291"
                 android:startY="1.5"
                 android:endX="235"
                 android:endY="1.5">
