@@ -10,7 +10,7 @@
 
     <path
         android:fillColor="@color/surface_high"
-        android:pathData="M328 1v243.91L308.1 261H22.36L0 244.13V20.31L21.41 1H328Z" />
+        android:pathData="M328 21L328 243.91L308.1 261H22.36L0 244.13V20.31L21.41 1H308Z" />
     <path
         android:strokeWidth="1"
         android:pathData="M235 0.5L328 0.5">
