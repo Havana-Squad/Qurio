@@ -23,7 +23,7 @@ class LastGamesPresenter(
     }
 
     private suspend fun onGetLastGamesSuccess(lastGames: Flow<List<LastGame>>) {
-        lastGames.collect { view.updateLastGames(it) }
+        lastGames.collect { view.updateLastGames(it.map { it.toUi() }) }
         view.stopLoading()
     }
 

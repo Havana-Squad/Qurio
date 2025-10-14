@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.LastGameBinding
-import com.thechance.qurio.domain.model.LastGame
 
-class LastGameAdapter(val lastGames: List<LastGame>) :
+class LastGameAdapter(val lastGames: List<LastGameUi>) :
     RecyclerView.Adapter<LastGameAdapter.LastGameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,10 +27,10 @@ class LastGameAdapter(val lastGames: List<LastGame>) :
     ) {
         val currentGame = lastGames[position]
         holder.binding.apply {
-            questionDateText.text = currentGame.date.toString()
-            coin.text = currentGame.coins.toString()
-            star.text = currentGame.stars.toString()
-            time.text = currentGame.duration.toString()
+            questionDateText.text = currentGame.date
+            coin.text = currentGame.coins
+            star.text = currentGame.stars
+            time.text = currentGame.duration
             genre.text = currentGame.gameName
         }
     }

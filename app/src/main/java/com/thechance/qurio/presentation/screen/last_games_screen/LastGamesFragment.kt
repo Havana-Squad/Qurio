@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentLastGamesBinding
-import com.thechance.qurio.domain.model.LastGame
 import com.thechance.qurio.presentation.base.BaseFragment
 import jakarta.inject.Inject
 
@@ -26,8 +25,9 @@ class LastGamesFragment : BaseFragment<FragmentLastGamesBinding, LastGamesView, 
         }
     }
 
-    override fun updateLastGames(games: List<LastGame>) {
-
+    override fun updateLastGames(games: List<LastGameUi>) {
+        val adapter = LastGameAdapter(games)
+        binding.lastGamesRecycler.adapter = adapter
     }
 
     override fun navigateBack() {
