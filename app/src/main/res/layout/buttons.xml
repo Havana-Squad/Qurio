@@ -82,22 +82,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/difficulty_level_button"
-        style="@style/difficultyLevelButtonSelected"
+        style="@style/difficultyLevelButton"
         android:layout_width="69dp"
         android:layout_height="37dp"
+        android:background="@drawable/difficulty_button_selector"
         android:text="@string/hard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gradient_line" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/difficulty_level_button2"
-        style="@style/difficultyLevelButton"
-        android:layout_width="69dp"
-        android:layout_marginStart="8dp"
-        android:layout_height="37dp"
-        android:text="@string/hard"
-        app:layout_constraintStart_toEndOf="@id/difficulty_level_button"
-        app:layout_constraintTop_toTopOf="@id/difficulty_level_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

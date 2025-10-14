@@ -151,7 +151,6 @@
 
     <style name="difficultyLevelButton" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/difficulty_button_shape</item>
         <item name="android:textColor">@color/on_primary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
@@ -159,7 +158,6 @@
 
     <style name="difficultyLevelButtonSelected" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/difficulty_button_shape_selected</item>
         <item name="android:textColor">@color/on_primary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
