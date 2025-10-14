@@ -39,7 +39,8 @@
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:background="@drawable/difficulty_button_selector"
-            android:text="@string/easy" />
+            android:text="@string/easy"
+            android:textColor="@color/difficulty_button_text_selector" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/difficulty_level_medium_button"
@@ -49,7 +50,8 @@
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:background="@drawable/difficulty_button_selector"
-            android:text="@string/medium" />
+            android:text="@string/medium"
+            android:textColor="@color/difficulty_button_text_selector" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/difficulty_level_hard_button"
@@ -58,7 +60,8 @@
             android:layout_height="37dp"
             android:layout_weight="1"
             android:background="@drawable/difficulty_button_selector"
-            android:text="@string/hard" />
+            android:text="@string/hard"
+            android:textColor="@color/difficulty_button_text_selector" />
     </LinearLayout>
 
     <LinearLayout
