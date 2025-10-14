@@ -15,10 +15,6 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
     private val presenter by lazy { DifficultyLevelPresenter() }
 
     private var selectedDifficulty: DifficultyLevel = DifficultyLevel.Medium
-        set(value) {
-            field = value
-            presenter.setDifficultyLevel(value.name)
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +29,8 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
         presenter.loadDifficultyInfo()
+
+        updateSelectedDifficulty(selectedDifficulty)
 
         binding.difficultyLevelEasyButton.setOnClickListener {
             updateSelectedDifficulty(DifficultyLevel.Easy)
@@ -49,6 +47,9 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
         }
         binding.buttonExit.setOnClickListener {
             dismiss()
+        }
+        binding.buttonConfirm.setOnClickListener {
+            presenter.setDifficultyLevel(selectedDifficulty.name)
         }
     }
 
