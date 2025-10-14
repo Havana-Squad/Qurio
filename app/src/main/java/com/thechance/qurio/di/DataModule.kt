@@ -1,6 +1,12 @@
 package com.thechance.qurio.di
 
+import android.content.Context
+import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.thechance.qurio.data.local.QurioDatabase
+import com.thechance.qurio.data.local.dao.LastGameDao
+import com.thechance.qurio.data.repository.GameRepositoryImpl
+import com.thechance.qurio.domain.repository.GameRepository
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -16,6 +22,7 @@ class DataModule {
         const val BASE_URL = "https://opentdb.com/"
         private val contentType = "application/json".toMediaType()
         private const val TIMEOUT = 20L
+        const val DATABASE_NAME = "qurio_database"
 
         @Provides
         @Singleton
@@ -41,6 +48,26 @@ class DataModule {
                 .addConverterFactory(json.asConverterFactory(contentType))
                 .client(okHttpClient)
                 .build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideQurioDatabase(context: Context): QurioDatabase {
+            return Room
+                .databaseBuilder(context, QurioDatabase::class.java, DATABASE_NAME)
+                .build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao{
+            return qurioDatabase.lastGameDao()
+        }
+
+        @Provides
+        @Singleton
+        fun provideGameRepository(lastGameDao: LastGameDao): GameRepository {
+            return GameRepositoryImpl(lastGameDao)
         }
     }
 }
