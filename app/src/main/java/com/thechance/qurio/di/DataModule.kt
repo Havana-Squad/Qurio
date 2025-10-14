@@ -3,8 +3,11 @@ package com.thechance.qurio.di
 import android.content.Context
 import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.thechance.qurio.data.local.QurioDatabase
 import com.thechance.qurio.data.local.dao.LastGameDao
+import com.thechance.qurio.data.local.database.QurioDatabase
+import com.thechance.qurio.data.repository.GameRepositoryImpl
+import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -49,6 +52,9 @@ class DataModule {
         }
 
         @Provides
+        fun provideContext(application: QurioApp): Context = application.applicationContext
+
+        @Provides
         @Singleton
         fun provideQurioDatabase(context: Context): QurioDatabase {
             return Room
@@ -60,6 +66,12 @@ class DataModule {
         @Singleton
         fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao {
             return qurioDatabase.lastGameDao()
+        }
+
+        @Provides
+        @Singleton
+        fun provideGameRepository(lastGameDao: LastGameDao): GameRepository {
+            return GameRepositoryImpl(lastGameDao)
         }
     }
 }
