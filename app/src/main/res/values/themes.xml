@@ -115,22 +115,27 @@
         <item name="android:foreground">@drawable/cut_corner_card_shape</item>
     </style>
 
-    <style name="Primary_Button" parent="Widget.AppCompat.Button">
-        <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/primary_button_shape</item>
+    <style name="Primary_Button_TextAppearance">
         <item name="android:textColor">@color/on_primary</item>
-        <item name="cornerRadius">16dp</item>
+        <item name="android:fontFamily">@font/fredoka_semibold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
-    <style name="SecondaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/secondary_button_shape</item>
+    <style name="Primary_Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/primary_button_shape</item>
+        <item name="android:textAppearance">@style/Primary_Button_TextAppearance</item>
+    </style>
+
+    <style name="Secondary_Button_TextAppearance" >
+        <item name="android:fontFamily">@font/fredoka_semibold</item>
         <item name="android:textColor">@color/primary</item>
-        <item name="cornerRadius">16dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+    <style name="Secondary_Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/secondary_button_shape</item>
+        <item name="android:textAppearance">@style/Secondary_Button_TextAppearance</item>
     </style>
 
     <style name="OutLine" parent="Widget.AppCompat.Button">
