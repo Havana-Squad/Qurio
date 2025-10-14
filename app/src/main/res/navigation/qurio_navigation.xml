@@ -8,4 +8,9 @@
         android:id="@+id/exampleFragment"
         android:name="com.thechance.qurio.presentation.screen.example.ExampleFragment"
         android:label="ExampleFragment" />
+
+    <fragment
+        android:id="@+id/lastGamesFragment"
+        android:name="com.thechance.qurio.presentation.screen.last_games_screen.LastGamesFragment"
+        android:label="LastGamesFragment" />
 </navigation>

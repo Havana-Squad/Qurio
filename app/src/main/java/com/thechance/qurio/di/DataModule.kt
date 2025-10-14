@@ -5,8 +5,6 @@ import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.thechance.qurio.data.local.QurioDatabase
 import com.thechance.qurio.data.local.dao.LastGameDao
-import com.thechance.qurio.data.repository.GameRepositoryImpl
-import com.thechance.qurio.domain.repository.GameRepository
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -60,14 +58,8 @@ class DataModule {
 
         @Provides
         @Singleton
-        fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao{
+        fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao {
             return qurioDatabase.lastGameDao()
-        }
-
-        @Provides
-        @Singleton
-        fun provideGameRepository(lastGameDao: LastGameDao): GameRepository {
-            return GameRepositoryImpl(lastGameDao)
         }
     }
 }

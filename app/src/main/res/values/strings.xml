@@ -26,4 +26,6 @@
     <string name="buy_life">Buy life</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
+    <string name="last_games">Last Games</string>
+    <string name="arrow_back_icon">arrow back icon</string>
 </resources>
