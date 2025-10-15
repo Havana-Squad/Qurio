@@ -6,7 +6,7 @@ data class Character (
     val id: Int,
     val name: String,
     val description: String,
-    val age : Int,
+    val age :String,
     @DrawableRes val imageLockedRes: Int,
     @DrawableRes val imageUnlockedRes: Int,
     var isUnlocked: Boolean = false,
