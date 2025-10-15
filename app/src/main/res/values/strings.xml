@@ -92,4 +92,7 @@
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="confirm">Confirm</string>
+    <string name="game_img">game img</string>
+    <string name="games">Games</string>
+    <string name="arrow_back_icon">arrow back icon</string>
 </resources>
