@@ -23,7 +23,6 @@
         <attr name="primaryButtonEnabled" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="CustomTimeComponent">
     <declare-styleable name="SvgProgressView">
         <attr name="progress" format="float" />
         <attr name="centerText" format="string" />
