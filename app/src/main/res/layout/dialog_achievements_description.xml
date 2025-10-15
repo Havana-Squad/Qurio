@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_achievements_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <View
+        android:id="@+id/achievement_desc_card_background"
+        style="@style/CutCornersCardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_hexagon_title"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_hexagon"
+        app:layout_constraintDimensionRatio="145:40"
+        app:layout_constraintEnd_toEndOf="@id/achievement_desc_card_background"
+        app:layout_constraintStart_toStartOf="@id/achievement_desc_card_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/button_exit"
+        android:layout_width="22dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:clickable="true"
+        android:elevation="1dp"
+        android:focusable="true"
+        android:src="@drawable/ic_exit_btn"
+        app:layout_constraintEnd_toEndOf="@id/achievement_desc_card_background"
+        app:layout_constraintTop_toTopOf="@id/achievement_desc_card_background" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/Title.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:elevation="1dp"
+        android:text=""
+        android:textColor="@color/shade_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon_title"
+        app:layout_constraintEnd_toEndOf="@id/icon_hexagon_title"
+        app:layout_constraintStart_toStartOf="@id/icon_hexagon_title"
+        app:layout_constraintTop_toTopOf="@id/icon_hexagon_title"
+        tools:text="Explorer" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/achievement_container"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/secondary_button_shape"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="@id/achievement_desc_card_background"
+        app:layout_constraintStart_toStartOf="@id/achievement_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@id/icon_hexagon_title">
+
+        <TextView
+            android:id="@+id/tv_achievement_name"
+            style="@style/Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/shade_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Explorer" />
+
+
+        <ImageView
+            android:id="@+id/img_celebration"
+            android:layout_width="90dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="-30dp"
+            android:contentDescription="@string/celebration"
+            android:visibility="gone"
+            android:src="@drawable/celebration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/img_achievement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/achievement"
+            android:paddingEnd="12dp"
+            android:src="@drawable/explorer"
+            android:translationY="-10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/explorer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_achievement_desc"
+        style="@style/Body.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="12dp"
+        android:text=""
+        android:textColor="@color/shade_secondary"
+        app:layout_constraintStart_toStartOf="@+id/achievement_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@+id/achievement_container"
+        tools:text="You love experimenting and discovering! You've tried several categories and aren't limited to just one." />
+
+    <TextView
+        android:id="@+id/tv_how_to_get"
+        style="@style/Body.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingHorizontal="12dp"
+        android:text="@string/how_to_get"
+        android:textColor="@color/shade_secondary"
+        app:layout_constraintStart_toStartOf="@+id/achievement_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@id/tv_achievement_desc" />
+
+
+    <TextView
+        android:id="@+id/tv_achievement_requirement"
+        style="@style/Body.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingHorizontal="12dp"
+        android:text=""
+        android:textColor="@color/shade_secondary"
+        app:layout_constraintStart_toStartOf="@+id/achievement_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@id/tv_how_to_get"
+        tools:text="Play in at least 4 different categories." />
+
+
+    <LinearLayout
+        android:id="@+id/button_share"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/primary_button_shape"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/button_ok"
+        app:layout_constraintEnd_toStartOf="@+id/button_ok"
+        app:layout_constraintStart_toStartOf="@id/achievement_desc_card_background"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.6">
+
+        <TextView
+            android:id="@+id/txt_share"
+            style="@style/Label.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share_with_friends"
+            android:textAllCaps="false"
+            android:textColor="@color/on_primary"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/ic_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/on_primary"
+            android:contentDescription="@string/share_with_friends"
+            android:src="@drawable/ic_share" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_ok"
+        style="@style/SecondaryButton"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="36dp"
+        android:layout_weight="1"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="@id/achievement_desc_card_background"
+        app:layout_constraintEnd_toEndOf="@id/achievement_desc_card_background"
+        app:layout_constraintStart_toEndOf="@id/button_share"
+        app:layout_constraintTop_toBottomOf="@id/tv_achievement_requirement" />
+</androidx.constraintlayout.widget.ConstraintLayout>
