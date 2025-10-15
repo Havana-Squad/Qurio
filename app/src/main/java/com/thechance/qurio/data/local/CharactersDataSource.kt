@@ -38,8 +38,13 @@ object CharactersDataSource {
             }
         }
     }
+
+
     fun getCharacterById(id: Int): Character? {
         return charactersCache?.firstOrNull { it.id == id }
+    }
+    fun resetCharacters(context: Context) {
+        charactersCache = createCharacters(context).toMutableList()
     }
 
     private fun createCharacters(context: Context): List<Character> = listOf(

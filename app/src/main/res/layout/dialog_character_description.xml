@@ -152,12 +152,12 @@
             android:textAllCaps="false" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_cancel"
+            android:id="@+id/button_ok"
             style="@style/Secondary_Button"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_weight="1"
-            android:text="@string/cancel"
+            android:text="ok"
             android:textAllCaps="false" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

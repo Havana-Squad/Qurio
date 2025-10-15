@@ -22,11 +22,11 @@ class CharactersRepositoryImpl(private val context: Context) : CharactersReposit
     }
 
 
-    override suspend fun updateCharacterLockState(id: Int, isUnlocked: Boolean) = withContext(Dispatchers.IO) {
-        CharactersDataSource.updateCharacterLockState(id, isUnlocked)
+    override suspend fun updateCharacterLockState(id: Int) = withContext(Dispatchers.IO) {
+        CharactersDataSource.updateCharacterLockState(id)
     }
-    override suspend fun updateCharacterUsedState(id: Int, isUsed: Boolean) = withContext(Dispatchers.IO) {
-        CharactersDataSource.updateCharacterUsedState(id, isUsed)
+    override suspend fun updateCharacterUsedState(id: Int) = withContext(Dispatchers.IO) {
+        CharactersDataSource.updateCharacterUsedState(id)
     }
 
 }
