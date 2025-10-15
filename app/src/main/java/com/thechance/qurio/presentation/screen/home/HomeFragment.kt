@@ -11,19 +11,22 @@ import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
 import com.thechance.qurio.domain.model.GameCategory
 import com.thechance.qurio.presentation.base.BaseFragment
+import com.thechance.qurio.presentation.screen.achievements.AchievementDescDialogFragment
+import com.thechance.qurio.presentation.screen.achievements.AchievementsDialogFragment
+import com.thechance.qurio.presentation.screen.buylife.BuyLifeDialogFragment
 import com.thechance.qurio.presentation.screen.games_screen.GameItem
 import com.thechance.qurio.presentation.screen.games_screen.GamesAdapter
-import com.thechance.qurio.presentation.screen.games_screen.GamesListener
 import com.thechance.qurio.presentation.screen.home.adapter.GamePagerItemDecoration
 import com.thechance.qurio.presentation.screen.home.adapter.GamePagerLayoutManager
+import com.thechance.qurio.presentation.screen.home.adapter.GamesPagerAdapter
 import jakarta.inject.Inject
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView, GamesListener {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView{
 
     override val layoutIdFragment: Int
         get() = R.layout.fragment_home
 
-    private val gamesAdapter: GamesAdapter by lazy { GamesAdapter(emptyList(), this) }
+    private val gamesAdapter: GamesPagerAdapter by lazy { GamesPagerAdapter(this) }
     @Inject
     override lateinit var presenter: HomePresenter
 
@@ -37,24 +40,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     private fun setupSettingsButton() {
-        TODO("Show settings dialog")
+//        TODO("Show settings dialog")
     }
 
     private fun setupBuyLivesButton() {
-        TODO("navigate to buy lives screen")
+        binding.btnBuyLives.setOnClickListener {
+            BuyLifeDialogFragment().show(childFragmentManager, "BuyLifeDialog")
+        }
     }
 
 
     private fun setupAwardsButton() {
-        TODO("show achievements dialog")
+        binding.btnUpgradeAwards.setOnClickListener {
+            AchievementsDialogFragment().show(childFragmentManager, "AchievementsDialog")
+        }
     }
 
     private fun setupAllGamesButton() {
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGameFragment())
+        binding.allGamesContainer.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGameFragment())
+        }
     }
 
     private fun setupAllLastGamesButton() {
-        TODO("navigate to last games screen")
+        binding.lastGamesAllContainer.setOnClickListener {
+//        TODO("navigate to last games screen")
+        }
     }
 
     private fun setupGamesRecyclerView() {
@@ -110,8 +121,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun setGames(games: List<GameItem>) {
-        val adapter = GamesAdapter(games, this)
-        binding.gamesPager.adapter = adapter
+        gamesAdapter.setItems(games)
     }
 
     override fun setUserLastGames(lastGames: List<String>) {
@@ -130,7 +140,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         return AppCompatResources.getDrawable(context ?: requireContext(), resId)
     }
 
-    override fun onGameItemClick(gameId: Int) {
+    override fun navigateToGame(gameId: Int) {
 //        TODO("Not yet implemented")
     }
 }

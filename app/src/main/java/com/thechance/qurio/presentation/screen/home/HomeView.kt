@@ -11,4 +11,5 @@ interface HomeView: BaseView {
     fun setGames(games: List<GameItem>)
     fun setUserLastGames(lastGames: List<String>)
     fun showErrorMessage(message: String)
+    fun navigateToGame(gameId: Int)
 }

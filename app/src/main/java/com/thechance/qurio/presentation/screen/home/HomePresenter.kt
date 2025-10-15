@@ -46,7 +46,7 @@ class HomePresenter @Inject constructor(
 
     private fun getUserStreak() {
         tryToExecute(
-            callee =  { 3 },
+            callee =  { 5 },
             onSuccess = ::onGetUserStreakSuccess,
             onError = ::onError
         )

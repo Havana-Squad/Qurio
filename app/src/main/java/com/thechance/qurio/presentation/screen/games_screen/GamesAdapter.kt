@@ -9,7 +9,7 @@ import com.thechance.qurio.databinding.GameItemBinding
 
 class GamesAdapter(
     val games: List<GameItem>,
-    val listener: GamesListener
+    val listener: GamesView
     ): RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,

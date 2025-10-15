@@ -7,7 +7,7 @@ import com.thechance.qurio.databinding.FragmentGamesBinding
 import com.thechance.qurio.presentation.base.BaseFragment
 import jakarta.inject.Inject
 
-class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView, GamesListener {
+class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView {
     @Inject
     override lateinit var presenter: GamesPresenter
 
@@ -35,6 +35,6 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
     }
 
     override fun navigateBack() {
-        findNavController().popBackStack()
+        findNavController().navigate(GamesFragmentDirections.actionGameFragmentToHomeFragment())
     }
 }

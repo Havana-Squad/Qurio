@@ -74,6 +74,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
+                android:id="@+id/btnBuyLives"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="2dp"
@@ -621,7 +622,6 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/item_game_card"
             app:layout_constraintTop_toBottomOf="@id/games_label"/>
 
         <TextView
