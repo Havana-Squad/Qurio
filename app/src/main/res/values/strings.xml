@@ -26,6 +26,70 @@
     <string name="buy_life">Buy life</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
+    <string name="achievements">Achievements</string>
+    <string name="ok">Ok</string>
+    <string name="click_on_achievement_to_view_details">*Click on achievement to view details</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="how_to_get">How to get:</string>
+    <string name="achievement">achievement</string>
+    <string name="celebration">celebration</string>
+
+    <string name="achievement_quiz_rookie_name">Quiz Rookie</string>
+    <string name="achievement_streak_starter_name">Streak Starter</string>
+    <string name="achievement_lucky_guess_name">Lucky Guess</string>
+    <string name="achievement_explorer_name">Explorer</string>
+    <string name="achievement_trivia_champ_name">Trivia Champ</string>
+    <string name="achievement_collector_name">Collector</string>
+    <string name="achievement_legend_name">Legend</string>
+    <string name="achievement_untouchable_name">Untouchable</string>
+    <string name="achievement_quick_thinker_name">Quick Thinker</string>
+    <string name="achievement_perfect_game_name">Perfect Game</string>
+    <string name="achievement_knowledge_seeker_name">Knowledge Seeker</string>
+
+    <!-- Achievement Locked Descriptions -->
+    <string name="achievement_quiz_rookie_locked">You\'re just starting your journey. Keep playing to prove your skills!</string>
+    <string name="achievement_streak_starter_locked">You’re getting the hang of it! Keep answering correctly to build your streak.</string>
+    <string name="achievement_lucky_guess_locked">Sometimes luck plays a big part! Take a few risks.</string>
+    <string name="achievement_explorer_locked">Discover more to unlock this achievement.</string>
+    <string name="achievement_trivia_champ_locked">Champions never quit! Keep answering correctly to earn this title.</string>
+    <string name="achievement_collector_locked">Collect more achievements to earn this one!</string>
+    <string name="achievement_legend_locked">Legends are made through consistency. Keep it up!</string>
+    <string name="achievement_untouchable_locked">You rarely make mistakes! You\'re at a very high level and dominate the game.</string>
+    <string name="achievement_quick_thinker_locked">Speed matters! Be faster to claim this one.</string>
+    <string name="achievement_perfect_game_locked">Perfection is within reach. Aim for a flawless round!</string>
+    <string name="achievement_knowledge_seeker_locked">Curiosity is the key. Keep exploring more trivia!</string>
+
+    <!-- Achievement Unlocked Descriptions -->
+    <string name="achievement_quiz_rookie_unlocked">You’ve played your first 5 quizzes! Welcome to the trivia world!</string>
+    <string name="achievement_streak_starter_unlocked">You started your first winning streak — 3 correct answers in a row!</string>
+    <string name="achievement_lucky_guess_unlocked">You guessed an answer correctly after using no hints — pure luck!</string>
+    <string name="achievement_explorer_unlocked">You love experimenting and discovering! You\'ve tried several categories and aren\'t limited to just one.</string>
+    <string name="achievement_trivia_champ_unlocked">You dominated the quiz! Your accuracy shows true trivia mastery!</string>
+    <string name="achievement_collector_unlocked">Achievement collector! You’ve unlocked several milestones!</string>
+    <string name="achievement_legend_unlocked">You’ve proven yourself time and again — you’re a true legend!</string>
+    <string name="achievement_untouchable_unlocked">Flawless victory! You answered everything correctly without breaking a sweat!</string>
+    <string name="achievement_quick_thinker_unlocked">You think fast! You answered a question in record time!</string>
+    <string name="achievement_perfect_game_unlocked">Unbelievable! You finished a game with all answers correct!</string>
+    <string name="achievement_knowledge_seeker_unlocked">You’ve explored so many questions — your curiosity is unmatched!</string>
+
+    <!-- Achievement Requirements -->
+    <string name="achievement_quiz_rookie_requirement">Complete 5 quizzes.</string>
+    <string name="achievement_streak_starter_requirement">Answer 3 questions correctly in a row.</string>
+    <string name="achievement_lucky_guess_requirement">Answer one question correctly without using hints.</string>
+    <string name="achievement_explorer_requirement">Play in at least 4 different categories.</string>
+    <string name="achievement_trivia_champ_requirement">Achieve a score of 80% or higher in any quiz.</string>
+    <string name="achievement_collector_requirement">Unlock 5 different achievements.</string>
+    <string name="achievement_legend_requirement">Play 50 quizzes in total.</string>
+    <string name="achievement_untouchable_requirement">Correctly answer 10 consecutive questions in a single game without any mistake.</string>
+    <string name="achievement_quick_thinker_requirement">Answer a question correctly in under 3 seconds.</string>
+    <string name="achievement_perfect_game_requirement">Finish any quiz without a single wrong answer.</string>
+    <string name="achievement_knowledge_seeker_requirement">Answer 100 questions in total.</string>
+
+    <string name="share_achievement_text">I just unlocked the "%1$s" achievement in Quiro! 🎉</string>
+    <string name="share_via">Share via</string>
+    <string name="game_img">game img</string>
+    <string name="games">Games</string>
+    <string name="arrow_back_icon">arrow back icon</string>
     <string name="games">Games</string>
     <string name="all">All</string>
     <string name="last_games">Last Games</string>
