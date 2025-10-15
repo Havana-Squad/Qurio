@@ -110,4 +110,15 @@
     <string name="the_sword_chooses_the_wielder_and_it_chose_aori_calm_focused">The sword chooses the wielder—and it chose Aori. Calm, focused.</string>
     <string name="part_magic_part_sass_nara_sparkles_even_when_she_s_mad">Part magic, part sass. Nara sparkles even when she’s mad.\n</string>
     <string name="small_but_mighty_renji_dreams_of_glory_carries_a_shield_too_big_for_him">Small but mighty! Renji dreams of glory, carries a shield too big for him.</string>
+
+    <!-- Characters Ages-->
+    <string name="_12_sunblooms">12 Sunblooms</string>
+    <string name="_14_storms">14 Storms</string>
+    <string name="_10_volcano_puffs">10 Volcano Puffs</string>
+    <string name="_13_shadows">13 Shadows</string>
+    <string name="_15_thunder_beats">15 Thunder Beats</string>
+    <string name="_11_leaf_turns">11 Leaf Turns</string>
+    <string name="_13_blade_echoes">13 Blade Echoes</string>
+    <string name="_12_crystal_songs">12 Crystal Songs</string>
+    <string name="_11_hero_coins">11 Hero Coins</string>
 </resources>
