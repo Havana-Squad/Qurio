@@ -31,6 +31,8 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 okhttp = "4.12.0"
 kotlinxSerializationJson = "1.6.3"
 serializationKotlin = "2.0.0"
+roomRuntime = "2.6.1"
+ksp = "2.0.21-1.0.28"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +62,9 @@ okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 #gson
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 
 
 [plugins]
@@ -67,7 +72,14 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safe-args = { id = "androidx.navigation.safeargs.kotlin", version = "2.7.5" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationKotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
 
 
 [bundles]
 dagger = ["dagger", "dagger-android", "dagger-android-support"]
+room = [
+    "androidx-room-runtime",
+    "androidx-room-ktx",
+]

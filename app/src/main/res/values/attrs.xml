@@ -12,6 +12,7 @@
         <attr name="shadowDx" format="dimension" />
         <attr name="shadowDy" format="dimension" />
     </declare-styleable>
+
     <declare-styleable name="TextButton">
         <attr name="textButtonEnabled" format="boolean" />
     </declare-styleable>
@@ -21,6 +22,7 @@
     <declare-styleable name="PrimaryButton">
         <attr name="primaryButtonEnabled" format="boolean" />
     </declare-styleable>
+
     <declare-styleable name="CustomTimeComponent">
     <declare-styleable name="SvgProgressView">
         <attr name="progress" format="float" />
@@ -33,13 +35,22 @@
     </declare-styleable>
 
     <declare-styleable name="StatisticsCustomCardView">
-        <!-- Fill color -->
         <attr name="fillColor" format="color" />
-        <!-- Stroke (border) color -->
         <attr name="strokeColor" format="color" />
-        <!-- Stroke width -->
         <attr name="strokeWidth" format="dimension" />
-        <!-- SVG path resource (string resource name) -->
         <attr name="pathData" format="string|reference" />
     </declare-styleable>
+    <declare-styleable name="ResultCardView">
+        <attr name="resultText" format="string" />
+        <attr name="blurVisible" format="boolean" />
+        <attr name="starsVisible" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="GameCard">
+        <attr name="cardSrc" format="reference" />
+        <attr name="cardBorderColor" format="reference" />
+        <attr name="cardBorderWidth" format="dimension" />
+        <attr name="cardBottomGradient" format="reference" />
+    </declare-styleable>
+
 </resources>

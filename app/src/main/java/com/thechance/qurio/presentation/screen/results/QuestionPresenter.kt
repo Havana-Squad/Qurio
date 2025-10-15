@@ -2,12 +2,15 @@ package com.thechance.qurio.presentation.screen.results
 
 import android.os.CountDownTimer
 import com.thechance.qurio.data.repository.GameRepository
+import com.thechance.qurio.data.repository.GameSessionRepository
+import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
 import com.thechance.qurio.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class StartPlayPresenter @Inject constructor(
-    private val gameRepository: GameRepository
+    private val gameRepository: GameRepository,
+    private val gameSessionRepository: GameSessionRepository
 ) : BasePresenter<StartPlayView>() {
 
     private var questions: List<Question> = emptyList()
@@ -17,15 +20,14 @@ class StartPlayPresenter @Inject constructor(
     private val questionTimeMillis = 20_000L
     private var questionChecked = false
 
-    fun getQuestions() {
+    private var correctCount = 0
+    private var wrongCount = 0
+    private var totalTimeSeconds = 0L
+    private var timerStartTime = 0L
+
+    fun getQuestions(categoryId: Int) {
         tryToExecute(
-            callee = {
-                gameRepository.fetchQuestions(
-                    12,
-                    difficulty = "easy",
-                    type = "multiple"
-                )
-            },
+            callee = { gameRepository.fetchQuestions(12, "easy", "multiple", categoryId) },
             onStart = { view?.showLoading() },
             onSuccess = ::onQuestionsSuccess,
             onError = { view?.showError(it) },
@@ -34,7 +36,6 @@ class StartPlayPresenter @Inject constructor(
     }
 
     private fun onQuestionsSuccess(list: List<Question>) {
-
         questions = list
         view?.hideLoading()
         if (list.isNotEmpty()) {
@@ -56,6 +57,10 @@ class StartPlayPresenter @Inject constructor(
         view?.showQuestion(q, "Q ${currentIndex + 1}/${questions.size}")
         view?.showAnswers(currentAnswers)
         view?.resetAnswers()
+        val isLast = currentIndex == questions.size - 1
+        view?.toggleSkipButton(!isLast)
+
+        timerStartTime = System.currentTimeMillis()
         startTimer()
     }
 
@@ -82,13 +87,26 @@ class StartPlayPresenter @Inject constructor(
                 view?.showMessage("Select an answer first")
                 return
             }
+
             val question = questions[currentIndex]
             val correct = question.correctAnswer ?: ""
             view?.highlightAnswers(correct, selectedPosition)
             questionChecked = true
             countDownTimer?.cancel()
+
+            val answer = currentAnswers.getOrNull(selectedPosition)
+            if (answer == correct) correctCount++ else wrongCount++
+            totalTimeSeconds += ((System.currentTimeMillis() - timerStartTime) / 1000).toInt()
+
+            if (currentIndex == questions.size - 1) {
+                saveGameSession()
+                view?.showEndOfQuestions()
+            }
+
         } else {
-            nextQuestion()
+            if (currentIndex < questions.size - 1) {
+                nextQuestion()
+            }
         }
     }
 
@@ -98,8 +116,39 @@ class StartPlayPresenter @Inject constructor(
             currentIndex++
             showCurrentQuestion()
         } else {
+            saveGameSession()
             view?.showEndOfQuestions()
         }
+    }
+
+    private fun calculateStars(): Int {
+        return when {
+            correctCount == questions.size -> 3
+            correctCount >= questions.size / 2 -> 2
+            correctCount > 0 -> 1
+            else -> 0
+        }
+    }
+
+    private fun calculateCoins(): Int = correctCount * 10
+
+    private fun saveGameSession() {
+        val skipped = (questions.size - (correctCount + wrongCount))
+        val session = GameSession(
+            correctAnswers = correctCount,
+            wrongAnswers = wrongCount,
+            skippedAnswers = skipped,
+            stars = calculateStars(),
+            totalTimeSeconds = totalTimeSeconds.toInt(),
+            earnedCoins = calculateCoins()
+        )
+        tryToExecute(
+            callee = { gameSessionRepository.insertSession(session) },
+            onStart = {},
+            onSuccess = { view?.onGameSessionSaved(session) },
+            onError = { view?.showError(it) },
+            onFinish = {}
+        )
     }
 
     fun destroyTimer() {

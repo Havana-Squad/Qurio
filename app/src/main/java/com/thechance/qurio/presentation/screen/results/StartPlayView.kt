@@ -1,5 +1,6 @@
 package com.thechance.qurio.presentation.screen.results
 
+import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
 import com.thechance.qurio.presentation.base.BaseView
 
@@ -16,4 +17,8 @@ interface StartPlayView : BaseView {
     fun showLoading()
     fun hideLoading()
     fun showError(error: Throwable)
+
+    fun toggleSkipButton(visible: Boolean)
+
+    fun onGameSessionSaved(session: GameSession)
 }

@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.View
 import com.thechance.qurio.R
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.thechance.qurio.databinding.FragmentStartPlayBinding
+import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
 import com.thechance.qurio.presentation.base.BaseFragment
 import jakarta.inject.Inject
@@ -22,10 +25,11 @@ class StartPlayFragment :
     lateinit var startPlayPresenter: StartPlayPresenter
 
     private var adapter: QuestionAdapter? = null
+    private val args : StartPlayFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startPlayPresenter.getQuestions()
+        startPlayPresenter.getQuestions(args.categoryId)
         setupListeners()
     }
 
@@ -94,7 +98,13 @@ class StartPlayFragment :
     }
 
     override fun showEndOfQuestions() {
-        showToastMessage("End of Questions")
+        binding.checkButton.visibility = View.GONE
+    }
+
+    override fun onGameSessionSaved(session: GameSession) {
+        val action = StartPlayFragmentDirections
+            .actionStartPlayFragmentToResultPlayFragment(session,args.categoryId)
+        findNavController().navigate(action)
     }
 
     private fun showToastMessage(message: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -117,5 +127,9 @@ class StartPlayFragment :
         binding.errorLayout.visibility = View.VISIBLE
         binding.gameLayout.visibility = View.GONE
         binding.loadingLayout.visibility = View.GONE
+    }
+
+    override fun toggleSkipButton(visible: Boolean) {
+        binding.skipButton.visibility = if (visible) View.VISIBLE else View.GONE
     }
 }
