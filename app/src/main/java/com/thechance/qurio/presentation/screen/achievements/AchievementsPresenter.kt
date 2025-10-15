@@ -1,7 +1,7 @@
 package com.thechance.qurio.presentation.screen.achievements
 
 import com.thechance.qurio.domain.entity.Achievement
-import com.thechance.qurio.domain.repository.achievements.AchievementsRepository
+import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import javax.inject.Inject
 

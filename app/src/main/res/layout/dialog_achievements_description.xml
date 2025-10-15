@@ -193,7 +193,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ok"
-        style="@style/SecondaryButton"
+        style="@style/Secondary_Button"
         android:layout_width="0dp"
         android:layout_height="44dp"
         android:layout_marginTop="62dp"
