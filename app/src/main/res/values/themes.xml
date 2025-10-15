@@ -56,6 +56,10 @@
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
+    <style name="Title.XSmall">
+        <item name="android:textSize">10sp</item>
+    </style>
+
 
     <!-- Body -->
     <style name="Body">
