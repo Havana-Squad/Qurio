@@ -93,6 +93,11 @@
 
     <string name="share_achievement_text">I just unlocked the "%1$s" achievement in Quiro! 🎉</string>
     <string name="share_via">Share via</string>
+    <string name="hard">Hard</string>
+    <string name="difficulty_level">Difficulty level</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="confirm">Confirm</string>
     <string name="game_img">game img</string>
     <string name="games">Games</string>
     <string name="arrow_back_icon">arrow back icon</string>
