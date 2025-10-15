@@ -109,8 +109,7 @@
         <item name="android:foreground">@drawable/question_card</item>
     </style>
 
-    <style name="CuttedCornersCardStyle" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">16dp</item>
+    <style name="CutCornersCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="android:backgroundTint">@android:color/transparent</item>
         <item name="android:foreground">@drawable/cut_corner_card_shape</item>
     </style>
