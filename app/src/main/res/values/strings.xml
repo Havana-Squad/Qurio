@@ -88,4 +88,15 @@
 
     <string name="share_achievement_text">I just unlocked the "%1$s" achievement in Quiro! 🎉</string>
     <string name="share_via">Share via</string>
+
+    <!-- Characters Names -->
+    <string name="rika">Rika</string>
+    <string name="kaiyo">Kaiyo</string>
+    <string name="mimi">Mimi</string>
+    <string name="yoru">Yoru</string>
+    <string name="kuro">Kuro</string>
+    <string name="miko">Miko</string>
+    <string name="aori">Aori</string>
+    <string name="nara">Nara</string>
+    <string name="renji">Renji</string>
 </resources>
