@@ -66,15 +66,17 @@ class StartPlayPresenter @Inject constructor(
 
     private fun startTimer() {
         countDownTimer?.cancel()
+
+        val durationSeconds = (questionTimeMillis / 1000).toInt()
+        view?.updateTimer(durationSeconds.toLong(), 1f)
+
         countDownTimer = object : CountDownTimer(questionTimeMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
                 val progress = millisUntilFinished.toFloat() / questionTimeMillis
-                view?.updateTimer(secondsLeft, progress)
             }
 
             override fun onFinish() {
-                view?.updateTimer(0, 0f)
                 view?.onTimerFinished()
                 nextQuestion()
             }

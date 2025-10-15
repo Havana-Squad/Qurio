@@ -25,7 +25,7 @@ class StartPlayFragment :
     lateinit var startPlayPresenter: StartPlayPresenter
 
     private var adapter: QuestionAdapter? = null
-    private val args : StartPlayFragmentArgs by navArgs()
+    private val args: StartPlayFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,6 +45,7 @@ class StartPlayFragment :
 
     override fun onDestroyView() {
         startPlayPresenter.destroyTimer()
+        binding.customTimeComponent.stopTimer()
         super.onDestroyView()
     }
 
@@ -73,6 +74,9 @@ class StartPlayFragment :
         adapter?.notifyDataSetChanged()
         binding.checkButton.setText("Next")
         binding.skipButton.visibility = View.GONE
+
+        // إيقاف التايمر عند الإجابة
+        binding.customTimeComponent.stopTimer()
     }
 
     override fun resetAnswers() {
@@ -84,13 +88,16 @@ class StartPlayFragment :
     }
 
     override fun updateTimer(secondsLeft: Long, progress: Float) {
-        /**
-         * todo : here we wanna update timer
-         */
+        binding.customTimeComponent.startTimer(
+            durationSeconds = secondsLeft.toInt(),
+            onTick = {},
+            onComplete = {}
+        )
     }
 
     override fun onTimerFinished() {
         showToastMessage("Time's up!")
+        binding.customTimeComponent.stopTimer()
     }
 
     override fun showMessage(message: String) {
@@ -99,11 +106,12 @@ class StartPlayFragment :
 
     override fun showEndOfQuestions() {
         binding.checkButton.visibility = View.GONE
+        binding.customTimeComponent.stopTimer()
     }
 
     override fun onGameSessionSaved(session: GameSession) {
         val action = StartPlayFragmentDirections
-            .actionStartPlayFragmentToResultPlayFragment(session,args.categoryId)
+            .actionStartPlayFragmentToResultPlayFragment(session, args.categoryId)
         findNavController().navigate(action)
     }
 
@@ -127,6 +135,7 @@ class StartPlayFragment :
         binding.errorLayout.visibility = View.VISIBLE
         binding.gameLayout.visibility = View.GONE
         binding.loadingLayout.visibility = View.GONE
+        binding.customTimeComponent.stopTimer()
     }
 
     override fun toggleSkipButton(visible: Boolean) {
