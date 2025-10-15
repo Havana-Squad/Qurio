@@ -6,9 +6,9 @@ import com.thechance.qurio.data.util.safeApiCall
 import com.thechance.qurio.domain.model.Question
 import javax.inject.Inject
 
-class GameRepositoryImpl @Inject constructor(
+class TGameRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-) : GameRepository {
+) : TGameRepository {
     override suspend fun fetchQuestions(
         amount: Int,
         difficulty: String,

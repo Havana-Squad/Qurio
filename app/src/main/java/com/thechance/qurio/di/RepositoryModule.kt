@@ -1,8 +1,8 @@
 package com.thechance.qurio.di
 
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
-import com.thechance.qurio.data.repository.GameRepository
-import com.thechance.qurio.data.repository.GameRepositoryImpl
+import com.thechance.qurio.data.repository.TGameRepository
+import com.thechance.qurio.data.repository.TGameRepositoryImpl
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.GameSessionRepositoryImpl
 import com.thechance.qurio.data.repository.ResultsRepositoryImpl
@@ -26,8 +26,8 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindGameRepository(
-        impl: GameRepositoryImpl
-    ): GameRepository
+        impl: TGameRepositoryImpl
+    ): TGameRepository
 
     @Binds
     abstract fun bindGameSessionRepository(

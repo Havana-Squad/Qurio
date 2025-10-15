@@ -1,7 +1,7 @@
 package com.thechance.qurio.presentation.screen.results
 
 import android.os.CountDownTimer
-import com.thechance.qurio.data.repository.GameRepository
+import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
@@ -9,7 +9,7 @@ import com.thechance.qurio.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class StartPlayPresenter @Inject constructor(
-    private val gameRepository: GameRepository,
+    private val TGameRepository: TGameRepository,
     private val gameSessionRepository: GameSessionRepository
 ) : BasePresenter<StartPlayView>() {
 
@@ -27,7 +27,7 @@ class StartPlayPresenter @Inject constructor(
 
     fun getQuestions(categoryId: Int) {
         tryToExecute(
-            callee = { gameRepository.fetchQuestions(12, "easy", "multiple", categoryId) },
+            callee = { TGameRepository.fetchQuestions(12, "easy", "multiple", categoryId) },
             onStart = { view?.showLoading() },
             onSuccess = ::onQuestionsSuccess,
             onError = { view?.showError(it) },
