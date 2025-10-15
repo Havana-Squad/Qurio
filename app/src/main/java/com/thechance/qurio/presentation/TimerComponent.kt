@@ -195,7 +195,6 @@ class TimerComponent @JvmOverloads constructor(
                     val transformedPath = Path()
                     dynamicPath.transform(matrix, transformedPath)
 
-                    // Clip to border path before drawing progress
                     canvas.save()
                     if (svgPaths.isNotEmpty()) {
                         canvas.clipPath(svgPaths[0])
