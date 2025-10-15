@@ -1,7 +1,9 @@
 package com.thechance.qurio.presentation.screen.results
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.thechance.qurio.R
@@ -14,6 +16,7 @@ import jakarta.inject.Inject
 
 class ResultPlayFragment :
     BaseFragment<FragmentResultPlayBinding, ResultPlayView, ResultPlayPresenter>() {
+
     override val layoutIdFragment: Int
         get() = R.layout.fragment_result_play
 
@@ -46,6 +49,10 @@ class ResultPlayFragment :
                 )
             )
         }
+
+        binding.btnShare.setOnClickListener {
+            shareResults()
+        }
     }
 
     private fun displayResults() {
@@ -63,5 +70,41 @@ class ResultPlayFragment :
             correctAnswers = session.correctAnswers,
             totalQuestions = session.correctAnswers + session.wrongAnswers + session.skippedAnswers
         )
+    }
+
+    private fun shareResults() {
+        val session = args.session
+        val totalQuestions = session.correctAnswers + session.wrongAnswers + session.skippedAnswers
+        val scorePercentage = if (totalQuestions > 0) {
+            (session.correctAnswers * 100) / totalQuestions
+        } else 0
+
+        val shareText = buildString {
+            append("🎮 My Qurio Game Results!\n\n")
+            append("✅ Correct: ${session.correctAnswers}/${totalQuestions}\n")
+            append("❌ Wrong: ${session.wrongAnswers}\n")
+            append("⏭️ Skipped: ${session.skippedAnswers}\n")
+            append("⭐ Stars: ${session.stars}/3\n")
+            append("🪙 Coins Earned: ${session.earnedCoins}\n")
+            append("📊 Score: $scorePercentage%\n\n")
+            append("Can you beat my score? 🚀")
+        }
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, shareText)
+            putExtra(Intent.EXTRA_SUBJECT, "My Qurio Game Results")
+        }
+
+        try {
+            startActivity(Intent.createChooser(intent, "Share your results"))
+            Toast.makeText(requireContext(), "Sharing results...", Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Toast.makeText(
+                requireContext(),
+                "Unable to share results",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }
