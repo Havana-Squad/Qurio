@@ -1,4 +1,4 @@
-package com.thechance.qurio.domain.repository.achievements
+package com.thechance.qurio.domain.repository
 
 import com.thechance.qurio.domain.entity.Achievement
 
