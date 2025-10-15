@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
 
+    //flexbox
+    implementation(libs.flexbox)
+
     // Retrofit
     implementation(libs.retrofit)
     //OkHttp

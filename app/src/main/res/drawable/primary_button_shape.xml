@@ -7,7 +7,7 @@
         </shape>
     </item>
 
-    <item>
+    <item android:state_enabled="true">
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
@@ -18,19 +18,15 @@
 
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="#1A000000"/>
+                    <solid android:color="#40FFFFFF"/>
                     <corners android:radius="16dp"/>
                 </shape>
             </item>
 
-            <item android:bottom="0dp">
+            <item android:bottom="6dp">
                 <shape android:shape="rectangle">
-                    <gradient
-                        android:angle="90"
-                        android:startColor="#80FFFFFF"
-                        android:centerColor="#40FFFFFF"
-                        android:endColor="#00FFFFFF"/>
-                    <corners android:radius="16dp"/>
+                    <solid android:color="@color/primary" />
+                    <corners android:radius="16dp" />
                 </shape>
             </item>
         </layer-list>
