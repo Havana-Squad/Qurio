@@ -121,4 +121,12 @@
     <string name="_13_blade_echoes">13 Blade Echoes</string>
     <string name="_12_crystal_songs">12 Crystal Songs</string>
     <string name="_11_hero_coins">11 Hero Coins</string>
+    <string name="hard">Hard</string>
+    <string name="difficulty_level">Difficulty level</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="confirm">Confirm</string>
+    <string name="game_img">game img</string>
+    <string name="games">Games</string>
+    <string name="arrow_back_icon">arrow back icon</string>
 </resources>

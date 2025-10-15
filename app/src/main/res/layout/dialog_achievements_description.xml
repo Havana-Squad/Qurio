@@ -20,9 +20,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/icon_hexagon_title"
+        android:id="@+id/icon_hexagon"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_hexagon"
         app:layout_constraintDimensionRatio="145:40"
@@ -48,16 +48,15 @@
         style="@style/Title.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-8dp"
+        android:layout_marginTop="-6dp"
         android:elevation="1dp"
         android:text=""
         android:textColor="@color/shade_primary"
-        app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon_title"
-        app:layout_constraintEnd_toEndOf="@id/icon_hexagon_title"
-        app:layout_constraintStart_toStartOf="@id/icon_hexagon_title"
-        app:layout_constraintTop_toTopOf="@id/icon_hexagon_title"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon"
+        app:layout_constraintEnd_toEndOf="@id/icon_hexagon"
+        app:layout_constraintStart_toStartOf="@id/icon_hexagon"
+        app:layout_constraintTop_toTopOf="@id/icon_hexagon"
         tools:text="Explorer" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/achievement_container"
@@ -69,7 +68,7 @@
         android:elevation="1dp"
         app:layout_constraintEnd_toEndOf="@id/achievement_desc_card_background"
         app:layout_constraintStart_toStartOf="@id/achievement_desc_card_background"
-        app:layout_constraintTop_toBottomOf="@id/icon_hexagon_title">
+        app:layout_constraintTop_toBottomOf="@id/icon_hexagon">
 
         <TextView
             android:id="@+id/tv_achievement_name"
