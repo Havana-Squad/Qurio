@@ -1,10 +1,13 @@
 package com.thechance.qurio.presentation.screen.achievements
 
+import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
@@ -22,6 +25,25 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
 
     private val presenter by lazy { AchievementsPresenter(AchievementsRepositoryImpl(requireContext())) }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
+        }
+
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,14 +55,15 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.attachView(this)
+
         binding.recyclerAchievements.adapter = AchievementsAdapter(emptyList()) {
             presenter.onAchievementClicked(it)
         }
 
-        binding.buttonOk.setOnClickListener { dialog?.hide() }
-        binding.buttonExit.setOnClickListener { dialog?.hide() }
+        binding.buttonOk.setOnClickListener { dismiss() }
+        binding.buttonExit.setOnClickListener { dismiss() }
 
-        presenter.attachView(this)
         presenter.loadAchievements()
     }
 
@@ -70,13 +93,13 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
 
     private fun showAchievementDialog(achievement: Achievement) {
         dismiss()
-
         AchievementDescDialogFragment.newInstance(achievement)
             .show(parentFragmentManager, "achievement_desc")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        presenter.detachView()
         _binding = null
     }
 }

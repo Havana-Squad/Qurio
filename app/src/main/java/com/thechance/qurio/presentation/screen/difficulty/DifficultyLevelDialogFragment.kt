@@ -1,10 +1,13 @@
 package com.thechance.qurio.presentation.screen.difficulty
 
+import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.LayoutDifficultyLevelBinding
 
@@ -15,6 +18,25 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
     private val presenter by lazy { DifficultyLevelPresenter() }
 
     private var selectedDifficulty: DifficultyLevel = DifficultyLevel.Medium
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
+        }
+
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +50,6 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
-        presenter.loadDifficultyInfo()
-
-        updateSelectedDifficulty(selectedDifficulty)
 
         binding.difficultyLevelEasyButton.setOnClickListener {
             updateSelectedDifficulty(DifficultyLevel.Easy)
@@ -42,6 +61,7 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
             updateSelectedDifficulty(DifficultyLevel.Hard)
         }
 
+        binding.buttonConfirm.isEnabled = false
         binding.buttonCancel.setOnClickListener {
             dismiss()
         }
@@ -55,6 +75,7 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
 
     private fun updateSelectedDifficulty(level: DifficultyLevel) {
         selectedDifficulty = level
+        binding.buttonConfirm.isEnabled = true
 
         binding.difficultyLevelEasyButton.isSelected = level == DifficultyLevel.Easy
         binding.difficultyLevelMediumButton.isSelected = level == DifficultyLevel.Medium

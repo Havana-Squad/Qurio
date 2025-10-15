@@ -1,5 +1,8 @@
 package com.thechance.qurio.presentation.screen.buylife
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +10,32 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.LayoutBuyLifeBinding
+import androidx.core.graphics.drawable.toDrawable
 
 class BuyLifeDialogFragment : DialogFragment(), BuyLifeView {
 
     private var _binding: LayoutBuyLifeBinding? = null
     private val binding get() = _binding!!
     private val presenter by lazy { BuyLifePresenter() }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
+        }
+
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

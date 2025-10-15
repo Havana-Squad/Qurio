@@ -1,10 +1,13 @@
 package com.thechance.qurio.presentation.screen.achievements
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.DialogAchievementsDescriptionBinding
@@ -17,14 +20,24 @@ class AchievementDescDialogFragment : DialogFragment() {
 
     private lateinit var achievement: Achievement
 
-    companion object {
-        fun newInstance(achievement: Achievement): AchievementDescDialogFragment {
-            return AchievementDescDialogFragment().apply {
-                this.achievement = achievement
-            }
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
         }
+
+        return dialog
     }
 
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -80,5 +93,13 @@ class AchievementDescDialogFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance(achievement: Achievement): AchievementDescDialogFragment {
+            return AchievementDescDialogFragment().apply {
+                this.achievement = achievement
+            }
+        }
     }
 }

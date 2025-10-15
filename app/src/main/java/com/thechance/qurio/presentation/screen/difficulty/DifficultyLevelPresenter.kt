@@ -12,11 +12,6 @@ class DifficultyLevelPresenter {
         view = null
     }
 
-    fun loadDifficultyInfo() {
-        // Simulate loading difficulty level info
-        view?.showDifficultyLevel(DifficultyLevel.Medium)
-    }
-
     fun setDifficultyLevel(level: String) {
         view?.showLoading()
         // Simulate setting difficulty level
