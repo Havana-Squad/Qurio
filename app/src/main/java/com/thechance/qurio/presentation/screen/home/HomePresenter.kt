@@ -1,8 +1,13 @@
 package com.thechance.qurio.presentation.screen.home
 
+import com.thechance.qurio.domain.model.GameCategory
+import com.thechance.qurio.domain.repository.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
+import com.thechance.qurio.presentation.screen.games_screen.toUi
 import javax.inject.Inject
-class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
+class HomePresenter @Inject constructor(
+    private val gameRepository: GameRepository
+) : BasePresenter<HomeView>() {
     init {
         getUserCharacter()
         getUserStatistics()
@@ -53,14 +58,14 @@ class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
 
     private fun getGames() {
         tryToExecute(
-            callee = { listOf("1", "2", "3", "4", "5") },
+            callee = gameRepository::getGames,
             onSuccess = ::onGetGamesSuccess,
             onError = ::onError
         )
     }
 
-    private fun onGetGamesSuccess(games: List<String>){
-        view.setGames(games)
+    private fun onGetGamesSuccess(games: List<GameCategory>) {
+        view.setGames(games.shuffled().take(6).map { it.toUi() })
     }
 
     private fun getUserLastGames() {

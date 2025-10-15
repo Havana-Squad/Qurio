@@ -13,4 +13,12 @@
         android:id="@+id/gameFragment"
         android:name="com.thechance.qurio.presentation.screen.games_screen.GamesFragment"
         android:label="GameFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.thechance.qurio.presentation.screen.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
 </navigation>

@@ -7,7 +7,7 @@ import com.thechance.qurio.databinding.FragmentGamesBinding
 import com.thechance.qurio.presentation.base.BaseFragment
 import jakarta.inject.Inject
 
-class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView {
+class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView, GamesListener {
     @Inject
     override lateinit var presenter: GamesPresenter
 

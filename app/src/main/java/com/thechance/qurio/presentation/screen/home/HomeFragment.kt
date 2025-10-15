@@ -4,22 +4,26 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
+import com.thechance.qurio.domain.model.GameCategory
 import com.thechance.qurio.presentation.base.BaseFragment
+import com.thechance.qurio.presentation.screen.games_screen.GameItem
+import com.thechance.qurio.presentation.screen.games_screen.GamesAdapter
+import com.thechance.qurio.presentation.screen.games_screen.GamesListener
 import com.thechance.qurio.presentation.screen.home.adapter.GamePagerItemDecoration
 import com.thechance.qurio.presentation.screen.home.adapter.GamePagerLayoutManager
-import com.thechance.qurio.presentation.screen.home.adapter.GamesPagerAdapter
 import jakarta.inject.Inject
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView, GamesListener {
 
     override val layoutIdFragment: Int
         get() = R.layout.fragment_home
 
-    private val gamesAdapter: GamesPagerAdapter by lazy { GamesPagerAdapter() }
+    private val gamesAdapter: GamesAdapter by lazy { GamesAdapter(emptyList(), this) }
     @Inject
     override lateinit var presenter: HomePresenter
 
@@ -46,7 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     private fun setupAllGamesButton() {
-        TODO("navigate to games screen")
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGameFragment())
     }
 
     private fun setupAllLastGamesButton() {
@@ -105,12 +109,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         }
     }
 
-    override fun setGames(games: List<String>) {
-        gamesAdapter.setItems(games)
+    override fun setGames(games: List<GameItem>) {
+        val adapter = GamesAdapter(games, this)
+        binding.gamesPager.adapter = adapter
     }
 
     override fun setUserLastGames(lastGames: List<String>) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
     override fun showErrorMessage(message: String) {
@@ -123,5 +128,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
 
     private fun getDrawable(resId: Int): Drawable? {
         return AppCompatResources.getDrawable(context ?: requireContext(), resId)
+    }
+
+    override fun onGameItemClick(gameId: Int) {
+//        TODO("Not yet implemented")
     }
 }
