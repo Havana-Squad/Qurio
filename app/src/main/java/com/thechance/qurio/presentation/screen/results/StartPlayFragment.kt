@@ -75,7 +75,6 @@ class StartPlayFragment :
         binding.checkButton.setText("Next")
         binding.skipButton.visibility = View.GONE
 
-        // إيقاف التايمر عند الإجابة
         binding.customTimeComponent.stopTimer()
     }
 
