@@ -6,16 +6,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.thechance.qurio.R
 import com.thechance.qurio.data.repository.GameSessionRepository
-import com.thechance.qurio.databinding.FragmentResultBinding
+import com.thechance.qurio.databinding.FragmentResultPlayBinding
 import com.thechance.qurio.presentation.base.BaseFragment
-import com.thechance.qurio.presentation.main.QurioApp
 import com.thechance.qurio.presentation.screen.results.idel.ResultPlayPresenter
 import com.thechance.qurio.presentation.screen.results.idel.ResultPlayView
 import jakarta.inject.Inject
 
 class ResultPlayFragment :
-    BaseFragment<FragmentResultBinding, ResultPlayView, ResultPlayPresenter>() {
-
+    BaseFragment<FragmentResultPlayBinding, ResultPlayView, ResultPlayPresenter>() {
     override val layoutIdFragment: Int
         get() = R.layout.fragment_result_play
 

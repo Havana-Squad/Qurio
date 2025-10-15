@@ -8,14 +8,17 @@
     <fragment
         android:id="@+id/exampleFragment"
         android:name="com.thechance.qurio.presentation.screen.example.ExampleFragment"
-        android:label="ExampleFragment" />
+        android:label="ExampleFragment"
+        />
     <fragment
         android:id="@+id/startPlayFragment"
         android:name="com.thechance.qurio.presentation.screen.results.StartPlayFragment"
         android:label="StartGame">
         <argument
             android:name="categoryId"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="9"
+            />
         <action
             android:id="@+id/action_startPlayFragment_to_resultPlayFragment"
             app:destination="@id/resultPlayFragment" />

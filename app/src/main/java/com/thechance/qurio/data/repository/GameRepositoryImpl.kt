@@ -12,7 +12,8 @@ class GameRepositoryImpl @Inject constructor(
     override suspend fun fetchQuestions(
         amount: Int,
         difficulty: String,
-        type: String
+        type: String,
+        category: Int
     ): List<Question> {
         val apiResponse = safeApiCall {
             apiService.getQuestions(
@@ -21,7 +22,6 @@ class GameRepositoryImpl @Inject constructor(
                 type = type
             )
         }
-
         return apiResponse.results
             ?.mapNotNull { questionDto -> questionDto?.toEntity() }
             ?: emptyList()

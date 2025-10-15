@@ -1,8 +1,12 @@
 package com.thechance.qurio.di
 
+import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.thechance.qurio.data.ApiService
+import com.thechance.qurio.data.local.GameSessionDao
+import com.thechance.qurio.data.local.QurioDatabase
 import com.thechance.qurio.data.util.LoggingInterceptor
+import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -51,5 +55,21 @@ class DataModule {
         fun provideApiService(retrofit: Retrofit): ApiService {
             return retrofit.create(ApiService::class.java)
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideQurioDatabase(application: QurioApp): QurioDatabase {
+        return Room.databaseBuilder(
+            application.applicationContext,
+            QurioDatabase::class.java,
+            "qurio_database"
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGameSessionDao(database: QurioDatabase): GameSessionDao {
+        return database.gameSessionDao()
     }
 }

@@ -70,7 +70,7 @@
                         android:textColor="@color/on_primary" />
                 </LinearLayout>
 
-                <View
+                <com.thechance.qurio.presentation.TimerComponent
                     android:id="@+id/customTimeComponent"
                     android:layout_width="0dp"
                     android:layout_height="20dp"

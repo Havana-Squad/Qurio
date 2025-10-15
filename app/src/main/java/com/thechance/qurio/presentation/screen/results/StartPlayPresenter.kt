@@ -134,18 +134,29 @@ class StartPlayPresenter @Inject constructor(
 
     private fun saveGameSession() {
         val skipped = (questions.size - (correctCount + wrongCount))
-        val session = GameSession(
+        val session = com.thechance.qurio.data.local.GameSession(
             correctAnswers = correctCount,
             wrongAnswers = wrongCount,
             skippedAnswers = skipped,
             stars = calculateStars(),
             totalTimeSeconds = totalTimeSeconds.toInt(),
-            earnedCoins = calculateCoins()
+            earnedCoins = calculateCoins(),
+            date = System.currentTimeMillis()
         )
         tryToExecute(
             callee = { gameSessionRepository.insertSession(session) },
             onStart = {},
-            onSuccess = { view?.onGameSessionSaved(session) },
+            onSuccess = {
+                val domainSession = GameSession(
+                    correctAnswers = session.correctAnswers,
+                    wrongAnswers = session.wrongAnswers,
+                    skippedAnswers = session.skippedAnswers,
+                    stars = session.stars,
+                    totalTimeSeconds = session.totalTimeSeconds,
+                    earnedCoins = session.earnedCoins
+                )
+                view?.onGameSessionSaved(domainSession)
+            },
             onError = { view?.showError(it) },
             onFinish = {}
         )
