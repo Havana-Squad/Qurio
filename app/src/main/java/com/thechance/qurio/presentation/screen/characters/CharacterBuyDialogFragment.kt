@@ -62,12 +62,11 @@ class CharacterBuyDialogFragment : DialogFragment() {
         binding.buttonBuy.setOnClickListener {
             performPurchase()
             dismiss()
-            showCharacterDialog()
         }
 
         binding.buttonCancel.setOnClickListener {
             dismiss()
-            showCharacterDialog()
+
         }
     }
 
@@ -103,12 +102,6 @@ class CharacterBuyDialogFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun showCharacterDialog() {
-        dismiss()
-        CharacterDialogFragment()
-            .show(parentFragmentManager, "Character_dialog")
     }
 
     companion object {
