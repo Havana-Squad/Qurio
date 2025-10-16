@@ -3,10 +3,11 @@ package com.thechance.qurio.di
 import android.content.Context
 import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.thechance.qurio.data.local.dao.LastGameDao
-import com.thechance.qurio.data.local.database.QurioDatabase
+import com.thechance.qurio.data.remote.service.GameService
 import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.data.local.dao.LastGameDao
+import com.thechance.qurio.data.local.database.QurioDatabase
 import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 
 @Module
 class DataModule {
-    companion object {
+    companion object{
         const val BASE_URL = "https://opentdb.com/"
         private val contentType = "application/json".toMediaType()
         private const val TIMEOUT = 20L
@@ -52,6 +53,18 @@ class DataModule {
         }
 
         @Provides
+        @Singleton
+        fun provideGameService(retrofit: Retrofit): GameService {
+            return retrofit.create(GameService::class.java)
+        }
+
+        @Provides
+        @Singleton
+        fun provideGameRepository(gameService: GameService, lastGameDao: LastGameDao): GameRepository {
+            return GameRepositoryImpl(gameService = gameService, lastGameDao = lastGameDao)
+        }
+
+        @Provides
         fun provideContext(application: QurioApp): Context = application.applicationContext
 
         @Provides
@@ -66,12 +79,6 @@ class DataModule {
         @Singleton
         fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao {
             return qurioDatabase.lastGameDao()
-        }
-
-        @Provides
-        @Singleton
-        fun provideGameRepository(lastGameDao: LastGameDao): GameRepository {
-            return GameRepositoryImpl(lastGameDao)
         }
     }
 }
