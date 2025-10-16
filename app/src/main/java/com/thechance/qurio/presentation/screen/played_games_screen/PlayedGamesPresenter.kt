@@ -1,7 +1,7 @@
 package com.thechance.qurio.presentation.screen.played_games_screen
 
-import com.thechance.qurio.domain.model.PlayedGame
-import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.domain.entity.PlayedGame
+import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import kotlinx.coroutines.flow.Flow
 

@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.thechance.qurio.data.remote.service.GameService
 import com.thechance.qurio.data.repository.GameRepositoryImpl
-import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.data.local.dao.PlayedGameDao
 import com.thechance.qurio.data.local.database.QurioDatabase
 import com.thechance.qurio.presentation.main.QurioApp

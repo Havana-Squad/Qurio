@@ -1,6 +1,6 @@
 package com.thechance.qurio.presentation.screen.played_games_screen
 
-import com.thechance.qurio.domain.model.PlayedGame
+import com.thechance.qurio.domain.entity.PlayedGame
 import com.thechance.qurio.presentation.model.GameUi
 import kotlinx.datetime.LocalDate
 import kotlin.time.Duration

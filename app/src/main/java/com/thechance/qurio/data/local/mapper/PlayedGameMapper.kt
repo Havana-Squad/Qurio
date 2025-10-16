@@ -1,7 +1,7 @@
 package com.thechance.qurio.data.local.mapper
 
 import com.thechance.qurio.data.local.model.PlayedGameEntity
-import com.thechance.qurio.domain.model.PlayedGame
+import com.thechance.qurio.domain.entity.PlayedGame
 
 fun PlayedGameEntity.toDomain() = PlayedGame(
     id = id,

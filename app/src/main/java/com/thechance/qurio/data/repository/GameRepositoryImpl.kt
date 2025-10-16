@@ -6,9 +6,9 @@ import com.thechance.qurio.data.local.mapper.toDomain
 import com.thechance.qurio.data.remote.mapper.toEntity
 import com.thechance.qurio.data.remote.service.GameService
 import com.thechance.qurio.data.util.safeApiCall
-import com.thechance.qurio.domain.model.GameCategory
-import com.thechance.qurio.domain.model.PlayedGame
-import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.domain.entity.GameCategory
+import com.thechance.qurio.domain.entity.PlayedGame
+import com.thechance.qurio.domain.repository.game.GameRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Singleton

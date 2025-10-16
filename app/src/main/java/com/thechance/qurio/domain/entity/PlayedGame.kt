@@ -1,4 +1,4 @@
-package com.thechance.qurio.domain.model
+package com.thechance.qurio.domain.entity
 
 import kotlinx.datetime.LocalDate
 import kotlin.time.Duration

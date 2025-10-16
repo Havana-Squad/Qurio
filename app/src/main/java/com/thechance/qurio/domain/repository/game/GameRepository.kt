@@ -1,7 +1,7 @@
-package com.thechance.qurio.domain.repository
+package com.thechance.qurio.domain.repository.game
 
-import com.thechance.qurio.domain.model.GameCategory
-import com.thechance.qurio.domain.model.PlayedGame
+import com.thechance.qurio.domain.entity.GameCategory
+import com.thechance.qurio.domain.entity.PlayedGame
 import kotlinx.coroutines.flow.Flow
 
 interface GameRepository {
