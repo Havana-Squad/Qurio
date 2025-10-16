@@ -12,11 +12,17 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.thechance.qurio.presentation.screen.games_screen.GamesFragment"
-        android:label="GameFragment">
+        android:label="GameFragment" >
         <action
             android:id="@+id/action_gameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/playedGamesFragment"
+        android:name="com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesFragment"
+        android:label="PlayedGamesFragment" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.thechance.qurio.presentation.screen.home.HomeFragment"
