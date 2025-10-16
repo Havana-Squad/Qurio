@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -7,8 +9,6 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/settings_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,17 +21,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/cut_corner_card_shape"
+                android:paddingHorizontal="16dp"
                 android:paddingBottom="36dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.499">
 
                 <ImageView
                     android:id="@+id/button_exit"
                     android:layout_width="22dp"
                     android:layout_height="26dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="2dp"
                     android:clickable="true"
                     android:contentDescription="@string/close"
@@ -157,7 +160,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:text="@string/save_changes"
-                        android:textColor="#4A148C"
+                        android:textColor="@color/on_primary"
                         tools:ignore="TouchTargetSizeCheck,VisualLintButtonSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -178,7 +181,7 @@
                 android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|top"
-                android:layout_marginTop="276dp"
+                android:layout_marginBottom="270dp"
                 android:background="@drawable/ic_hexagon"
                 android:elevation="8dp"
                 android:paddingStart="24dp"
@@ -187,8 +190,9 @@
                 android:paddingBottom="12dp"
                 android:text="@string/settings"
                 android:textAlignment="center"
-                android:textColor="#1B5E20"
+                android:textColor="@color/on_primary"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
