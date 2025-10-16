@@ -1,6 +1,6 @@
 package com.thechance.qurio.data.repository
 
-import com.thechance.qurio.data.local.GameSession
+import com.thechance.qurio.data.local.model.GameSession
 
 interface GameSessionRepository {
     suspend fun insertSession(session: GameSession)

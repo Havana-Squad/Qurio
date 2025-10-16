@@ -1,8 +1,9 @@
-package com.thechance.qurio.data.local
+package com.thechance.qurio.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.thechance.qurio.data.local.model.GameSession
 
 @Dao
 interface GameSessionDao {

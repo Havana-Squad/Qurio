@@ -1,6 +1,6 @@
 package com.thechance.qurio.data.mapper
 
-import com.thechance.qurio.data.local.GameSession
+import com.thechance.qurio.data.local.model.GameSession
 
 fun GameSession.toModel(): GameSession {
     return GameSession(

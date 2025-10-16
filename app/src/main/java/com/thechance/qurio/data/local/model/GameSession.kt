@@ -1,4 +1,4 @@
-package com.thechance.qurio.data.local
+package com.thechance.qurio.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

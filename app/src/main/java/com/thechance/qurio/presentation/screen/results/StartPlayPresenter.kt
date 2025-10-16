@@ -136,7 +136,7 @@ class StartPlayPresenter @Inject constructor(
 
     private fun saveGameSession() {
         val skipped = (questions.size - (correctCount + wrongCount))
-        val session = com.thechance.qurio.data.local.GameSession(
+        val session = com.thechance.qurio.data.local.model.GameSession(
             correctAnswers = correctCount,
             wrongAnswers = wrongCount,
             skippedAnswers = skipped,

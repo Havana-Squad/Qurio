@@ -4,15 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.thechance.qurio.R
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.databinding.FragmentResultPlayBinding
+import com.thechance.qurio.domain.entity.PlayedGame
+import com.thechance.qurio.domain.model.GameSession
+import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BaseFragment
 import com.thechance.qurio.presentation.screen.results.idel.ResultPlayPresenter
 import com.thechance.qurio.presentation.screen.results.idel.ResultPlayView
 import jakarta.inject.Inject
+import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 class ResultPlayFragment :
     BaseFragment<FragmentResultPlayBinding, ResultPlayView, ResultPlayPresenter>() {
@@ -28,6 +38,9 @@ class ResultPlayFragment :
 
     @Inject
     lateinit var gameSessionRepository: GameSessionRepository
+
+    @Inject
+    lateinit var gameRepository: GameRepository
 
     private val args: ResultPlayFragmentArgs by navArgs()
 
@@ -70,6 +83,7 @@ class ResultPlayFragment :
             correctAnswers = session.correctAnswers,
             totalQuestions = session.correctAnswers + session.wrongAnswers + session.skippedAnswers
         )
+        savePlayedGame(session)
     }
 
     private fun shareResults() {
@@ -105,6 +119,22 @@ class ResultPlayFragment :
                 "Unable to share results",
                 Toast.LENGTH_SHORT
             ).show()
+        }
+    }
+
+    private fun savePlayedGame(session : GameSession){
+        this.lifecycleScope.launch {
+            val games = gameRepository.getGames()
+            gameRepository.addPlayedGame(
+                PlayedGame(
+                    id = 0,
+                    gameName = games.find { it.id == args.categoryId }?.title ?: "",
+                    coins = session.earnedCoins,
+                    stars = session.stars,
+                    duration = session.totalTimeSeconds.toLong().toDuration(DurationUnit.SECONDS),
+                    date = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+                )
+            )
         }
     }
 }

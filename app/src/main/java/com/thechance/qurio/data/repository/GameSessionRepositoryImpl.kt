@@ -1,7 +1,7 @@
 package com.thechance.qurio.data.repository
 
-import com.thechance.qurio.data.local.GameSession
-import com.thechance.qurio.data.local.GameSessionDao
+import com.thechance.qurio.data.local.model.GameSession
+import com.thechance.qurio.data.local.dao.GameSessionDao
 import com.thechance.qurio.data.mapper.toEntity
 import com.thechance.qurio.data.mapper.toModel
 import javax.inject.Inject
