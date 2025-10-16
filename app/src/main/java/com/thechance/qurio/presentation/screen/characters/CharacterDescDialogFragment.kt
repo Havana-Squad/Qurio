@@ -1,5 +1,6 @@
 package com.thechance.qurio.presentation.screen.characters
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -48,11 +49,12 @@ class CharacterDescDialogFragment : DialogFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvTitle.text = character.name
         binding.tvCharacterName.text = character.name
+        binding.tvCharacterAge.text ="Age: ${character.age}"
         binding.tvCharacterDesc.text =character.description
 
         binding.imgCharacter.setImageResource(
