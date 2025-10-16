@@ -102,6 +102,7 @@
     <string name="game_img">game img</string>
     <string name="games">Games</string>
     <string name="arrow_back_icon">arrow back icon</string>
+    <string name="last_games">Last Games</string>
     <string name="discarded">discarded</string>
     <string name="settings_saved">settings saved</string>
     <string name="close">close</string>
