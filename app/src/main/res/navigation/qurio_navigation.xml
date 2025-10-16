@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/qurio_navigation"
-    app:startDestination="@id/gameFragment">
+    app:startDestination="@id/characterFragment">
 
     <fragment
         android:id="@+id/exampleFragment"
@@ -13,4 +13,8 @@
         android:id="@+id/gameFragment"
         android:name="com.thechance.qurio.presentation.screen.games_screen.GamesFragment"
         android:label="GameFragment" />
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.thechance.qurio.presentation.screen.characters.CharacterDialogFragment"
+        android:label="characterFragment" />
 </navigation>

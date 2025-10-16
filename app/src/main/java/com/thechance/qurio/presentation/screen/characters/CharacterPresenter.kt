@@ -34,4 +34,17 @@ class CharacterPresenter @Inject constructor(
             onError = { t -> view.showError(t.message ?: "Failed to unlock") }
         )
     }
+    fun useCharacter(characterId: Int , isUsed : Boolean)  {
+        tryToExecute(
+            callee = {
+                charactersRepository.updateCharacterUsedState(characterId , isUsed  )
+                charactersRepository.getAllCharacters()
+            },
+            onSuccess = { updatedCharacters ->
+                view.showCharacters(updatedCharacters)
+            },
+            onError = { t -> view.showError(t.message ?: "Failed to use") }
+        )
+    }
+
 }

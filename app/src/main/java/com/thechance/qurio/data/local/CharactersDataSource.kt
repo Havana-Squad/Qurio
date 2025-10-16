@@ -55,8 +55,10 @@ object CharactersDataSource {
             age = context.getString(R.string._12_sunblooms),
             imageLockedRes = R.drawable.rika,
             imageUnlockedRes = R.drawable.rika_selected,
-            isUnlocked = false,
+            isUnlocked = true,
             isCharacterUsed = false,
+            price=0,
+
         ),
         Character(
             id = 2,
@@ -67,6 +69,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.kaiyo,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=300,
         ),
         Character(
             id = 3,
@@ -77,6 +80,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.mimi,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=700,
         ),
         Character(
             id = 4,
@@ -87,6 +91,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.yoru,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=1000,
         ),
         Character(
             id = 5,
@@ -97,6 +102,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.kuro,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=3000,
         ),
         Character(
             id = 6,
@@ -107,6 +113,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.miko,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=7000,
         ),
         Character(
             id = 7,
@@ -117,6 +124,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.aori,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=12000,
         ),
         Character(
             id = 8,
@@ -127,6 +135,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.nara,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=30000,
         ),
         Character(
             id = 9,
@@ -137,6 +146,7 @@ object CharactersDataSource {
             imageUnlockedRes = R.drawable.renji,
             isUnlocked = false,
             isCharacterUsed = false,
+            price=50000,
         ),
     )
 }

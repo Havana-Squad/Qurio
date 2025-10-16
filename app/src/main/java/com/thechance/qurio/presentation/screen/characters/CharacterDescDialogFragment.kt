@@ -17,6 +17,7 @@ class CharacterDescDialogFragment : DialogFragment() {
 
     private var _binding: DialogCharacterDescriptionBinding? = null
     private val binding get() = _binding!!
+    private var onDismissCallback: (() -> Unit)? = null
 
     private lateinit var character: Character
 
@@ -58,29 +59,28 @@ class CharacterDescDialogFragment : DialogFragment() {
             if (character.isUnlocked) character.imageUnlockedRes
             else character.imageLockedRes
         )
-        binding.buttonBuy.visibility = if (character.isUnlocked) View.VISIBLE else View.GONE
+        binding.buttonBuy.visibility = if (character.isUnlocked) View.GONE else View.VISIBLE
         binding.buttonBuy.setOnClickListener {
-            buyCharacter(character)
+            showBuyDialog()
         }
 
-        binding.buttonExit.setOnClickListener { dismiss() }
-        binding.buttonOk.setOnClickListener { dismiss() }
+        binding.buttonExit.setOnClickListener { showCharacterDialog() }
+        binding.buttonOk.setOnClickListener { showCharacterDialog()}
     }
 
-    private fun buyCharacter(character: Character) {
-        val shareText = getString(
-            R.string.share_Character_text,
-            Character.name
-        )
 
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, shareText)
+    private fun showBuyDialog() {
+        val buyDialog = CharacterBuyDialogFragment.newInstance(character) {
         }
-
-        val chooser = Intent.createChooser(intent, getString(R.string.share_via))
-        startActivity(chooser)
+        buyDialog.show(parentFragmentManager, "BuyCharacterDialog")
     }
+    private fun showCharacterDialog() {
+        dismiss()
+        CharacterDialogFragment()
+            .show(parentFragmentManager, "Character_dialog")
+    }
+
+
 
 
     override fun onDestroyView() {

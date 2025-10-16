@@ -10,5 +10,6 @@ data class Character (
     @DrawableRes val imageLockedRes: Int,
     @DrawableRes val imageUnlockedRes: Int,
     var isUnlocked: Boolean = false,
-    var isCharacterUsed: Boolean = false
+    var isCharacterUsed: Boolean = false,
+    var price :Int
 )

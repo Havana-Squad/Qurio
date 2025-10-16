@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/img_character"
         android:layout_width="56dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/rika"
         android:contentDescription="rika character" />
 

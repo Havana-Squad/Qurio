@@ -22,6 +22,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
 
     private var _binding: DialogCharactersBinding? = null
     private val binding get() = _binding!!
+    private var selectedCharacter: Character? = null
 
     private val presenter by lazy { CharacterPresenter(CharactersRepositoryImpl(requireContext())) }
 
@@ -31,6 +32,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
             decorView.setPadding(0, 0, 0, 0)
+
         }
 
         return dialog
@@ -58,16 +60,18 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         presenter.attachView(this)
 
         binding.recyclerCharacters.adapter = CharacterAdapter(emptyList()) {
+            selectedCharacter=it
             presenter.onCharacterClicked(it)
         }
 
         binding.buttonOk.setOnClickListener { dismiss() }
         binding.buttonExit.setOnClickListener { dismiss() }
+        binding.buttonConfirm.setOnClickListener { onConfirmClicked() }
 
         presenter.loadCharacters()
     }
 
-    override fun showCharacters(Characters: List<Character>) {
+    override fun showCharacters(characters: List<Character>) {
         val layoutManager = FlexboxLayoutManager(requireContext()).apply {
             flexDirection = FlexDirection.ROW
             justifyContent = JustifyContent.CENTER
@@ -77,7 +81,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
 
         binding.recyclerCharacters.layoutManager = layoutManager
         binding.recyclerCharacters.adapter =
-            CharacterAdapter(Characters) { presenter.onCharacterClicked(it) }
+            CharacterAdapter(characters) { presenter.onCharacterClicked(it) }
     }
 
     override fun showLoading() {}
@@ -87,13 +91,14 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun openCharacterDetails(Character: Character) {
-        showCharacterDialog(Character)
+    override fun openCharacterDetails(character: Character) {
+        showCharacterDialog(character)
     }
 
-    private fun showCharacterDialog(Character: Character) {
+
+    private fun showCharacterDialog(character: Character) {
         dismiss()
-        CharacterDescDialogFragment.newInstance(Character)
+        CharacterDescDialogFragment.newInstance(character)
             .show(parentFragmentManager, "Character_desc")
     }
 
@@ -101,5 +106,8 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         super.onDestroyView()
         presenter.detachView()
         _binding = null
+    }
+    private fun onConfirmClicked(){
+        presenter.useCharacter(selectedCharacter?.id ?:1, true)
     }
 }

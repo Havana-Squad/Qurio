@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@id/card_background">
 
         <ImageView
-            android:id="@+id/icon_life"
+            android:id="@+id/character_img"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginEnd="19dp"
@@ -46,6 +46,10 @@
             android:text="="
             android:textColor="@color/on_primary"
             tools:ignore="HardcodedText" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <TextView
             android:id="@+id/text_price"
@@ -55,7 +59,17 @@
             android:layout_marginEnd="10dp"
             android:text=""
             android:textColor="@color/on_primary"
-            tools:text="200 X" />
+            tools:text="200" />
+            <TextView
+                android:id="@+id/text"
+                style="@style/Headline.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="X"
+                android:textColor="@color/on_primary"
+                tools:text="X" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/icon_coins"
