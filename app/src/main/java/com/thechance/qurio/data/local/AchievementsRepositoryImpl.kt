@@ -6,8 +6,10 @@ import com.thechance.qurio.domain.entity.Achievement
 import com.thechance.qurio.domain.repository.achievements.AchievementsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AchievementsRepositoryImpl(private val context: Context) : AchievementsRepository {
+class AchievementsRepositoryImpl @Inject constructor(private val context: Context) : AchievementsRepository {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     override suspend fun getAllAchievements(): List<Achievement> = withContext(Dispatchers.IO) {

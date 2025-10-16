@@ -1,9 +1,12 @@
 package com.thechance.qurio.presentation.screen.home
 
-import com.thechance.qurio.domain.model.GameCategory
-import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.domain.entity.GameCategory
+import com.thechance.qurio.domain.entity.PlayedGame
+import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.games_screen.toUi
+import com.thechance.qurio.presentation.screen.played_games_screen.toUi
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 class HomePresenter @Inject constructor(
     private val gameRepository: GameRepository
@@ -70,13 +73,15 @@ class HomePresenter @Inject constructor(
 
     private fun getUserLastGames() {
         tryToExecute(
-            callee = { listOf("1", "2", "3", "4", "5") },
+            callee = { gameRepository.getAllPlayedGames() },
             onSuccess = ::onGetUserLastGamesSuccess,
             onError = ::onError
         )
     }
 
-    private fun onGetUserLastGamesSuccess(lastGames: List<String>) {
-        view.setUserLastGames(lastGames)
+    private suspend fun onGetUserLastGamesSuccess(lastGames: Flow<List<PlayedGame>>) {
+        lastGames.collect {
+            view.setUserLastGames(it.take(6).map { it.toUi() })
+        }
     }
 }

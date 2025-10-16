@@ -32,7 +32,7 @@ class PlayedGamesFragment : BaseFragment<FragmentPlayedGamesBinding, PlayedGames
     }
 
     override fun navigateBack() {
-        findNavController().popBackStack()
+        findNavController().navigate(PlayedGamesFragmentDirections.actionPlayedGamesFragmentToHomeFragment())
     }
 
     override fun startLoading() {

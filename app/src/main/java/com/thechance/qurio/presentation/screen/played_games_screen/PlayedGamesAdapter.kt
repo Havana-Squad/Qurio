@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.thechance.qurio.R
-import com.thechance.qurio.databinding.LastGameBinding
+import com.thechance.qurio.databinding.ItemLastGameBinding
 import com.thechance.qurio.presentation.model.GameUi
 
 class PlayedGamesAdapter(val lastGames: List<GameUi>) :
@@ -15,7 +15,7 @@ class PlayedGamesAdapter(val lastGames: List<GameUi>) :
         viewType: Int
     ): LastGameViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.last_game,
+            R.layout.item_last_game,
             parent,
             false
         )
@@ -39,6 +39,6 @@ class PlayedGamesAdapter(val lastGames: List<GameUi>) :
     override fun getItemCount() = lastGames.size
 
     class LastGameViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem) {
-        val binding = LastGameBinding.bind(viewItem)
+        val binding = ItemLastGameBinding.bind(viewItem)
     }
 }

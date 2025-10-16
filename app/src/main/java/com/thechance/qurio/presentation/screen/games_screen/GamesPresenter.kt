@@ -3,8 +3,9 @@ package com.thechance.qurio.presentation.screen.games_screen
 import com.thechance.qurio.domain.entity.GameCategory
 import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
+import javax.inject.Inject
 
-class GamesPresenter(
+class GamesPresenter @Inject constructor(
     private val gameRepository: GameRepository
 ) : BasePresenter<GamesView>() {
     init {

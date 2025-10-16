@@ -10,17 +10,23 @@ import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.LayoutDifficultyLevelBinding
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
 
     private var _binding: LayoutDifficultyLevelBinding? = null
     private val binding get() = _binding!!
-    private val presenter by lazy { DifficultyLevelPresenter() }
+
+    @Inject
+    lateinit var presenter : DifficultyLevelPresenter
 
     private var selectedDifficulty: DifficultyLevel = DifficultyLevel.Medium
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+
+        AndroidSupportInjection.inject(this)
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())

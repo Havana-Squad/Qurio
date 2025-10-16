@@ -17,16 +17,22 @@ import com.google.android.flexbox.JustifyContent
 import com.thechance.qurio.data.local.AchievementsRepositoryImpl
 import com.thechance.qurio.databinding.DialogAchievementsBinding
 import com.thechance.qurio.domain.entity.Achievement
+import com.thechance.qurio.presentation.screen.home.HomePresenter
+import dagger.android.support.AndroidSupportInjection
+import jakarta.inject.Inject
 
 class AchievementsDialogFragment : DialogFragment(), AchievementsView {
 
     private var _binding: DialogAchievementsBinding? = null
     private val binding get() = _binding!!
 
-    private val presenter by lazy { AchievementsPresenter(AchievementsRepositoryImpl(requireContext())) }
+    @Inject
+    lateinit var presenter: AchievementsPresenter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+
+        AndroidSupportInjection.inject(this)
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())

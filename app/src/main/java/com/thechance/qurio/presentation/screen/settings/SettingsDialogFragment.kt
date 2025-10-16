@@ -1,23 +1,68 @@
 package com.thechance.qurio.presentation.screen.settings
 
+import android.app.Dialog
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
+import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.SettingsLayoutBinding
-import com.thechance.qurio.presentation.base.BaseFragment
+import dagger.android.support.AndroidSupportInjection
+import jakarta.inject.Inject
 
-class SettingsFragment : BaseFragment<SettingsLayoutBinding, SettingsView, SettingsPresenter>(),
+class SettingsDialogFragment : DialogFragment(),
     SettingsView {
 
-    override val layoutIdFragment = R.layout.settings_layout
-    override val presenter = SettingsPresenter()
+    private lateinit var binding: SettingsLayoutBinding
+
+    @Inject
+    lateinit var presenter: SettingsPresenter
 
     private lateinit var soundSeekBar: SeekBar
     private lateinit var musicSeekBar: SeekBar
 
-    override fun setupViews() {
-        setTitle(true, getString(R.string.settings))
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
 
+        AndroidSupportInjection.inject(this)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
+        }
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = SettingsLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.attachView(this)
+
+        setupViews()
+    }
+
+    private fun setupViews() {
         soundSeekBar = binding.root.findViewById(R.id.seekbar_sound)
         musicSeekBar = binding.root.findViewById(R.id.seekbar_music)
 
@@ -50,6 +95,9 @@ class SettingsFragment : BaseFragment<SettingsLayoutBinding, SettingsView, Setti
     }
 
     private fun setupButtons() {
+        binding.buttonExit.setOnClickListener {
+            dismiss()
+        }
         binding.buttonSave.setOnClickListener { presenter.onSaveClicked() }
         binding.buttonDiscard.setOnClickListener { presenter.onDiscardClicked() }
     }
@@ -62,12 +110,12 @@ class SettingsFragment : BaseFragment<SettingsLayoutBinding, SettingsView, Setti
         musicSeekBar.progress = level
     }
 
-    override fun showSavedMessage() {
-        Toast.makeText(requireContext(), getString(R.string.settings_saved), Toast.LENGTH_SHORT)
-            .show()
+    override fun dismiss() {
+        super.dismiss()
     }
 
-    override fun showDiscardedMessage() {
-        Toast.makeText(requireContext(), getString(R.string.discarded), Toast.LENGTH_SHORT).show()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.detachView()
     }
 }

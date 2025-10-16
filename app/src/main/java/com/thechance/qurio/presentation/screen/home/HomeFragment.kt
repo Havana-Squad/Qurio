@@ -5,20 +5,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
-import com.thechance.qurio.domain.model.GameCategory
 import com.thechance.qurio.presentation.base.BaseFragment
-import com.thechance.qurio.presentation.screen.achievements.AchievementDescDialogFragment
+import com.thechance.qurio.presentation.model.GameUi
 import com.thechance.qurio.presentation.screen.achievements.AchievementsDialogFragment
 import com.thechance.qurio.presentation.screen.buylife.BuyLifeDialogFragment
 import com.thechance.qurio.presentation.screen.games_screen.GameItem
-import com.thechance.qurio.presentation.screen.games_screen.GamesAdapter
-import com.thechance.qurio.presentation.screen.home.adapter.GamePagerItemDecoration
-import com.thechance.qurio.presentation.screen.home.adapter.GamePagerLayoutManager
 import com.thechance.qurio.presentation.screen.home.adapter.GamesPagerAdapter
+import com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesAdapter
+import com.thechance.qurio.presentation.screen.settings.SettingsDialogFragment
 import jakarta.inject.Inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(), HomeView{
@@ -40,7 +38,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     private fun setupSettingsButton() {
-//        TODO("Show settings dialog")
+        binding.buttonSettings.setOnClickListener {
+            SettingsDialogFragment().show(childFragmentManager, "SettingsDialog")
+        }
     }
 
     private fun setupBuyLivesButton() {
@@ -64,20 +64,55 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
 
     private fun setupAllLastGamesButton() {
         binding.lastGamesAllContainer.setOnClickListener {
-//        TODO("navigate to last games screen")
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPlayedGamesFragment())
         }
     }
 
     private fun setupGamesRecyclerView() {
-        val layoutManager = GamePagerLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.gamesPager.layoutManager = layoutManager
-        binding.gamesPager.adapter = gamesAdapter
+        val adapter = gamesAdapter
+        binding.gamesPager.adapter = adapter
+        binding.gamesPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding.gamesPager.offscreenPageLimit = 3
 
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.gamesPager)
+        binding.gamesPager.setPageTransformer(createGameCardTransformer())
 
-        val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
-        binding.gamesPager.addItemDecoration(GamePagerItemDecoration(spacing))
+        (binding.gamesPager.getChildAt(0) as RecyclerView).overScrollMode =
+            RecyclerView.OVER_SCROLL_NEVER
+    }
+
+    fun createGameCardTransformer(): ViewPager2.PageTransformer {
+        return ViewPager2.PageTransformer { page, position ->
+            val absPosition = kotlin.math.abs(position)
+
+
+            page.scaleY = 1f
+            page.scaleX = 1f
+
+
+            page.rotationY = when {
+                absPosition < 0.1f -> 0f
+                else -> -position * 4f
+            }
+
+            page.rotationX = when {
+                absPosition < 0.1f -> 0f
+                else -> absPosition * 25f
+            }
+
+            page.translationX = -position * page.width * 0.05f
+            page.translationY = absPosition * page.height * 0.05f
+
+            page.alpha = when {
+                absPosition >= 3f -> 0f
+                else -> 1f
+            }
+
+            page.elevation = 0f
+
+            page.translationZ = 0f
+
+            page.cameraDistance = page.width * 15f
+        }
     }
 
     override fun setUserCharacter(character: String) {
@@ -124,8 +159,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         gamesAdapter.setItems(games)
     }
 
-    override fun setUserLastGames(lastGames: List<String>) {
-//        TODO("Not yet implemented")
+    override fun setUserLastGames(lastGames: List<GameUi>) {
+        val adapter = PlayedGamesAdapter(lastGames)
+        binding.lastGamesRecyclerview.adapter = adapter
     }
 
     override fun showErrorMessage(message: String) {

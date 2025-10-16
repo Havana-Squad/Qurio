@@ -71,6 +71,7 @@
             app:layout_constraintBottom_toBottomOf="@id/points_container"
             app:layout_constraintEnd_toStartOf="@+id/points_container"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
@@ -282,12 +283,13 @@
             android:id="@+id/streak_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintTop_toBottomOf="@id/points_container"
             android:layout_marginTop="24dp">
 
             <View
                 android:id="@+id/cardBackground"
-                android:layout_width="328dp"
+                android:layout_width="match_parent"
                 android:layout_height="89dp"
                 android:background="@drawable/streak_card_background"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -615,10 +617,15 @@
                 android:src="@drawable/ic_arrow_right_circle"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/games_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:paddingHorizontal="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -661,9 +668,12 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/last_games_recyclerview"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginHorizontal="16dp"
             app:layout_constraintTop_toBottomOf="@id/last_games_label"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
