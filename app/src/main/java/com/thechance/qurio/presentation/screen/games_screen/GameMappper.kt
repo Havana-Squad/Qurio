@@ -1,6 +1,6 @@
 package com.thechance.qurio.presentation.screen.games_screen
 
-import com.thechance.qurio.domain.model.GameCategory
+import com.thechance.qurio.domain.entity.GameCategory
 import com.thechance.qurio.presentation.screen.games_screen.GameItem.GameItemDrawables
 
 fun GameCategory.toUi() = GameItem(

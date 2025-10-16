@@ -1,7 +1,8 @@
 package com.thechance.qurio.di
 
-import com.thechance.qurio.domain.repository.GameRepository
+import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.screen.games_screen.GamesPresenter
+import com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesPresenter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -15,6 +16,14 @@ class PresentationModule {
             gameRepository: GameRepository
         ): GamesPresenter {
             return GamesPresenter( gameRepository)
+        }
+
+        @Provides
+        @Singleton
+        fun providePlayedGamesPresenter(
+            gameRepository: GameRepository
+        ): PlayedGamesPresenter {
+            return PlayedGamesPresenter(gameRepository)
         }
     }
 }
