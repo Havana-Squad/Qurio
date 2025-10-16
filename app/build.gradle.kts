@@ -2,9 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-    alias(libs.plugins.ksp)
     id("androidx.navigation.safeargs.kotlin")
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -81,8 +81,10 @@ dependencies {
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     //gson
     implementation(libs.gson)
-
-    // Room Database
-    implementation(libs.bundles.room)
+    //room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    //kotlin datetime
+    implementation(libs.kotlinx.datetime)
 }

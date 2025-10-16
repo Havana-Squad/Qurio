@@ -2,6 +2,7 @@ package com.thechance.qurio.di
 
 import com.thechance.qurio.presentation.screen.example.ExampleFragment
 import com.thechance.qurio.presentation.screen.games_screen.GamesFragment
+import com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesFragment
 import com.thechance.qurio.presentation.screen.results.ResultPlayFragment
 import com.thechance.qurio.presentation.screen.results.StartPlayFragment
 import dagger.Module
@@ -21,4 +22,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun contributeResultPlayFragment(): ResultPlayFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributePlayedGamesFragment(): PlayedGamesFragment
 }
