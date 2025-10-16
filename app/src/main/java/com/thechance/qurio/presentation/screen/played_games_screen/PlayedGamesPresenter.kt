@@ -1,13 +1,13 @@
-package com.thechance.qurio.presentation.screen.last_games_screen
+package com.thechance.qurio.presentation.screen.played_games_screen
 
-import com.thechance.qurio.domain.model.LastGame
+import com.thechance.qurio.domain.model.PlayedGame
 import com.thechance.qurio.domain.repository.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import kotlinx.coroutines.flow.Flow
 
-class LastGamesPresenter(
+class PlayedGamesPresenter(
     private val gameRepository: GameRepository
-) : BasePresenter<LastGamesView>() {
+) : BasePresenter<PlayedGamesView>() {
     
     init {
         getLastGames()
@@ -15,15 +15,15 @@ class LastGamesPresenter(
     
     fun getLastGames() {
         tryToExecute(
-            callee = gameRepository::getAllLastGames,
+            callee = gameRepository::getAllPlayedGames,
             onSuccess = ::onGetLastGamesSuccess,
             onError = ::onGetLastGamesError,
             onStart = ::onGetLastGamesStart
         )
     }
 
-    private suspend fun onGetLastGamesSuccess(lastGames: Flow<List<LastGame>>) {
-        lastGames.collect { view.updateLastGames(it.map { it.toUi() }) }
+    private suspend fun onGetLastGamesSuccess(playedGames: Flow<List<PlayedGame>>) {
+        playedGames.collect { view.updateLastGames(it.map { it.toUi() }) }
         view.stopLoading()
     }
 

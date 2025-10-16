@@ -1,4 +1,4 @@
-package com.thechance.qurio.presentation.screen.last_games_screen
+package com.thechance.qurio.presentation.screen.played_games_screen
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import com.thechance.qurio.R
 import com.thechance.qurio.databinding.LastGameBinding
 import com.thechance.qurio.presentation.model.GameUi
 
-class LastGameAdapter(val lastGames: List<GameUi>) :
-    RecyclerView.Adapter<LastGameAdapter.LastGameViewHolder>() {
+class PlayedGamesAdapter(val lastGames: List<GameUi>) :
+    RecyclerView.Adapter<PlayedGamesAdapter.LastGameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

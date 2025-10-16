@@ -3,7 +3,7 @@ package com.thechance.qurio.domain.model
 import kotlinx.datetime.LocalDate
 import kotlin.time.Duration
 
-data class LastGame(
+data class PlayedGame(
     val id: Int,
     val gameName: String,
     val coins: Int,

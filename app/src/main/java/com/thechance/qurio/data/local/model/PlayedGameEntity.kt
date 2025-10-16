@@ -6,19 +6,19 @@ import androidx.room.PrimaryKey
 import kotlinx.datetime.LocalDate
 import kotlin.time.Duration
 
-@Entity(tableName = LastGameTableInfo.TABLE_NAME)
-data class LastGameEntity(
+@Entity(tableName = PlayedGameTableInfo.TABLE_NAME)
+data class PlayedGameEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(LastGameTableInfo.ID)
+    @ColumnInfo(PlayedGameTableInfo.ID)
     val id: Int = 0,
-    @ColumnInfo(LastGameTableInfo.GAME_NAME)
+    @ColumnInfo(PlayedGameTableInfo.GAME_NAME)
     val gameName: String,
-    @ColumnInfo(LastGameTableInfo.COINS)
+    @ColumnInfo(PlayedGameTableInfo.COINS)
     val coins: Int,
-    @ColumnInfo(LastGameTableInfo.STARS)
+    @ColumnInfo(PlayedGameTableInfo.STARS)
     val stars: Int,
-    @ColumnInfo(LastGameTableInfo.DURATION)
+    @ColumnInfo(PlayedGameTableInfo.DURATION)
     val duration: Duration,
-    @ColumnInfo(LastGameTableInfo.DATE)
+    @ColumnInfo(PlayedGameTableInfo.DATE)
     val date: LocalDate
 )

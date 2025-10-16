@@ -1,7 +1,7 @@
 package com.thechance.qurio.data.local.model
 
-object LastGameTableInfo{
-    const val TABLE_NAME = "last_game"
+object PlayedGameTableInfo{
+    const val TABLE_NAME = "played_games"
     const val ID = "id"
     const val GAME_NAME = "game_name"
     const val COINS = "coins"

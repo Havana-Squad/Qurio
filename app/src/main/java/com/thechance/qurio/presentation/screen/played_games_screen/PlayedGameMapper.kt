@@ -1,11 +1,11 @@
-package com.thechance.qurio.presentation.screen.last_games_screen
+package com.thechance.qurio.presentation.screen.played_games_screen
 
-import com.thechance.qurio.domain.model.LastGame
+import com.thechance.qurio.domain.model.PlayedGame
 import com.thechance.qurio.presentation.model.GameUi
 import kotlinx.datetime.LocalDate
 import kotlin.time.Duration
 
-fun LastGame.toUi() = GameUi(
+fun PlayedGame.toUi() = GameUi(
     id = id,
     gameName = gameName,
     coins = coins.toString(),

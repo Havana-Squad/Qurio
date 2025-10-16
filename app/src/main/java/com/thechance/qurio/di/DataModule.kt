@@ -6,7 +6,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.thechance.qurio.data.remote.service.GameService
 import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.domain.repository.GameRepository
-import com.thechance.qurio.data.local.dao.LastGameDao
+import com.thechance.qurio.data.local.dao.PlayedGameDao
 import com.thechance.qurio.data.local.database.QurioDatabase
 import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
@@ -60,8 +60,8 @@ class DataModule {
 
         @Provides
         @Singleton
-        fun provideGameRepository(gameService: GameService, lastGameDao: LastGameDao): GameRepository {
-            return GameRepositoryImpl(gameService = gameService, lastGameDao = lastGameDao)
+        fun provideGameRepository(gameService: GameService, playedGameDao: PlayedGameDao): GameRepository {
+            return GameRepositoryImpl(gameService = gameService, playedGameDao = playedGameDao)
         }
 
         @Provides
@@ -72,13 +72,14 @@ class DataModule {
         fun provideQurioDatabase(context: Context): QurioDatabase {
             return Room
                 .databaseBuilder(context, QurioDatabase::class.java, DATABASE_NAME)
+                .fallbackToDestructiveMigration()
                 .build()
         }
 
         @Provides
         @Singleton
-        fun provideLastGameDao(qurioDatabase: QurioDatabase): LastGameDao {
-            return qurioDatabase.lastGameDao()
+        fun providePlayedGameDao(qurioDatabase: QurioDatabase): PlayedGameDao {
+            return qurioDatabase.playedGameDao()
         }
     }
 }
