@@ -5,8 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/dialog_characters"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:ignore="ContentDescription">
 
         <View
@@ -68,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="@id/character_card_background"
             app:layout_constraintStart_toStartOf="@id/character_card_background"
             app:layout_constraintTop_toBottomOf="@id/icon_hexagon"
-            tools:itemCount="11"
+            tools:itemCount="3"
             tools:listitem="@layout/item_character" />
 
         <LinearLayout
@@ -76,8 +76,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:elevation="1dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="36dp"
             android:orientation="horizontal"
             android:paddingHorizontal="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/character_card_background"
             app:layout_constraintEnd_toEndOf="@id/character_card_background"
             app:layout_constraintStart_toStartOf="@id/character_card_background"
             app:layout_constraintTop_toBottomOf="@id/recycler_characters">

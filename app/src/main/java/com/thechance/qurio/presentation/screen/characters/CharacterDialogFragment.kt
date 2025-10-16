@@ -32,7 +32,6 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
             decorView.setPadding(0, 0, 0, 0)
-
         }
 
         return dialog

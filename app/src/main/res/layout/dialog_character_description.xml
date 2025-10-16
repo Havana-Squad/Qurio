@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/character"
             android:paddingEnd="12dp"
-            android:src="@drawable/explorer"
+            android:src="@drawable/rika"
             android:translationY="-10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -135,11 +135,12 @@
         android:layout_marginTop="106dp"
         android:elevation="1dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="36dp"
         android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toBottomOf="@id/dialog_character_description"
         app:layout_constraintEnd_toEndOf="@id/dialog_character_description"
         app:layout_constraintStart_toStartOf="@id/dialog_character_description"
-        app:layout_constraintTop_toBottomOf="@id/character_container">
+        app:layout_constraintTop_toBottomOf="@id/tv_character_desc">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_buy"
