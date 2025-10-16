@@ -13,4 +13,9 @@
         android:id="@+id/gameFragment"
         android:name="com.thechance.qurio.presentation.screen.games_screen.GamesFragment"
         android:label="GameFragment" />
+
+    <fragment
+        android:id="@+id/playedGamesFragment"
+        android:name="com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesFragment"
+        android:label="PlayedGamesFragment" />
 </navigation>
