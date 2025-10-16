@@ -80,3 +80,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 [bundles]
 dagger = ["dagger", "dagger-android", "dagger-android-support"]
+room = [
+    "androidx-room-runtime",
+    "androidx-room-ktx",
+]

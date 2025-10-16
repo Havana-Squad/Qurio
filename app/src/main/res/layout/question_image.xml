@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/question_image"
+        android:id="@+id/question_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,8 +44,8 @@
         android:text=""
         android:textColor="@color/shade_primary"
         app:layout_constraintBottom_toBottomOf="@id/card_question_card_back"
-        app:layout_constraintEnd_toEndOf="@id/question_image"
-        app:layout_constraintStart_toStartOf="@id/question_image"
+        app:layout_constraintEnd_toEndOf="@id/question_text"
+        app:layout_constraintStart_toStartOf="@id/question_text"
         tools:text="The image caption"
 
         />
