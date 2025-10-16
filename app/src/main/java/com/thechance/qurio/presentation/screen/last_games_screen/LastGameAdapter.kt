@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.LastGameBinding
+import com.thechance.qurio.presentation.model.GameUi
 
-class LastGameAdapter(val lastGames: List<LastGameUi>) :
+class LastGameAdapter(val lastGames: List<GameUi>) :
     RecyclerView.Adapter<LastGameAdapter.LastGameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
