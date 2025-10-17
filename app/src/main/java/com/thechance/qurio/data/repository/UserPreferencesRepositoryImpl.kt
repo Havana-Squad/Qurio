@@ -4,14 +4,14 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import com.thechance.qurio.domain.repository.UserPreferences
+import com.thechance.qurio.domain.repository.UserPreferencesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class UserPreferencesImpl @Inject constructor(
+class UserPreferencesRepositoryImpl @Inject constructor(
     private val preferencesDataStore: DataStore<Preferences>,
-) : UserPreferences {
+) : UserPreferencesRepository {
     override val isFirstAppLaunch: Flow<Boolean>
         get() {
             return preferencesDataStore.data.map {

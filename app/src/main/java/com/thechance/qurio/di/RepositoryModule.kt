@@ -6,10 +6,10 @@ import com.thechance.qurio.data.repository.TGameRepositoryImpl
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.GameSessionRepositoryImpl
 import com.thechance.qurio.data.repository.ResultsRepositoryImpl
-import com.thechance.qurio.data.repository.UserPreferencesImpl
+import com.thechance.qurio.data.repository.UserPreferencesRepositoryImpl
 import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.domain.repository.ResultsRepository
-import com.thechance.qurio.domain.repository.UserPreferences
+import com.thechance.qurio.domain.repository.UserPreferencesRepository
 import dagger.Binds
 import dagger.Module
 
@@ -38,6 +38,6 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindUserPreferencesImpl(
-        impl: UserPreferencesImpl
-    ): UserPreferences
+        impl: UserPreferencesRepositoryImpl
+    ): UserPreferencesRepository
 }

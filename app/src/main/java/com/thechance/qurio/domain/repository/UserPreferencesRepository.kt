@@ -2,7 +2,7 @@ package com.thechance.qurio.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 
-interface UserPreferences {
+interface UserPreferencesRepository {
     val isFirstAppLaunch: Flow<Boolean>
     suspend fun markAppAsLaunched()
 }
