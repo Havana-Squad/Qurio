@@ -2,6 +2,7 @@ package com.thechance.qurio.presentation.screen.onboaeding
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentOnboardingBinding
 import com.thechance.qurio.presentation.base.BaseFragment
@@ -26,6 +27,12 @@ class OnboardingFragment :
         setupListeners()
     }
 
+    override fun onSwipeUp() {
+        presenter.firstAppLaunch()
+        val navController = findNavController()
+        navController.popBackStack(R.id.homeFragment, false)
+    }
+
     override fun onClickRightArrow() {
         val pager = binding.viewPager
         val lastIndex = pager.adapter?.itemCount?.minus(1) ?: return
@@ -37,6 +44,7 @@ class OnboardingFragment :
 
         if (pager.currentItem == lastIndex) {
             presenter.firstAppLaunch()
+            onSwipeUp()
         }
     }
 
@@ -45,9 +53,6 @@ class OnboardingFragment :
         if (pager.currentItem > 0) pager.currentItem--
     }
 
-    override fun onSwipeUp() {
-        presenter.firstAppLaunch()
-    }
 
     override fun onDestroyView() {
         presenter.detachView()
