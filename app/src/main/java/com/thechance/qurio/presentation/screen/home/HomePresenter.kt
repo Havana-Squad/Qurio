@@ -46,6 +46,7 @@ class HomePresenter @Inject constructor(
     }
 
     private fun onGetUserStatisticsSuccess(statistics: Triple<Int, Int, Int>) {
+        println("get$statistics")
         view.setUserStatistics(statistics)
     }
 
@@ -60,7 +61,10 @@ class HomePresenter @Inject constructor(
     private fun onGetUserStreakSuccess(streak: Int) {
         view.setUserStreak(streak)
     }
-
+    fun refreshData() {
+        getUserStatistics()
+        getUserStreak()
+    }
     private fun getGames() {
         tryToExecute(
             callee = gameRepository::getGames,

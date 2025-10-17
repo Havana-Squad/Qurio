@@ -1,25 +1,12 @@
 package com.thechance.qurio.data.local
-
 import android.content.Context
 import com.thechance.qurio.R
 import com.thechance.qurio.domain.entity.Character
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class UserDataSource @Inject constructor(context: Context) {
 
-    private var currentCharacter: Character = Character(
-        id = 1,
-        name = context.getString(R.string.rika),
-        description = context.getString(R.string.nature_s_little_explorer_rika_talks_to_mushrooms_and_swears_squirrels_give_her_battle_advice_always_ready_for_an_adventure),
-        age = context.getString(R.string._12_sunblooms),
-        imageLockedRes = R.drawable.rika,
-        imageUnlockedRes = R.drawable.rika_selected,
-        isUnlocked = true,
-        isCharacterUsed = true,
-        price = 0,
-    )
+object UserDataSource{
+
+    private var currentCharacter: Character?=null
 
     private var lives: Int = 4
     private var points: Int = 200

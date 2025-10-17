@@ -1,39 +1,51 @@
 package com.thechance.qurio.data.repository
 
+import android.content.Context
+import com.thechance.qurio.data.local.CharactersDataSource
 import com.thechance.qurio.data.local.UserDataSource
 import com.thechance.qurio.domain.entity.Character
 import com.thechance.qurio.domain.repository.user.UserRepository
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
-    private val userDataSource: UserDataSource
+    private val context: Context,
 ) : UserRepository {
 
+
     override suspend fun getUserCharacter(): Character {
-        return userDataSource.getUserCharacter()
+        return UserDataSource?.getUserCharacter() ?: CharactersDataSource.getAllCharacters(context=context)[0]
     }
 
     override suspend fun updateUserCharacter(character: Character) {
-        userDataSource.updateUserCharacter(character)
+        UserDataSource.updateUserCharacter(character)
     }
 
     override suspend fun getUserStatistics(): Triple<Int, Int, Int> {
-        return userDataSource.getUserStatistics()
+        return UserDataSource.getUserStatistics()
     }
 
     override suspend fun getUserStreak(): Int {
-        return userDataSource.getUserStreak()
+        return UserDataSource.getUserStreak()
     }
 
     override suspend fun updateStreak(streak: Int) {
-        userDataSource.updateStreak(streak)
+        UserDataSource.updateStreak(streak)
     }
 
     override suspend fun incrementStreak() {
-        userDataSource.incrementStreak()
+        UserDataSource.incrementStreak()
     }
 
     override suspend fun addPoints(points: Int) {
-        userDataSource.addPoints(points)
+        UserDataSource.addPoints(points)
     }
+
+    override suspend fun updateLives(lives: Int) {
+        UserDataSource.updateLives(lives)
+    }
+
+    override suspend fun updatePoints(points: Int) {
+        UserDataSource.updatePoints(points)
+    }
+
 }

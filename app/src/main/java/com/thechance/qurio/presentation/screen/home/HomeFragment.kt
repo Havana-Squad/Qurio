@@ -38,6 +38,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         setupAllGamesButton()
         setupGamesRecyclerView()
         setupAllLastGamesButton()
+        setupLifePurchaseListener()
+    }
+    private fun setupLifePurchaseListener() {
+        childFragmentManager.setFragmentResultListener("life_bought", viewLifecycleOwner) { _, bundle ->
+            val success = bundle.getBoolean("success", false)
+            if (success) {
+                presenter.refreshData()
+            }
+        }
     }
 
     private fun setupCharacterButton() {
@@ -167,7 +176,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     override fun setGames(games: List<GameItem>) {
         gamesAdapter.setItems(games)
     }
-
+    override fun onResume() {
+        super.onResume()
+    }
     override fun setUserLastGames(lastGames: List<GameUi>) {
         val adapter = PlayedGamesAdapter(lastGames)
         binding.lastGamesRecyclerview.adapter = adapter

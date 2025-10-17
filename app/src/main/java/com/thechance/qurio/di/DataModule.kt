@@ -92,10 +92,6 @@ class DataModule {
         fun provideGameSessionDao(database: QurioDatabase): GameSessionDao {
             return database.gameSessionDao()
         }
-        @Provides
-        @Singleton
-        fun provideUserDataSource(context: Context): UserDataSource {
-            return UserDataSource(context)
-        }
+
     }
 }

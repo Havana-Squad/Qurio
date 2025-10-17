@@ -86,7 +86,13 @@ class BuyLifeDialogFragment : DialogFragment(), BuyLifeView {
         // Optionally hide a loading indicator
         binding.buttonBuy.isEnabled = true
     }
+    override fun enableBuyButton() {
+        binding.buttonBuy.isEnabled = true
+    }
 
+    override fun disableBuyButton() {
+        binding.buttonBuy.isEnabled = false
+    }
     override fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
@@ -98,6 +104,12 @@ class BuyLifeDialogFragment : DialogFragment(), BuyLifeView {
         } else {
             showError("Failed to buy life")
         }
+    }
+    override fun onLifeBoughtSuccessfully() {
+        parentFragmentManager.setFragmentResult("life_bought", Bundle().apply {
+            putBoolean("success", true)
+        })
+        dismiss()
     }
 
     override fun onDestroyView() {
