@@ -165,7 +165,7 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_discard"
-                        style="@style/SecondaryButton"
+                        style="@style/Secondary_Button"
                         android:layout_width="0dp"
                         android:layout_height="46dp"
                         android:layout_weight="1"

@@ -107,7 +107,6 @@
     <string name="medium">Medium</string>
     <string name="confirm">Confirm</string>
     <string name="game_img">game img</string>
-    <string name="games">Games</string>
     <string name="arrow_back_icon">arrow back icon</string>
     <string name="play_again">Play again</string>
     <string name="back_to_home">Back to home</string>
@@ -148,6 +147,12 @@
     <string name="_13_blade_echoes">13 Blade Echoes</string>
     <string name="_12_crystal_songs">12 Crystal Songs</string>
     <string name="_11_hero_coins">11 Hero Coins</string>
+    <string name="games">Games</string>
+    <string name="all">All</string>
+    <string name="zero_streak_title">0 day streak, start make a series</string>
+    <string name="zero_streak_subtitle">Every day count!</string>
+    <string name="numbered_streak_title">%1$d day streak, make a big series</string>
+    <string name="numbered_streak_subtitle">KEEP IT UP!</string>
 
     <!-- Onboarding -->
     <string name="swipe_up_to_play">Swipe up to PLAY!</string>
@@ -159,5 +164,6 @@
     <string name="unlock_characters_earn_badges_and_climb_the_leaderboards_qurio_is_fascinating_but_you_can_handle_it">Unlock characters, earn badges, and climb the leaderboards. Qurio is merciless, but you can handle it.</string>
     <string name="each_hero_has_their_own_unique_style_choose_from_unique_characters_and_start_your_adventure_in_your_own_style">Each hero has their own unique style! Choose from unique characters and start your adventure in your own style.</string>
     <string name="answer_quickly_earn_points_and_share_with_your_friends">Answer quickly, earn points, and share with your\n friends!\n Each trivia category is a new experience.</string>
+
 
 </resources>

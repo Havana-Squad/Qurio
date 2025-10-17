@@ -11,11 +11,10 @@ import com.thechance.qurio.domain.entity.PlayedGame
 import com.thechance.qurio.domain.repository.game.GameRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 import javax.inject.Singleton
 
-
-@Singleton
-class GameRepositoryImpl(
+class GameRepositoryImpl @Inject constructor(
     private val gameService: GameService,
     private val playedGameDao: PlayedGameDao
 ) : GameRepository {

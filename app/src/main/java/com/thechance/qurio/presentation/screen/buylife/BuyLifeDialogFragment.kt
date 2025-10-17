@@ -11,15 +11,22 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.LayoutBuyLifeBinding
 import androidx.core.graphics.drawable.toDrawable
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class BuyLifeDialogFragment : DialogFragment(), BuyLifeView {
 
     private var _binding: LayoutBuyLifeBinding? = null
     private val binding get() = _binding!!
-    private val presenter by lazy { BuyLifePresenter() }
+
+    @Inject
+    lateinit var presenter : BuyLifePresenter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+
+        AndroidSupportInjection.inject(this)
+
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())

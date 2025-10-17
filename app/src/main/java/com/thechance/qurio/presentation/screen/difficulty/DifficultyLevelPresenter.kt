@@ -1,6 +1,8 @@
 package com.thechance.qurio.presentation.screen.difficulty
 
-class DifficultyLevelPresenter {
+import javax.inject.Inject
+
+class DifficultyLevelPresenter @Inject constructor() {
 
     private var view: DifficultyLevelView? = null
 

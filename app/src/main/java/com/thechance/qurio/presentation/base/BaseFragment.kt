@@ -15,7 +15,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, V: BaseView, P : BasePresente
     : Fragment(), BaseView {
 
     abstract val layoutIdFragment: Int
-    protected abstract val presenter: P
+    abstract val presenter: P
 
     private var _binding: VDB? = null
     protected val binding: VDB

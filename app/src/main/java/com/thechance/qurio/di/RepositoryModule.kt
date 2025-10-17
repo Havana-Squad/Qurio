@@ -1,5 +1,6 @@
 package com.thechance.qurio.di
 
+import com.thechance.qurio.data.repository.AchievementsRepositoryImpl
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.data.repository.TGameRepositoryImpl
@@ -7,9 +8,12 @@ import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.GameSessionRepositoryImpl
 import com.thechance.qurio.data.repository.ResultsRepositoryImpl
 import com.thechance.qurio.data.repository.UserPreferencesRepositoryImpl
+import com.thechance.qurio.data.repository.GameRepositoryImpl
+import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.domain.repository.ResultsRepository
 import com.thechance.qurio.domain.repository.UserPreferencesRepository
+import com.thechance.qurio.domain.repository.game.GameRepository
 import dagger.Binds
 import dagger.Module
 
@@ -27,7 +31,7 @@ abstract class RepositoryModule {
     ): ResultsRepository
 
     @Binds
-    abstract fun bindGameRepository(
+    abstract fun bindTGameRepository(
         impl: TGameRepositoryImpl
     ): TGameRepository
 
@@ -40,4 +44,14 @@ abstract class RepositoryModule {
     abstract fun bindUserPreferencesImpl(
         impl: UserPreferencesRepositoryImpl
     ): UserPreferencesRepository
+
+    @Binds
+    abstract fun bindAchievementsRepository(
+        impl: AchievementsRepositoryImpl
+    ): AchievementsRepository
+
+    @Binds
+    abstract fun bindGameRepository(
+        impl: GameRepositoryImpl
+    ): GameRepository
 }

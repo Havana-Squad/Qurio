@@ -63,12 +63,6 @@ class DataModule {
         }
 
         @Provides
-        @Singleton
-        fun provideGameRepository(gameService: GameService, playedGameDao: PlayedGameDao): GameRepository {
-            return GameRepositoryImpl(gameService = gameService, playedGameDao = playedGameDao)
-        }
-
-        @Provides
         fun provideContext(application: QurioApp): Context = application.applicationContext
 
         @Provides
