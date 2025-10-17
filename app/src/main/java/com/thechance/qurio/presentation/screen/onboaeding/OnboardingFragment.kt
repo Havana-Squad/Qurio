@@ -23,17 +23,35 @@ class OnboardingFragment :
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
         setupViewPager()
+        setupListeners()
     }
+
     override fun onClickRightArrow() {
-        TODO("Not yet implemented")
+        val pager = binding.viewPager
+        val lastIndex = pager.adapter?.itemCount?.minus(1) ?: return
+
+        if (pager.currentItem < lastIndex) {
+            pager.currentItem++
+            return
+        }
+
+        if (pager.currentItem == lastIndex) {
+            presenter.firstAppLaunch()
+        }
     }
 
     override fun onClickLeftArrow() {
-        TODO("Not yet implemented")
+        val pager = binding.viewPager
+        if (pager.currentItem > 0) pager.currentItem--
     }
 
     override fun onSwipeUp() {
-        TODO("Not yet implemented")
+        presenter.firstAppLaunch()
+    }
+
+    override fun onDestroyView() {
+        presenter.detachView()
+        super.onDestroyView()
     }
 
     private fun setupViewPager() {
@@ -41,5 +59,10 @@ class OnboardingFragment :
             adapter = OnboardingAdapter(OnboardingPage.getOnboardingPages())
             isUserInputEnabled = false
         }
+    }
+
+    private fun setupListeners() {
+        binding.rightArrow.setOnClickListener { onClickRightArrow() }
+        binding.leftArrow.setOnClickListener { onClickLeftArrow() }
     }
 }
