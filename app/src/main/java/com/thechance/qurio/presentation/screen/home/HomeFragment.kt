@@ -44,6 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         childFragmentManager.setFragmentResultListener("life_bought", viewLifecycleOwner) { _, bundle ->
             val success = bundle.getBoolean("success", false)
             if (success) {
+                println("s")
                 presenter.refreshData()
             }
         }

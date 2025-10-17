@@ -9,7 +9,7 @@ object UserDataSource{
     private var currentCharacter: Character?=null
 
     private var lives: Int = 4
-    private var points: Int = 200
+    private var points: Int = 500
     private var awards: Int = 0
     private var currentStreak: Int = 0
 

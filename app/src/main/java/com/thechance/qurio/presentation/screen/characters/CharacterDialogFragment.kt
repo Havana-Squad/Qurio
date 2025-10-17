@@ -17,6 +17,9 @@ import com.google.android.flexbox.JustifyContent
 import com.thechance.qurio.data.repository.CharactersRepositoryImpl
 import com.thechance.qurio.databinding.DialogCharactersBinding
 import com.thechance.qurio.domain.entity.Character
+import com.thechance.qurio.presentation.screen.buylife.BuyLifePresenter
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class CharacterDialogFragment : DialogFragment(), CharacterView {
 
@@ -24,10 +27,11 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     private val binding get() = _binding!!
     private var selectedCharacter: Character? = null
 
-    private val presenter by lazy { CharacterPresenter(CharactersRepositoryImpl(requireContext())) }
-
+    @Inject
+    lateinit var presenter : CharacterPresenter
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+        AndroidSupportInjection.inject(this)
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
@@ -57,6 +61,12 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
+        childFragmentManager.setFragmentResultListener("character_bought", viewLifecycleOwner) { _, bundle ->
+            val success = bundle.getBoolean("success", false)
+            if (success) {
+                parentFragmentManager.setFragmentResult("life_bought", bundle)
+            }
+        }
 
         binding.recyclerCharacters.adapter = CharacterAdapter(emptyList()) {
             selectedCharacter=it

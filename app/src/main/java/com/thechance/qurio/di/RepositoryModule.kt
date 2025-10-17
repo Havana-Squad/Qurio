@@ -1,6 +1,7 @@
 package com.thechance.qurio.di
 
 import com.thechance.qurio.data.repository.AchievementsRepositoryImpl
+import com.thechance.qurio.data.repository.CharactersRepositoryImpl
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.data.repository.TGameRepositoryImpl
@@ -10,6 +11,7 @@ import com.thechance.qurio.data.repository.ResultsRepositoryImpl
 import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.data.repository.UserRepositoryImpl
 import com.thechance.qurio.domain.repository.AchievementsRepository
+import com.thechance.qurio.domain.repository.CharactersRepository
 import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.domain.repository.ResultsRepository
 import com.thechance.qurio.domain.repository.game.GameRepository
@@ -55,4 +57,8 @@ abstract class RepositoryModule {
     abstract fun bindUserRepository(
         impl: UserRepositoryImpl
     ): UserRepository
+    @Binds
+    abstract fun bindCharacterRepository(
+        impl: CharactersRepositoryImpl
+    ): CharactersRepository
 }

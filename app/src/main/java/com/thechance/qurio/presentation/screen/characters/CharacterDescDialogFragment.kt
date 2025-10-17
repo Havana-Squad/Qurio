@@ -11,6 +11,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.DialogCharacterDescriptionBinding
 import com.thechance.qurio.domain.entity.Character
+import dagger.android.support.AndroidSupportInjection
 
 class CharacterDescDialogFragment : DialogFragment() {
 
@@ -21,6 +22,7 @@ class CharacterDescDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+        AndroidSupportInjection.inject(this)
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
