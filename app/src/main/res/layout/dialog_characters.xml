@@ -4,13 +4,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/dialog_achievements"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/dialog_characters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:ignore="ContentDescription">
 
         <View
-            android:id="@+id/achievement_card_background"
+            android:id="@+id/character_card_background"
             style="@style/CutCornersCardStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -27,8 +27,8 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_hexagon"
             app:layout_constraintDimensionRatio="145:40"
-            app:layout_constraintEnd_toEndOf="@id/achievement_card_background"
-            app:layout_constraintStart_toStartOf="@id/achievement_card_background"
+            app:layout_constraintEnd_toEndOf="@id/character_card_background"
+            app:layout_constraintStart_toStartOf="@id/character_card_background"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -41,8 +41,8 @@
             android:elevation="1dp"
             android:focusable="true"
             android:src="@drawable/ic_exit_btn"
-            app:layout_constraintEnd_toEndOf="@id/achievement_card_background"
-            app:layout_constraintTop_toTopOf="@id/achievement_card_background" />
+            app:layout_constraintEnd_toEndOf="@id/character_card_background"
+            app:layout_constraintTop_toTopOf="@id/character_card_background" />
 
         <TextView
             android:id="@+id/text_title"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-6dp"
             android:elevation="1dp"
-            android:text="@string/achievements"
+            android:text="@string/character"
             android:textColor="@color/shade_primary"
             app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon"
             app:layout_constraintEnd_toEndOf="@id/icon_hexagon"
@@ -59,47 +59,50 @@
             app:layout_constraintTop_toTopOf="@id/icon_hexagon" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_achievements"
+            android:id="@+id/recycler_characters"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:elevation="2dp"
             android:paddingHorizontal="12dp"
-            app:layout_constraintEnd_toEndOf="@id/achievement_card_background"
-            app:layout_constraintStart_toStartOf="@id/achievement_card_background"
+            app:layout_constraintEnd_toEndOf="@id/character_card_background"
+            app:layout_constraintStart_toStartOf="@id/character_card_background"
             app:layout_constraintTop_toBottomOf="@id/icon_hexagon"
-            tools:itemCount="11"
-            tools:listitem="@layout/item_achievement" />
+            tools:itemCount="3"
+            tools:listitem="@layout/item_character" />
 
         <LinearLayout
             android:id="@+id/layout_actions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:elevation="1dp"
-            android:orientation="vertical"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="36dp"
+            android:orientation="horizontal"
             android:paddingHorizontal="12dp"
-            app:layout_constraintEnd_toEndOf="@id/achievement_card_background"
-            app:layout_constraintStart_toStartOf="@id/achievement_card_background"
-            app:layout_constraintTop_toBottomOf="@id/recycler_achievements">
+            app:layout_constraintBottom_toBottomOf="@id/character_card_background"
+            app:layout_constraintEnd_toEndOf="@id/character_card_background"
+            app:layout_constraintStart_toStartOf="@id/character_card_background"
+            app:layout_constraintTop_toBottomOf="@id/recycler_characters">
 
-            <TextView
-                style="@style/Body.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:text="@string/click_on_achievement_to_view_details"
-                android:textColor="@color/shade_secondary" />
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_confirm"
+                style="@style/Primary_Button"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="@string/confirm"
+                android:textAllCaps="false" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_ok"
                 style="@style/Secondary_Button"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="36dp"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
-                android:text="@string/ok" />
+                android:text="@string/cancel"
+                android:textAllCaps="false" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

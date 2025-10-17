@@ -1,4 +1,4 @@
-package com.thechance.qurio.presentation.screen.achievements
+package com.thechance.qurio.presentation.screen.characters
 
 import android.app.Dialog
 import android.graphics.Color
@@ -14,16 +14,17 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.thechance.qurio.data.repository.AchievementsRepositoryImpl
-import com.thechance.qurio.databinding.DialogAchievementsBinding
-import com.thechance.qurio.domain.entity.Achievement
+import com.thechance.qurio.data.repository.CharactersRepositoryImpl
+import com.thechance.qurio.databinding.DialogCharactersBinding
+import com.thechance.qurio.domain.entity.Character
 
-class AchievementsDialogFragment : DialogFragment(), AchievementsView {
+class CharacterDialogFragment : DialogFragment(), CharacterView {
 
-    private var _binding: DialogAchievementsBinding? = null
+    private var _binding: DialogCharactersBinding? = null
     private val binding get() = _binding!!
+    private var selectedCharacter: Character? = null
 
-    private val presenter by lazy { AchievementsPresenter(AchievementsRepositoryImpl(requireContext())) }
+    private val presenter by lazy { CharacterPresenter(CharactersRepositoryImpl(requireContext())) }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -49,7 +50,7 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogAchievementsBinding.inflate(inflater, container, false)
+        _binding = DialogCharactersBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,17 +58,19 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
 
-        binding.recyclerAchievements.adapter = AchievementsAdapter(emptyList()) {
-            presenter.onAchievementClicked(it)
+        binding.recyclerCharacters.adapter = CharacterAdapter(emptyList()) {
+            selectedCharacter=it
+            presenter.onCharacterClicked(it)
         }
 
         binding.buttonOk.setOnClickListener { dismiss() }
         binding.buttonExit.setOnClickListener { dismiss() }
+        binding.buttonConfirm.setOnClickListener { onConfirmClicked() }
 
-        presenter.loadAchievements()
+        presenter.loadCharacters()
     }
 
-    override fun showAchievements(achievements: List<Achievement>) {
+    override fun showCharacters(characters: List<Character>) {
         val layoutManager = FlexboxLayoutManager(requireContext()).apply {
             flexDirection = FlexDirection.ROW
             justifyContent = JustifyContent.CENTER
@@ -75,9 +78,9 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
             flexWrap = FlexWrap.WRAP
         }
 
-        binding.recyclerAchievements.layoutManager = layoutManager
-        binding.recyclerAchievements.adapter =
-            AchievementsAdapter(achievements) { presenter.onAchievementClicked(it) }
+        binding.recyclerCharacters.layoutManager = layoutManager
+        binding.recyclerCharacters.adapter =
+            CharacterAdapter(characters) { presenter.onCharacterClicked(it) }
     }
 
     override fun showLoading() {}
@@ -87,19 +90,23 @@ class AchievementsDialogFragment : DialogFragment(), AchievementsView {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun openAchievementDetails(achievement: Achievement) {
-        showAchievementDialog(achievement)
+    override fun openCharacterDetails(character: Character) {
+        showCharacterDialog(character)
     }
 
-    private fun showAchievementDialog(achievement: Achievement) {
+
+    private fun showCharacterDialog(character: Character) {
         dismiss()
-        AchievementDescDialogFragment.newInstance(achievement)
-            .show(parentFragmentManager, "achievement_desc")
+        CharacterDescDialogFragment.newInstance(character)
+            .show(parentFragmentManager, "Character_desc")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         presenter.detachView()
         _binding = null
+    }
+    private fun onConfirmClicked(){
+        presenter.useCharacter(selectedCharacter?.id ?:1, true)
     }
 }
