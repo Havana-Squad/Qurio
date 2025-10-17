@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/character_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_background"
+        style="@style/CutCornersCardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/layout_action_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/card_background"
+        app:layout_constraintEnd_toEndOf="@id/card_background"
+        app:layout_constraintStart_toStartOf="@id/card_background"
+        app:layout_constraintTop_toBottomOf="@id/price_container"
+        tools:ignore="NotSibling">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_buy"
+            style="@style/Primary_Button"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Confirm"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cancel"
+            style="@style/Secondary_Button"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_hexagon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-16dp"
+        android:elevation="1dp"
+        android:src="@drawable/ic_hexagon"
+        app:layout_constraintEnd_toEndOf="@id/card_background"
+        app:layout_constraintStart_toStartOf="@id/card_background"
+        app:layout_constraintTop_toTopOf="@id/card_background" />
+
+    <ImageView
+        android:id="@+id/button_exit"
+        android:layout_width="22dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="2dp"
+        android:elevation="1dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_exit_btn"
+        app:layout_constraintEnd_toEndOf="@id/card_background"
+        app:layout_constraintTop_toTopOf="@id/card_background" />
+
+    <TextView
+        android:id="@+id/text_title"
+        style="@style/Title.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="1dp"
+        android:text="@string/character"
+        android:textColor="@color/shade_primary"
+        app:layout_constraintEnd_toEndOf="@id/icon_hexagon"
+        app:layout_constraintStart_toStartOf="@id/icon_hexagon"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon"
+        app:layout_constraintTop_toTopOf="@id/icon_hexagon" />
+</androidx.constraintlayout.widget.ConstraintLayout>

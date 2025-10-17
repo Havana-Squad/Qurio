@@ -98,7 +98,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_cancel"
-            style="@style/SecondaryButton"
+            style="@style/Secondary_Button"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_weight="1"

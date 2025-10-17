@@ -1,0 +1,22 @@
+package com.thechance.qurio.data.repository
+
+import com.thechance.qurio.data.local.model.GameSession
+import com.thechance.qurio.data.local.dao.GameSessionDao
+import com.thechance.qurio.data.mapper.toEntity
+import com.thechance.qurio.data.mapper.toModel
+import javax.inject.Inject
+
+class GameSessionRepositoryImpl @Inject constructor(private val gameSessionDao: GameSessionDao) :
+    GameSessionRepository {
+    override suspend fun insertSession(session: GameSession) {
+        gameSessionDao.insertSession(session.toEntity())
+    }
+
+    override suspend fun getAllSessions(): List<GameSession> {
+        return gameSessionDao.getAllSessions().map { it.toModel() }
+    }
+
+    override suspend fun getTotalPointsOfAllSessions(): Int {
+        return gameSessionDao.getTotalPointsOfAllSessions()
+    }
+}

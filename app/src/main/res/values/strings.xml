@@ -23,9 +23,16 @@
     <string name="play_now">PLAY NOW</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="check">Check</string>
     <string name="buy_life">Buy life</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
+    <string name="character">Character</string>
+    <string name="loading">Loading Game</string>
+    <string name="no_internet_connection">No Connection</string>
+    <string name="check_your_internet">Oops! It looks like you’re offline. Please\ncheck your internet connection to continue\nplaying</string>
+    <string name="retry">Retry</string>
     <string name="achievements">Achievements</string>
     <string name="ok">Ok</string>
     <string name="click_on_achievement_to_view_details">*Click on achievement to view details</string>
@@ -101,11 +108,45 @@
     <string name="confirm">Confirm</string>
     <string name="game_img">game img</string>
     <string name="arrow_back_icon">arrow back icon</string>
+    <string name="play_again">Play again</string>
+    <string name="back_to_home">Back to home</string>
     <string name="last_games">Last Games</string>
     <string name="discarded">discarded</string>
     <string name="settings_saved">settings saved</string>
     <string name="close">close</string>
     <string name="music">Music</string>
+<!-- Characters Names -->
+<string name="rika">Rika</string>
+<string name="kaiyo">Kaiyo</string>
+<string name="mimi">Mimi</string>
+<string name="yoru">Yoru</string>
+<string name="kuro">Kuro</string>
+<string name="miko">Miko</string>
+<string name="aori">Aori</string>
+<string name="nara">Nara</string>
+<string name="renji">Renji</string>
+
+    <!-- Characters Descriptions -->
+<string name="nature_s_little_explorer_rika_talks_to_mushrooms_and_swears_squirrels_give_her_battle_advice_always_ready_for_an_adventure">Nature’s little explorer! Rika talks to mushrooms and swears squirrels give her battle advice. Always ready for an adventure.</string>
+<string name="a_calm_storm_in_human_form_kaiyo_trains_with_ancient_scrolls_by_day_and_drinks_spicy_tea_by_night_sword_sharp_heart_sharper">A calm storm in human form. Kaiyo trains with ancient scrolls by day and drinks spicy tea by night. Sword sharp, heart sharper.</string>
+<string name="tiny_but_terrifying_mimi_is_always_grumpy_but_don_t_let_that_scare_you_unless_you_like_pranks_involving_firecrackers">Tiny but terrifying! Mimi is always grumpy, but don’t let that scare you—unless you like pranks involving firecrackers.</string>
+<string name="quiet_mysterious_and_probably_watching_you_right_now_yoru_shows_up_when_you_least_expect_it">Quiet, mysterious, and probably watching you right now. Yoru shows up when you least expect it.</string>
+<string name="cool_jacket_cooler_moves_kuro_never_backs_down_from_a_challenge">Cool jacket, cooler moves. Kuro never backs down from a challenge .</string>
+<string name="energetic_cheerful_and_faster_than_a_leaf_in_the_wind_miko_can_turn_any_trivia_into_a_giggle_fest">Energetic, cheerful, and faster than a leaf in the wind. Miko can turn any trivia into a giggle-fest.</string>
+<string name="the_sword_chooses_the_wielder_and_it_chose_aori_calm_focused">The sword chooses the wielder—and it chose Aori. Calm, focused.</string>
+<string name="part_magic_part_sass_nara_sparkles_even_when_she_s_mad">Part magic, part sass. Nara sparkles even when she’s mad.\n</string>
+<string name="small_but_mighty_renji_dreams_of_glory_carries_a_shield_too_big_for_him">Small but mighty! Renji dreams of glory, carries a shield too big for him.</string>
+
+    <!-- Characters Ages-->
+<string name="_12_sunblooms">12 Sunblooms</string>
+<string name="_14_storms">14 Storms</string>
+<string name="_10_volcano_puffs">10 Volcano Puffs</string>
+<string name="_13_shadows">13 Shadows</string>
+<string name="_15_thunder_beats">15 Thunder Beats</string>
+<string name="_11_leaf_turns">11 Leaf Turns</string>
+<string name="_13_blade_echoes">13 Blade Echoes</string>
+<string name="_12_crystal_songs">12 Crystal Songs</string>
+<string name="_11_hero_coins">11 Hero Coins</string>
     <string name="games">Games</string>
     <string name="all">All</string>
     <string name="zero_streak_title">0 day streak, start make a series</string>

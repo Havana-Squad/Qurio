@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_character_description"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="16dp"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <View
+        android:id="@+id/character_desc_card_background"
+        style="@style/CutCornersCardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_hexagon_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_hexagon"
+        app:layout_constraintDimensionRatio="145:40"
+        app:layout_constraintEnd_toEndOf="@id/character_desc_card_background"
+        app:layout_constraintStart_toStartOf="@id/character_desc_card_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/button_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:clickable="true"
+        android:elevation="1dp"
+        android:focusable="true"
+        android:src="@drawable/ic_exit_btn"
+        app:layout_constraintEnd_toEndOf="@id/character_desc_card_background"
+        app:layout_constraintTop_toTopOf="@id/character_desc_card_background" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/Title.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:elevation="1dp"
+        android:text="@string/character"
+        android:textColor="@color/shade_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon_title"
+        app:layout_constraintEnd_toEndOf="@id/icon_hexagon_title"
+        app:layout_constraintStart_toStartOf="@id/icon_hexagon_title"
+        app:layout_constraintTop_toTopOf="@id/icon_hexagon_title"
+        tools:text="Character" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/character_container"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/secondary_button_shape"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="@id/character_desc_card_background"
+        app:layout_constraintStart_toStartOf="@id/character_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@id/icon_hexagon_title">
+
+        <TextView
+            android:id="@+id/tv_character_name"
+            style="@style/Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/shade_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Rika" />
+        <TextView
+            android:id="@+id/tv_character_age"
+            style="@style/Title.XSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Age: "
+            android:fontFamily="@font/fredoka_regular"
+            android:textColor="@color/shade_secondary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_character_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Age:12 Sub" />
+
+
+
+        <ImageView
+            android:id="@+id/img_character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/character"
+            android:paddingEnd="12dp"
+            android:src="@drawable/rika"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/rika" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_character_desc"
+        style="@style/Body.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="12dp"
+        android:text=""
+        android:textColor="@color/shade_secondary"
+        app:layout_constraintStart_toStartOf="@+id/character_desc_card_background"
+        app:layout_constraintTop_toBottomOf="@+id/character_container"
+        tools:text="You love experimenting and discovering! You've tried several categories and aren't limited to just one." />
+
+    <LinearLayout
+        android:id="@+id/layout_action_buttons"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="106dp"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="36dp"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/dialog_character_description"
+        app:layout_constraintEnd_toEndOf="@id/dialog_character_description"
+        app:layout_constraintStart_toStartOf="@id/dialog_character_description"
+        app:layout_constraintTop_toBottomOf="@id/tv_character_desc">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_buy"
+            style="@style/Primary_Button"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="@string/buy"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_ok"
+            style="@style/Secondary_Button"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="OK"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

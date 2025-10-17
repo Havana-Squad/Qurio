@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/qurio_navigation"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/exampleFragment"
         android:name="com.thechance.qurio.presentation.screen.example.ExampleFragment"
-        android:label="ExampleFragment" />
+        android:label="ExampleFragment"
+        />
+    <fragment
+        android:id="@+id/startPlayFragment"
+        android:name="com.thechance.qurio.presentation.screen.results.StartPlayFragment"
+        android:label="StartGame">
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="9"
+            />
+        <action
+            android:id="@+id/action_startPlayFragment_to_resultPlayFragment"
+            app:destination="@id/resultPlayFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultPlayFragment"
+        android:name="com.thechance.qurio.presentation.screen.results.ResultPlayFragment"
+        android:label="ResulPlayFragment"
+        tools:layout="@layout/fragment_result_play">
+        <argument
+            android:name="session"
+            app:argType="com.thechance.qurio.domain.model.GameSession" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultPlayFragment_to_startPlayFragment"
+            app:destination="@id/startPlayFragment">
+            <argument
+                android:name="categoryId"
+                app:argType="integer" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/gameFragment"
@@ -17,6 +52,11 @@
             android:id="@+id/action_gameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
+       <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.thechance.qurio.presentation.screen.characters.CharacterDialogFragment"
+        android:label="characterFragment" />
 
     <fragment
         android:id="@+id/playedGamesFragment"

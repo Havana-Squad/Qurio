@@ -1,9 +1,10 @@
-package com.thechance.qurio.data.local
+package com.thechance.qurio.data.repository
 
 import android.content.Context
 import androidx.core.content.edit
+import com.thechance.qurio.data.local.AchievementsDataSource
 import com.thechance.qurio.domain.entity.Achievement
-import com.thechance.qurio.domain.repository.achievements.AchievementsRepository
+import com.thechance.qurio.domain.repository.AchievementsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -39,5 +40,3 @@ class AchievementsRepositoryImpl @Inject constructor(private val context: Contex
         private const val KEY_UNLOCKED = "unlocked_ids"
     }
 }
-
-
