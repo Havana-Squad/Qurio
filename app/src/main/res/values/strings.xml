@@ -23,9 +23,131 @@
     <string name="play_now">PLAY NOW</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="check">Check</string>
     <string name="buy_life">Buy life</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
     <string name="swipe_up_to_play">Swipe up to PLAY!</string>
     <string name="welcome_to_qurio">Welcome to Qurio</string>
+    <string name="character">Character</string>
+    <string name="loading">Loading Game</string>
+    <string name="no_internet_connection">No Connection</string>
+    <string name="check_your_internet">Oops! It looks like you’re offline. Please\ncheck your internet connection to continue\nplaying</string>
+    <string name="retry">Retry</string>
+    <string name="achievements">Achievements</string>
+    <string name="ok">Ok</string>
+    <string name="click_on_achievement_to_view_details">*Click on achievement to view details</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="how_to_get">How to get:</string>
+    <string name="achievement">achievement</string>
+    <string name="celebration">celebration</string>
+
+    <string name="achievement_quiz_rookie_name">Quiz Rookie</string>
+    <string name="achievement_streak_starter_name">Streak Starter</string>
+    <string name="achievement_lucky_guess_name">Lucky Guess</string>
+    <string name="achievement_explorer_name">Explorer</string>
+    <string name="achievement_trivia_champ_name">Trivia Champ</string>
+    <string name="achievement_collector_name">Collector</string>
+    <string name="achievement_legend_name">Legend</string>
+    <string name="achievement_untouchable_name">Untouchable</string>
+    <string name="achievement_quick_thinker_name">Quick Thinker</string>
+    <string name="achievement_perfect_game_name">Perfect Game</string>
+    <string name="achievement_knowledge_seeker_name">Knowledge Seeker</string>
+
+    <!-- Achievement Locked Descriptions -->
+    <string name="achievement_quiz_rookie_locked">You\'re just starting your journey. Keep playing to prove your skills!</string>
+    <string name="achievement_streak_starter_locked">You’re getting the hang of it! Keep answering correctly to build your streak.</string>
+    <string name="achievement_lucky_guess_locked">Sometimes luck plays a big part! Take a few risks.</string>
+    <string name="achievement_explorer_locked">Discover more to unlock this achievement.</string>
+    <string name="achievement_trivia_champ_locked">Champions never quit! Keep answering correctly to earn this title.</string>
+    <string name="achievement_collector_locked">Collect more achievements to earn this one!</string>
+    <string name="achievement_legend_locked">Legends are made through consistency. Keep it up!</string>
+    <string name="achievement_untouchable_locked">You rarely make mistakes! You\'re at a very high level and dominate the game.</string>
+    <string name="achievement_quick_thinker_locked">Speed matters! Be faster to claim this one.</string>
+    <string name="achievement_perfect_game_locked">Perfection is within reach. Aim for a flawless round!</string>
+    <string name="achievement_knowledge_seeker_locked">Curiosity is the key. Keep exploring more trivia!</string>
+
+    <!-- Achievement Unlocked Descriptions -->
+    <string name="achievement_quiz_rookie_unlocked">You’ve played your first 5 quizzes! Welcome to the trivia world!</string>
+    <string name="achievement_streak_starter_unlocked">You started your first winning streak — 3 correct answers in a row!</string>
+    <string name="achievement_lucky_guess_unlocked">You guessed an answer correctly after using no hints — pure luck!</string>
+    <string name="achievement_explorer_unlocked">You love experimenting and discovering! You\'ve tried several categories and aren\'t limited to just one.</string>
+    <string name="achievement_trivia_champ_unlocked">You dominated the quiz! Your accuracy shows true trivia mastery!</string>
+    <string name="achievement_collector_unlocked">Achievement collector! You’ve unlocked several milestones!</string>
+    <string name="achievement_legend_unlocked">You’ve proven yourself time and again — you’re a true legend!</string>
+    <string name="achievement_untouchable_unlocked">Flawless victory! You answered everything correctly without breaking a sweat!</string>
+    <string name="achievement_quick_thinker_unlocked">You think fast! You answered a question in record time!</string>
+    <string name="achievement_perfect_game_unlocked">Unbelievable! You finished a game with all answers correct!</string>
+    <string name="achievement_knowledge_seeker_unlocked">You’ve explored so many questions — your curiosity is unmatched!</string>
+
+    <!-- Achievement Requirements -->
+    <string name="achievement_quiz_rookie_requirement">Complete 5 quizzes.</string>
+    <string name="achievement_streak_starter_requirement">Answer 3 questions correctly in a row.</string>
+    <string name="achievement_lucky_guess_requirement">Answer one question correctly without using hints.</string>
+    <string name="achievement_explorer_requirement">Play in at least 4 different categories.</string>
+    <string name="achievement_trivia_champ_requirement">Achieve a score of 80% or higher in any quiz.</string>
+    <string name="achievement_collector_requirement">Unlock 5 different achievements.</string>
+    <string name="achievement_legend_requirement">Play 50 quizzes in total.</string>
+    <string name="achievement_untouchable_requirement">Correctly answer 10 consecutive questions in a single game without any mistake.</string>
+    <string name="achievement_quick_thinker_requirement">Answer a question correctly in under 3 seconds.</string>
+    <string name="achievement_perfect_game_requirement">Finish any quiz without a single wrong answer.</string>
+    <string name="achievement_knowledge_seeker_requirement">Answer 100 questions in total.</string>
+
+    <string name="share_achievement_text">I just unlocked the "%1$s" achievement in Quiro! 🎉</string>
+    <string name="share_via">Share via</string>
+    <string name="settings">Settings</string>
+    <string name="save_changes">Save changes</string>
+    <string name="discard">Discard</string>
+    <string name="sound">Sound</string>
+    <string name="icon_minus">icon minus</string>
+    <string name="icon_plus">icon plus</string>
+    <string name="Music">Music</string>
+    <string name="hard">Hard</string>
+    <string name="difficulty_level">Difficulty level</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="confirm">Confirm</string>
+    <string name="game_img">game img</string>
+    <string name="games">Games</string>
+    <string name="arrow_back_icon">arrow back icon</string>
+    <string name="play_again">Play again</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="last_games">Last Games</string>
+    <string name="discarded">discarded</string>
+    <string name="settings_saved">settings saved</string>
+    <string name="close">close</string>
+    <string name="music">Music</string>
+<!-- Characters Names -->
+<string name="rika">Rika</string>
+<string name="kaiyo">Kaiyo</string>
+<string name="mimi">Mimi</string>
+<string name="yoru">Yoru</string>
+<string name="kuro">Kuro</string>
+<string name="miko">Miko</string>
+<string name="aori">Aori</string>
+<string name="nara">Nara</string>
+<string name="renji">Renji</string>
+
+    <!-- Characters Descriptions -->
+<string name="nature_s_little_explorer_rika_talks_to_mushrooms_and_swears_squirrels_give_her_battle_advice_always_ready_for_an_adventure">Nature’s little explorer! Rika talks to mushrooms and swears squirrels give her battle advice. Always ready for an adventure.</string>
+<string name="a_calm_storm_in_human_form_kaiyo_trains_with_ancient_scrolls_by_day_and_drinks_spicy_tea_by_night_sword_sharp_heart_sharper">A calm storm in human form. Kaiyo trains with ancient scrolls by day and drinks spicy tea by night. Sword sharp, heart sharper.</string>
+<string name="tiny_but_terrifying_mimi_is_always_grumpy_but_don_t_let_that_scare_you_unless_you_like_pranks_involving_firecrackers">Tiny but terrifying! Mimi is always grumpy, but don’t let that scare you—unless you like pranks involving firecrackers.</string>
+<string name="quiet_mysterious_and_probably_watching_you_right_now_yoru_shows_up_when_you_least_expect_it">Quiet, mysterious, and probably watching you right now. Yoru shows up when you least expect it.</string>
+<string name="cool_jacket_cooler_moves_kuro_never_backs_down_from_a_challenge">Cool jacket, cooler moves. Kuro never backs down from a challenge .</string>
+<string name="energetic_cheerful_and_faster_than_a_leaf_in_the_wind_miko_can_turn_any_trivia_into_a_giggle_fest">Energetic, cheerful, and faster than a leaf in the wind. Miko can turn any trivia into a giggle-fest.</string>
+<string name="the_sword_chooses_the_wielder_and_it_chose_aori_calm_focused">The sword chooses the wielder—and it chose Aori. Calm, focused.</string>
+<string name="part_magic_part_sass_nara_sparkles_even_when_she_s_mad">Part magic, part sass. Nara sparkles even when she’s mad.\n</string>
+<string name="small_but_mighty_renji_dreams_of_glory_carries_a_shield_too_big_for_him">Small but mighty! Renji dreams of glory, carries a shield too big for him.</string>
+
+    <!-- Characters Ages-->
+<string name="_12_sunblooms">12 Sunblooms</string>
+<string name="_14_storms">14 Storms</string>
+<string name="_10_volcano_puffs">10 Volcano Puffs</string>
+<string name="_13_shadows">13 Shadows</string>
+<string name="_15_thunder_beats">15 Thunder Beats</string>
+<string name="_11_leaf_turns">11 Leaf Turns</string>
+<string name="_13_blade_echoes">13 Blade Echoes</string>
+<string name="_12_crystal_songs">12 Crystal Songs</string>
+<string name="_11_hero_coins">11 Hero Coins</string>
 </resources>

@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -66,13 +67,24 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
 
+    //flexbox
+    implementation(libs.flexbox)
+
     // Retrofit
     implementation(libs.retrofit)
     //OkHttp
     implementation(libs.okhttp)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.airbnb.android:lottie:6.1.0")
     //Kotlinx Serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     //gson
     implementation(libs.gson)
+    //room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    //kotlin datetime
+    implementation(libs.kotlinx.datetime)
 }

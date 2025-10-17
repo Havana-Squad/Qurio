@@ -12,8 +12,23 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
+    <style name="PrimaryButtonText">
+        <item name="android:textAppearance">@style/Label.Medium</item>
+        <item name="android:textColor">@color/on_primary</item>
+    </style>
+
+    <style name="TextButton">
+        <item name="android:textAppearance">@style/Label.Medium</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
     <style name="Theme.Qurio" parent="Base.Theme.Qurio" />
 
+    <style name="AnswerStyle">
+        <item name="cornerRadius">12dp</item>
+        <item name="borderWidth">1dp</item>
+        <item name="cardBorderColor">@color/shade_quad</item>
+    </style>
 
     <!-- Headline -->
     <style name="Headline">
@@ -54,6 +69,10 @@
     <style name="Title.Small">
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="Title.XSmall">
+        <item name="android:textSize">10sp</item>
     </style>
 
 
@@ -109,28 +128,32 @@
         <item name="android:foreground">@drawable/question_card</item>
     </style>
 
-    <style name="CuttedCornersCardStyle" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">16dp</item>
+    <style name="CutCornersCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="android:backgroundTint">@android:color/transparent</item>
         <item name="android:foreground">@drawable/cut_corner_card_shape</item>
     </style>
 
-    <style name="Primary_Button" parent="Widget.AppCompat.Button">
-        <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/primary_button_shape</item>
+    <style name="Primary_Button_TextAppearance">
         <item name="android:textColor">@color/on_primary</item>
-        <item name="cornerRadius">16dp</item>
+        <item name="android:fontFamily">@font/fredoka_semibold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
-    <style name="SecondaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:fontFamily">@font/fredoka_medium</item>
-        <item name="android:background">@drawable/secondary_button_shape</item>
+    <style name="Primary_Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/primary_button_shape</item>
+        <item name="android:textAppearance">@style/Primary_Button_TextAppearance</item>
+    </style>
+
+    <style name="Secondary_Button_TextAppearance" >
+        <item name="android:fontFamily">@font/fredoka_semibold</item>
         <item name="android:textColor">@color/primary</item>
-        <item name="cornerRadius">16dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+    <style name="Secondary_Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/secondary_button_shape</item>
+        <item name="android:textAppearance">@style/Secondary_Button_TextAppearance</item>
     </style>
 
     <style name="OutLine" parent="Widget.AppCompat.Button">
@@ -141,11 +164,18 @@
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
+
     <style name="Union" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">@font/fredoka_medium</item>
         <item name="android:background">@drawable/union_button_shape</item>
         <item name="android:textColor">@color/on_primary</item>
         <item name="cornerRadius">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="difficultyLevelButton" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/fredoka_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>

@@ -1,0 +1,98 @@
+package com.thechance.qurio.presentation.screen.characters
+
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
+import androidx.fragment.app.DialogFragment
+import com.thechance.qurio.databinding.DialogCharacterDescriptionBinding
+import com.thechance.qurio.domain.entity.Character
+
+class CharacterDescDialogFragment : DialogFragment() {
+
+    private var _binding: DialogCharacterDescriptionBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var character: Character
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            decorView.setPadding(0, 0, 0, 0)
+        }
+
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels - (32 * resources.displayMetrics.density)).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = DialogCharacterDescriptionBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.tvCharacterName.text = character.name
+        binding.tvCharacterAge.text ="Age: ${character.age}"
+        binding.tvCharacterDesc.text =character.description
+
+        binding.imgCharacter.setImageResource(
+            if (character.isUnlocked) character.imageUnlockedRes
+            else character.imageLockedRes
+        )
+        binding.buttonBuy.visibility = if (character.isUnlocked) View.GONE else View.VISIBLE
+        binding.buttonBuy.setOnClickListener {
+            showBuyDialog()
+        }
+
+        binding.buttonExit.setOnClickListener { showCharacterDialog() }
+        binding.buttonOk.setOnClickListener { showCharacterDialog()}
+    }
+
+
+    private fun showBuyDialog() {
+        val buyDialog = CharacterBuyDialogFragment.newInstance(character) {
+        }
+        buyDialog.show(parentFragmentManager, "BuyCharacterDialog")
+    }
+    private fun showCharacterDialog() {
+        dismiss()
+        CharacterDialogFragment()
+            .show(parentFragmentManager, "Character_dialog")
+    }
+
+
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        fun newInstance(character: Character): CharacterDescDialogFragment {
+            return CharacterDescDialogFragment().apply {
+                this.character = character
+            }
+        }
+    }
+}

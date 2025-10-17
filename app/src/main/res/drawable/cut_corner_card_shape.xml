@@ -1,19 +1,18 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="328dp"
     android:height="261dp"
     android:viewportWidth="328"
-    android:viewportHeight="261">
+    android:viewportHeight="261"
+    tools:ignore="VectorRaster">
     <path
         android:fillColor="#FF0B0F14"
         android:pathData="M328 22.62v221.29L308.1 261H22.36L0 244.13V20.31L21.41 1h284.61L328 22.62Z"/>
-    <group>
-        <clip-path
-            android:pathData="M328 22.62v221.29L308.1 261H22.36L0 244.13V20.31L21.41 1h284.61L328 22.62Z"/>
-        <path
-            android:fillColor="#0AFFFFFF"
-            android:pathData="M328 22.62h1V22.2l-0.3-0.3-0.7 0.72Zm0 221.29l0.65 0.76 0.35-0.3v-0.46h-1ZM308.1 261v1h0.38l0.28-0.24-0.65-0.76Zm-285.75 0l-0.6 0.8 0.27 0.2h0.33v-1ZM0 244.13h-1v0.5l0.4 0.3 0.6-0.8ZM0 20.31l-0.67-0.75-0.33 0.3v0.45h1ZM21.41 1V0h-0.38l-0.29 0.26L21.41 1Zm284.61 0l0.7-0.71-0.3-0.29h-0.4v1ZM328 22.62h-1v221.29h1 1V22.62h-1Zm0 221.29l-0.65-0.76-19.9 17.1 0.66 0.75 0.65 0.76 19.9-17.1-0.66-0.75ZM308.1 261v-1H22.36v1 1h285.76v-1Zm-285.75 0l0.6-0.8L0.6 243.33l-0.6 0.8-0.6 0.8 22.35 16.87 0.6-0.8ZM0 244.13h1V20.31H0h-1v223.82h1ZM0 20.31l0.67 0.74 21.41-19.3L21.41 1l-0.67-0.74-21.41 19.3L0 20.31ZM21.41 1v1h284.61V1 0H21.42v1Zm284.61 0l-0.7 0.71 21.98 21.62 0.7-0.71 0.7-0.71-21.98-21.62-0.7 0.71Z"/>
-    </group>
+    <path
+        android:strokeColor="#0AFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M305.81 1.5l21.69 21.33v220.85l-19.58 16.82H22.52L0.5 243.88V20.53L21.6 1.5h284.21Z"/>
     <path
         android:strokeWidth="1"
         android:pathData="M235 0.5L291 0.5">

@@ -1,0 +1,10 @@
+<com.thechance.qurio.presentation.TimerComponent android:id="@+id/timerView"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_margin="16dp"
+    app:centerText="60 Sec"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />
