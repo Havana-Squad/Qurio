@@ -27,9 +27,6 @@
     <string name="buy_life">شراء محاولة</string>
     <string name="buy">شراء</string>
     <string name="cancel">إلغاء</string>
-    <string name="swipe_up_to_play">اسحب للأعلى للعب!</string>
-    <string name="welcome_to_qurio">مرحبًا بك في كويريو</string>
-
     <string name="skip">تخطي</string>
     <string name="check">تحقق</string>
     <string name="character">شخصية</string>
@@ -153,4 +150,16 @@
     <string name="_13_blade_echoes">13 صدى نصل</string>
     <string name="_12_crystal_songs">12 أغنية كريستال</string>
     <string name="_11_hero_coins">11 عملة بطل</string>
+
+    <!-- Onboarding -->
+    <string name="swipe_up_to_play">اسحب للأعلى للعب!</string>
+    <string name="welcome_to_qurio">مرحبًا بك في كريو</string>
+    <string name="collect_them_all">اجمعهم جميعًا!</string>
+    <string name="choose_your_character">اختر شخصيتك</string>
+    <string name="challenge_and_win">تحدى واربح</string>
+    <string name="welcome_to_the_world_of_qurio_where_questions_spark_curiosity_and_prizes_await_the_smartest_ready_to_begin_the_challenge">مرحبًا بك في عالم كريو، حيث تُشعل الأسئلة فضولك وتنتظرك الجوائز إن كنت من الأذكى. هل أنت مستعد للتحدي؟</string>
+    <string name="unlock_characters_earn_badges_and_climb_the_leaderboards_qurio_is_fascinating_but_you_can_handle_it">افتح الشخصيات، احصل على الأوسمة، وتسلّق قائمة المتصدرين. كريو لعبة ممتعة لكنها لا ترحم — وأنت قدها!</string>
+    <string name="each_hero_has_their_own_unique_style_choose_from_unique_characters_and_start_your_adventure_in_your_own_style">لكل بطل أسلوبه الخاص! اختر من بين شخصيات فريدة وابدأ مغامرتك بطريقتك.</string>
+    <string name="answer_quickly_earn_points_and_share_with_your_friends">أجب بسرعة، اجمع النقاط، وشاركها مع أصدقائك!\nكل فئة من التريفيا تجربة جديدة.</string>
+
 </resources>
