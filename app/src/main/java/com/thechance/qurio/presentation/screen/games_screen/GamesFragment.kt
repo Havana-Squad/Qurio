@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentGamesBinding
 import com.thechance.qurio.presentation.base.BaseFragment
+import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevelDialogFragment
 import jakarta.inject.Inject
 
 class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPresenter>(), GamesView {
@@ -26,7 +27,10 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
     }
 
     override fun onGameItemClick(gameId: Int) {
-        //navigate to play screen
+        DifficultyLevelDialogFragment.newInstance {
+            val action = GamesFragmentDirections.actionGameFragmentToStartPlayFragment(gameId)
+            findNavController().navigate(action)
+        }.show(childFragmentManager, "DifficultyLevelDialog" )
     }
 
     override fun updateGames(games: List<GameItem>) {

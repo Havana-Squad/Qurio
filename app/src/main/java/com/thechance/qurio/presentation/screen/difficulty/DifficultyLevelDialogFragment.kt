@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.LayoutDifficultyLevelBinding
+import com.thechance.qurio.domain.entity.Character
+import com.thechance.qurio.presentation.screen.characters.CharacterBuyDialogFragment
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -17,6 +19,8 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
 
     private var _binding: LayoutDifficultyLevelBinding? = null
     private val binding get() = _binding!!
+
+    var onNavigateToStartPlay: (() -> Unit)? = null
 
     @Inject
     lateinit var presenter : DifficultyLevelPresenter
@@ -107,6 +111,7 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
     override fun onDifficultyLevelSet(success: Boolean) {
         if (success) {
             Toast.makeText(requireContext(), "Difficulty level set!", Toast.LENGTH_SHORT).show()
+            onNavigateToStartPlay?.invoke()
             dismiss()
         } else {
             showError("Failed to set difficulty level")
@@ -117,5 +122,15 @@ class DifficultyLevelDialogFragment : DialogFragment(), DifficultyLevelView {
         super.onDestroyView()
         presenter.detachView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance(
+            onNavigateToStartPlay: () -> Unit
+        ): DifficultyLevelDialogFragment {
+            return DifficultyLevelDialogFragment().apply {
+                this.onNavigateToStartPlay = onNavigateToStartPlay
+            }
+        }
     }
 }

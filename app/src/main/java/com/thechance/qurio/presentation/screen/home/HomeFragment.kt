@@ -13,6 +13,8 @@ import com.thechance.qurio.presentation.base.BaseFragment
 import com.thechance.qurio.presentation.model.GameUi
 import com.thechance.qurio.presentation.screen.achievements.AchievementsDialogFragment
 import com.thechance.qurio.presentation.screen.buylife.BuyLifeDialogFragment
+import com.thechance.qurio.presentation.screen.characters.CharacterDialogFragment
+import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevelDialogFragment
 import com.thechance.qurio.presentation.screen.games_screen.GameItem
 import com.thechance.qurio.presentation.screen.home.adapter.GamesPagerAdapter
 import com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesAdapter
@@ -29,12 +31,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     override lateinit var presenter: HomePresenter
 
     override fun setupViews() {
+        setupCharacterButton()
         setupSettingsButton()
         setupBuyLivesButton()
         setupAwardsButton()
         setupAllGamesButton()
         setupGamesRecyclerView()
         setupAllLastGamesButton()
+    }
+
+    private fun setupCharacterButton() {
+        binding.imageSelectedCharacter.setOnClickListener {
+            CharacterDialogFragment().show(childFragmentManager, "CharacterDialog")
+        }
     }
 
     private fun setupSettingsButton() {
@@ -177,6 +186,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun navigateToGame(gameId: Int) {
-//        TODO("Not yet implemented")
+        DifficultyLevelDialogFragment.newInstance {
+            val action = HomeFragmentDirections.actionHomeFragmentToStartPlayFragment(categoryId = gameId)
+            findNavController().navigate(action)
+        }.show(childFragmentManager, "DifficultyLevelDialog")
     }
 }

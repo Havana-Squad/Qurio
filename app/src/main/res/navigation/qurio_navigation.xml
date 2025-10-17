@@ -42,6 +42,9 @@
                 android:name="categoryId"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_resultPlayFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
@@ -51,6 +54,9 @@
         <action
             android:id="@+id/action_gameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_startPlayFragment"
+            app:destination="@id/startPlayFragment" />
     </fragment>
 
        <fragment
@@ -77,5 +83,8 @@
         <action
             android:id="@+id/action_homeFragment_to_playedGamesFragment"
             app:destination="@id/playedGamesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_startPlayFragment"
+            app:destination="@id/startPlayFragment" />
     </fragment>
 </navigation>
