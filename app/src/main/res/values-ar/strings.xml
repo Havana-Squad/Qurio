@@ -150,6 +150,12 @@
     <string name="_13_blade_echoes">13 صدى نصل</string>
     <string name="_12_crystal_songs">12 أغنية كريستال</string>
     <string name="_11_hero_coins">11 عملة بطل</string>
+    <string name="all">الكل</string>
+    <string name="zero_streak_title">سلسلة من 0 يوم، ابدأ الآن!</string>
+    <string name="zero_streak_subtitle">كل يوم يصنع فرقًا!</string>
+    <string name="numbered_streak_title">سلسلة من %1$d يوم، استمر وابنِ سلسلة ضخمة!</string>
+    <string name="numbered_streak_subtitle">تابع على هذا المنوال!</string>
+
 
     <!-- Onboarding -->
     <string name="swipe_up_to_play">اسحب للأعلى للعب!</string>
