@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-8dp"
         android:elevation="1dp"
-        android:text="Character"
+        android:text="@string/character"
         android:textColor="@color/shade_primary"
         app:layout_constraintBottom_toBottomOf="@+id/icon_hexagon_title"
         app:layout_constraintEnd_toEndOf="@id/icon_hexagon_title"
@@ -157,7 +157,7 @@
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_weight="1"
-            android:text="ok"
+            android:text="OK"
             android:textAllCaps="false" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
