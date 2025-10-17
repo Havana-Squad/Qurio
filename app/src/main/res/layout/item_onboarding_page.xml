@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/onboardingImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,36 +24,40 @@
         android:scaleY="1.25"
         android:text="@string/welcome_to_qurio"
         android:textSize="44sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintBottom_toTopOf="@+id/onboardingImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/onboardingImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/onboardingTitle"
             style="@style/Title.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="Welcome to Qurio" />
+            android:textColor="@color/shade_primary"
+            android:text="@string/welcome_to_qurio"
+            />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/onboardingDescription"
             style="@style/Body.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Welcome to the world of Qurio, where questions\n spark curiosity and prizes await the smartest.\n Ready to begin the challenge?" />
+            android:textColor="@color/shade_secondary"
+            android:text="@string/welcome_to_the_world_of_qurio_where_questions_spark_curiosity_and_prizes_await_the_smartest_ready_to_begin_the_challenge"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
