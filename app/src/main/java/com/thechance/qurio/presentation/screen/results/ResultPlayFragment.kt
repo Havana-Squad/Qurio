@@ -52,7 +52,9 @@ class ResultPlayFragment :
 
     private fun setupListeners() {
         binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(
+                ResultPlayFragmentDirections.actionResultPlayFragmentToHomeFragment()
+            )
         }
 
         binding.btnPlayAgain.setOnClickListener {

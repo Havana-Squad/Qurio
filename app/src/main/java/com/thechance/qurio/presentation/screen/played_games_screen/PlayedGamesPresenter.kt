@@ -4,8 +4,9 @@ import com.thechance.qurio.domain.entity.PlayedGame
 import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PlayedGamesPresenter(
+class PlayedGamesPresenter @Inject constructor(
     private val gameRepository: GameRepository
 ) : BasePresenter<PlayedGamesView>() {
     

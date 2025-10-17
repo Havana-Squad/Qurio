@@ -1,8 +1,9 @@
 package com.thechance.qurio.presentation.screen.settings
 
 import com.thechance.qurio.presentation.base.BasePresenter
+import javax.inject.Inject
 
-class SettingsPresenter : BasePresenter<SettingsView>() {
+class SettingsPresenter @Inject constructor() : BasePresenter<SettingsView>() {
 
     private var soundLevel = 100
     private var musicLevel = 100
@@ -18,7 +19,8 @@ class SettingsPresenter : BasePresenter<SettingsView>() {
     }
 
     fun onSaveClicked() {
-        view.showSavedMessage()
+        //TODO("save settings")
+        view.dismiss()
     }
 
     fun onDiscardClicked() {
@@ -26,7 +28,7 @@ class SettingsPresenter : BasePresenter<SettingsView>() {
         musicLevel = 100
         view.updateSoundLevel(soundLevel)
         view.updateMusicLevel(musicLevel)
-        view.showDiscardedMessage()
+        view.dismiss()
     }
 
     fun getCurrentLevels(): Pair<Int, Int> = soundLevel to musicLevel

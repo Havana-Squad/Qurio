@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/qurio_navigation"
-    app:startDestination="@id/gameFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/exampleFragment"
@@ -42,12 +42,22 @@
                 android:name="categoryId"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_resultPlayFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.thechance.qurio.presentation.screen.games_screen.GamesFragment"
-        android:label="GameFragment" />
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_startPlayFragment"
+            app:destination="@id/startPlayFragment" />
+    </fragment>
 
        <fragment
         android:id="@+id/characterFragment"
@@ -57,5 +67,24 @@
     <fragment
         android:id="@+id/playedGamesFragment"
         android:name="com.thechance.qurio.presentation.screen.played_games_screen.PlayedGamesFragment"
-        android:label="PlayedGamesFragment" />
+        android:label="PlayedGamesFragment" >
+        <action
+            android:id="@+id/action_playedGamesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.thechance.qurio.presentation.screen.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_playedGamesFragment"
+            app:destination="@id/playedGamesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_startPlayFragment"
+            app:destination="@id/startPlayFragment" />
+    </fragment>
 </navigation>
