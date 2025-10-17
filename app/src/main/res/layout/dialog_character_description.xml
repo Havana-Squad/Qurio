@@ -108,7 +108,6 @@
             android:contentDescription="@string/character"
             android:paddingEnd="12dp"
             android:src="@drawable/rika"
-            android:translationY="-10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/rika" />
