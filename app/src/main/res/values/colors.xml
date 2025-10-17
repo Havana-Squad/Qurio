@@ -30,6 +30,7 @@
     <color name="red">#E12F32</color>
     <color name="orange50">#80DC6A43</color>
     <color name="border_color">#151D26</color>
+    <color name="transparent">#00FFFFFF</color>
 
 
 </resources>
