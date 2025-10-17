@@ -2,7 +2,6 @@ package com.thechance.qurio.presentation.main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,10 +12,11 @@ import androidx.navigation.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.ActivityMainBinding
 import com.thechance.qurio.domain.repository.UserPreferencesRepository
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
