@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,19 +14,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/brain" />
 
-    <TextView
+    <com.thechance.qurio.presentation.screen.results.custom.OutlineTextView
         android:id="@+id/WelcomeOutlineTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="-20dp"
         android:maxLines="1"
         android:scaleX="1.25"
         android:scaleY="1.25"
         android:text="@string/welcome_to_qurio"
         android:textSize="44sp"
-        app:layout_constraintBottom_toTopOf="@+id/onboardingImage"
+        app:outlineColor="#1AFFFFFF"
+        app:outlineWidth="1dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:textColor="@color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -37,7 +40,7 @@
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/onboardingImage"
+        app:layout_constraintBottom_toTopOf="@id/onboardingImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
