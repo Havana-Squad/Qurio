@@ -63,11 +63,12 @@
                         app:srcCompat="@drawable/ic_gold_heart" />
 
                     <TextView
+                        android:id="@+id/livesCount"
                         style="@style/Label.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="4"
+                        app:text="7"
                         android:textColor="@color/on_primary" />
                 </LinearLayout>
 

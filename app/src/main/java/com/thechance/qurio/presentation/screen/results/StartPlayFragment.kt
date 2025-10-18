@@ -30,6 +30,7 @@ class StartPlayFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startPlayPresenter.getQuestions(args.categoryId, args.difficultyLevel)
+        presenter.loadCurrentLives()
         setupListeners()
     }
 
@@ -139,5 +140,8 @@ class StartPlayFragment :
 
     override fun toggleSkipButton(visible: Boolean) {
         binding.skipButton.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+    override fun updateLivesDisplay(lives: Int) {
+        binding.livesCount.text = lives.toString()
     }
 }
