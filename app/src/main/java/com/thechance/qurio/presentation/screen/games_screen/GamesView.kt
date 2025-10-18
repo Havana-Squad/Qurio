@@ -6,4 +6,7 @@ interface GamesView : BaseView {
     fun updateGames(games: List<GameItem>)
     fun navigateBack()
     fun onGameItemClick(gameId: Int)
+    fun showLoading()
+    fun hideLoading()
+    fun showError(error: Throwable)
 }

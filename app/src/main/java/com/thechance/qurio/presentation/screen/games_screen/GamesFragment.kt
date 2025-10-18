@@ -1,6 +1,7 @@
 package com.thechance.qurio.presentation.screen.games_screen
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentGamesBinding
@@ -18,6 +19,7 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.attachView(this)
+        presenter.getGames()
     }
 
     override fun setupViews() {
@@ -31,6 +33,21 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
             val action = GamesFragmentDirections.actionGameFragmentToStartPlayFragment(gameId)
             findNavController().navigate(action)
         }.show(childFragmentManager, "DifficultyLevelDialog" )
+    }
+
+    override fun showLoading() {
+        binding.loadingLayout.visibility = View.VISIBLE
+        binding.errorLayout.visibility = View.GONE
+    }
+
+    override fun hideLoading() {
+        binding.loadingLayout.visibility = View.GONE
+        binding.errorLayout.visibility = View.GONE
+    }
+
+    override fun showError(error: Throwable) {
+        binding.errorLayout.visibility = View.VISIBLE
+        binding.loadingLayout.visibility = View.GONE
     }
 
     override fun updateGames(games: List<GameItem>) {
