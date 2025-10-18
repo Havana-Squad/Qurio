@@ -6,4 +6,6 @@ interface OnboardingView : BaseView {
     fun onClickRightArrow()
     fun onClickLeftArrow()
     fun onSwipeUp()
+    fun navigateToHome()
+    fun showErrorMessage(message: String)
 }

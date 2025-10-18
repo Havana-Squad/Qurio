@@ -2,6 +2,7 @@ package com.thechance.qurio.presentation.screen.onboaeding
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentOnboardingBinding
@@ -29,8 +30,15 @@ class OnboardingFragment :
 
     override fun onSwipeUp() {
         presenter.firstAppLaunch()
+    }
+
+    override fun navigateToHome() {
         val navController = findNavController()
-        navController.popBackStack(R.id.homeFragment, false)
+        navController.navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment())
+    }
+
+    override fun showErrorMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onClickRightArrow() {

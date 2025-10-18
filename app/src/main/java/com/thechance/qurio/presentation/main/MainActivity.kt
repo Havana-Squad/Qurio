@@ -1,6 +1,5 @@
 package com.thechance.qurio.presentation.main
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -53,9 +52,9 @@ class MainActivity : DaggerAppCompatActivity() {
         lifecycleScope.launch {
             userPreferences.isFirstAppLaunch.collect {
                 if (it) {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.onboardingFragment)
+                    navController.navigate(R.id.onboardingFragment)
                 } else {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.homeFragment)
+                    navController.navigate(R.id.homeFragment)
                 }
             }
         }
