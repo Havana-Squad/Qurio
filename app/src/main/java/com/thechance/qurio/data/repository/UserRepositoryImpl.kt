@@ -48,4 +48,8 @@ class UserRepositoryImpl @Inject constructor(
         UserDataSource.updatePoints(points)
     }
 
+    override suspend fun updateAwards(awards: Int) {
+        UserDataSource.updateAwards(awards)
+    }
+
 }

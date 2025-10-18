@@ -10,6 +10,7 @@ interface UserRepository {
     suspend fun updateStreak(streak: Int)
     suspend fun incrementStreak()
     suspend fun addPoints(points: Int)
-     suspend fun updateLives(lives: Int)
-     suspend fun updatePoints(points: Int)
+    suspend fun updateLives(lives: Int)
+    suspend fun updatePoints(points: Int)
+    suspend fun updateAwards(awards: Int)
 }
