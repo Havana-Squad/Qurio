@@ -153,4 +153,17 @@
     <string name="zero_streak_subtitle">Every day count!</string>
     <string name="numbered_streak_title">%1$d day streak, make a big series</string>
     <string name="numbered_streak_subtitle">KEEP IT UP!</string>
+
+    <!-- Onboarding -->
+    <string name="swipe_up_to_play">Swipe up to PLAY!</string>
+    <string name="welcome_to_qurio">Welcome to Qurio</string>
+    <string name="collect_them_all">Collect them all!</string>
+    <string name="choose_your_character">Choose your character</string>
+    <string name="challenge_and_win">Challenge and win</string>
+    <string name="welcome_to_the_world_of_qurio_where_questions_spark_curiosity_and_prizes_await_the_smartest_ready_to_begin_the_challenge">Welcome to the world of Qurio, where questions spark curiosity and prizes await the smartest. Ready to begin the challenge?</string>
+    <string name="unlock_characters_earn_badges_and_climb_the_leaderboards_qurio_is_fascinating_but_you_can_handle_it">Unlock characters, earn badges, and climb the leaderboards. Qurio is merciless, but you can handle it.</string>
+    <string name="each_hero_has_their_own_unique_style_choose_from_unique_characters_and_start_your_adventure_in_your_own_style">Each hero has their own unique style! Choose from unique characters and start your adventure in your own style.</string>
+    <string name="answer_quickly_earn_points_and_share_with_your_friends">Answer quickly, earn points, and share with your\n friends!\n Each trivia category is a new experience.</string>
+
+
 </resources>

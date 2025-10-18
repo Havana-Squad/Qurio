@@ -87,4 +87,8 @@
             android:id="@+id/action_homeFragment_to_startPlayFragment"
             app:destination="@id/startPlayFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.thechance.qurio.presentation.screen.onboaeding.OnboardingFragment"
+        android:label="OnboardingFragment" />
 </navigation>
