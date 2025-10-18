@@ -2,11 +2,13 @@ package com.thechance.qurio.presentation.screen.achievements
 
 import com.thechance.qurio.domain.entity.Achievement
 import com.thechance.qurio.domain.repository.AchievementsRepository
+import com.thechance.qurio.domain.repository.user.UserRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class AchievementsPresenter @Inject constructor(
-    private val achievementsRepository: AchievementsRepository
+    private val achievementsRepository: AchievementsRepository,
+    private val userRepo: UserRepository
 ): BasePresenter<AchievementsView>() {
     fun loadAchievements() {
         tryToExecute(
@@ -30,6 +32,8 @@ class AchievementsPresenter @Inject constructor(
             },
             onSuccess = { updatedAchievements ->
                 view.showAchievements(updatedAchievements)
+                val achievementsCounts = achievementsRepository.getUnlockedAchievementsCount()
+                userRepo.updateAwards(achievementsCounts)
             },
             onError = { t -> view.showError(t.message ?: "Failed to unlock") }
         )

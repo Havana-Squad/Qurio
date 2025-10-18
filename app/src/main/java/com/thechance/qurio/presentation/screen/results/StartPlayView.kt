@@ -21,4 +21,5 @@ interface StartPlayView : BaseView {
     fun toggleSkipButton(visible: Boolean)
 
     fun onGameSessionSaved(session: GameSession)
+    fun updateLivesDisplay(lives: Int)
 }

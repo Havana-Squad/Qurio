@@ -1,16 +1,24 @@
 package com.thechance.qurio.presentation.screen.results
 
 import android.os.CountDownTimer
-import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.data.repository.GameSessionRepository
+import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
+import com.thechance.qurio.domain.repository.user.UserRepository
 import com.thechance.qurio.presentation.base.BasePresenter
+import com.thechance.qurio.presentation.screen.achievements.AchievementsManager
+import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevel
+import kotlinx.datetime.Clock
+import kotlinx.datetime.daysUntil
+import kotlinx.datetime.toLocalDateTime
 import javax.inject.Inject
 
 class StartPlayPresenter @Inject constructor(
-    private val TGameRepository: TGameRepository,
-    private val gameSessionRepository: GameSessionRepository
+    private val tGameRepository: TGameRepository,
+    private val gameSessionRepository: GameSessionRepository,
+    private val achievementsManager: AchievementsManager,
+    private val userRepository: UserRepository
 ) : BasePresenter<StartPlayView>() {
 
     private var questions: List<Question> = emptyList()
@@ -25,24 +33,30 @@ class StartPlayPresenter @Inject constructor(
     private var totalTimeSeconds = 0L
     private var timerStartTime = 0L
 
-    fun getQuestions(categoryId: Int) {
+    private var currentStreak = 0
+    private var longestStreak = 0
+    private var firstAnswerCorrect = false
+    private var fastestAnswerTime = Long.MAX_VALUE
+
+
+    fun getQuestions(categoryId: Int, difficulty: DifficultyLevel) {
         tryToExecute(
-            callee = { TGameRepository.fetchQuestions(12, "easy", "multiple", categoryId) },
-            onStart = { view?.showLoading() },
+            callee = { tGameRepository.fetchQuestions(12, difficulty.name.lowercase(), "multiple", categoryId) },
+            onStart = { view.showLoading() },
             onSuccess = ::onQuestionsSuccess,
-            onError = { view?.showError(it) },
-            onFinish = { view?.hideLoading() }
+            onError = { view.showError(it) },
+            onFinish = { view.hideLoading() }
         )
     }
 
     private fun onQuestionsSuccess(list: List<Question>) {
         questions = list
-        view?.hideLoading()
+        view.hideLoading()
         if (list.isNotEmpty()) {
-            view?.showQuestions(list)
+            view.showQuestions(list)
             showCurrentQuestion()
         } else {
-            view?.showMessage("No questions found")
+            view.showMessage("No questions found")
         }
     }
 
@@ -50,15 +64,15 @@ class StartPlayPresenter @Inject constructor(
         questionChecked = false
         val q = questions[currentIndex]
         currentAnswers = mutableListOf<String>().apply {
-            q.correctAnswer?.let { add(it) }
-            q.incorrectAnswers?.let { addAll(it.filterNotNull()) }
+            add(q.correctAnswer)
+            addAll(q.incorrectAnswers.filterNotNull())
             shuffle()
         }
-        view?.showQuestion(q, "Q ${currentIndex + 1}/${questions.size}")
-        view?.showAnswers(currentAnswers)
-        view?.resetAnswers()
+        view.showQuestion(q, "Q ${currentIndex + 1}/${questions.size}")
+        view.showAnswers(currentAnswers)
+        view.resetAnswers()
         val isLast = currentIndex == questions.size - 1
-        view?.toggleSkipButton(!isLast)
+        view.toggleSkipButton(!isLast)
 
         timerStartTime = System.currentTimeMillis()
         startTimer()
@@ -68,7 +82,7 @@ class StartPlayPresenter @Inject constructor(
         countDownTimer?.cancel()
 
         val durationSeconds = (questionTimeMillis / 1000).toInt()
-        view?.updateTimer(durationSeconds.toLong(), 1f)
+        view.updateTimer(durationSeconds.toLong(), 1f)
 
         countDownTimer = object : CountDownTimer(questionTimeMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -77,7 +91,7 @@ class StartPlayPresenter @Inject constructor(
             }
 
             override fun onFinish() {
-                view?.onTimerFinished()
+                view.onTimerFinished()
                 nextQuestion()
             }
         }.start()
@@ -86,23 +100,36 @@ class StartPlayPresenter @Inject constructor(
     fun onCheckButtonClicked(selectedPosition: Int?) {
         if (!questionChecked) {
             if (selectedPosition == null) {
-                view?.showMessage("Select an answer first")
+                view.showMessage("Select an answer first")
                 return
             }
 
             val question = questions[currentIndex]
-            val correct = question.correctAnswer ?: ""
-            view?.highlightAnswers(correct, selectedPosition)
+            val correct = question.correctAnswer
+            view.highlightAnswers(correct, selectedPosition)
             questionChecked = true
             countDownTimer?.cancel()
 
+            val timeTaken = System.currentTimeMillis() - timerStartTime
             val answer = currentAnswers.getOrNull(selectedPosition)
-            if (answer == correct) correctCount++ else wrongCount++
+
+            if (answer == correct) {
+                correctCount++
+                currentStreak++
+                if (currentStreak > longestStreak) longestStreak = currentStreak
+                if (currentIndex == 0) firstAnswerCorrect = true
+                if (timeTaken < fastestAnswerTime) fastestAnswerTime = timeTaken
+            } else {
+                wrongCount++
+                currentStreak = 0
+            }
+
+
             totalTimeSeconds += ((System.currentTimeMillis() - timerStartTime) / 1000).toInt()
 
             if (currentIndex == questions.size - 1) {
                 saveGameSession()
-                view?.showEndOfQuestions()
+                view.showEndOfQuestions()
             }
 
         } else {
@@ -119,7 +146,7 @@ class StartPlayPresenter @Inject constructor(
             showCurrentQuestion()
         } else {
             saveGameSession()
-            view?.showEndOfQuestions()
+            view.showEndOfQuestions()
         }
     }
 
@@ -136,15 +163,18 @@ class StartPlayPresenter @Inject constructor(
 
     private fun saveGameSession() {
         val skipped = (questions.size - (correctCount + wrongCount))
+        val stars = calculateStars()
+
         val session = com.thechance.qurio.data.local.model.GameSession(
             correctAnswers = correctCount,
             wrongAnswers = wrongCount,
             skippedAnswers = skipped,
-            stars = calculateStars(),
+            stars = stars,
             totalTimeSeconds = totalTimeSeconds.toInt(),
             earnedCoins = calculateCoins(),
             date = System.currentTimeMillis()
         )
+
         tryToExecute(
             callee = { gameSessionRepository.insertSession(session) },
             onStart = {},
@@ -157,14 +187,94 @@ class StartPlayPresenter @Inject constructor(
                     totalTimeSeconds = session.totalTimeSeconds,
                     earnedCoins = session.earnedCoins
                 )
-                view?.onGameSessionSaved(domainSession)
+                updateStreak()
+                if (stars == 0) {
+                    tryToExecute(
+                        callee = { decreaseLives() },
+                        onSuccess = {
+                            checkAchievements()
+                            view.onGameSessionSaved(domainSession)
+                        },
+                        onError = { view.showError(it) }
+                    )
+                } else {
+                    checkAchievements()
+                    view.onGameSessionSaved(domainSession)
+                }
             },
-            onError = { view?.showError(it) },
+            onError = { view.showError(it) },
             onFinish = {}
         )
     }
 
+    private suspend fun updateStreak() {
+        val lastPlayedGame = userRepository.getLastPlayedDate()
+        val today = Clock.System.now()
+            .toLocalDateTime(kotlinx.datetime.TimeZone.currentSystemDefault()).date
+        val daysBetween = today.daysUntil(lastPlayedGame)
+        when (daysBetween) {
+            0 -> Unit
+            1 -> { userRepository.incrementStreak() }
+            else -> { userRepository.resetStreak() }
+        }
+    }
+
+    private suspend fun decreaseLives() {
+        val stats = userRepository.getUserStatistics()
+        val currentLives = stats.first
+
+        if (currentLives > 0) {
+            userRepository.updateLives(currentLives - 1)
+        }
+    }
+
+    private fun checkAchievements() {
+        tryToExecute(
+            callee = {
+                achievementsManager.checkAndUnlockAchievements(
+                    maxCorrectStreak = getLongestStreak(),
+                    firstAnswerCorrect = wasFirstAnswerCorrect(),
+                    scorePercent = calculateScorePercent(),
+                    totalQuestions = questions.size,
+                    correctAnswers = correctCount,
+                    fastestCorrectAnswerTime = getFastestAnswerTime()
+                )
+            },
+            onSuccess = { unlockedAchievements ->
+                unlockedAchievements.forEach { achievement ->
+                    view.showMessage("Achievement unlocked: ${achievement.name}")
+                }
+            },
+            onError = { throwable ->
+                view.showError(throwable)
+            }
+        )
+    }
+
+    private fun getLongestStreak(): Int = longestStreak
+
+    private fun wasFirstAnswerCorrect(): Boolean = firstAnswerCorrect
+
+    private fun calculateScorePercent(): Int {
+        if (questions.isEmpty()) return 0
+        return ((correctCount.toDouble() / questions.size) * 100).toInt()
+    }
+
+    private fun getFastestAnswerTime(): Long =
+        if (fastestAnswerTime == Long.MAX_VALUE) 0 else fastestAnswerTime
+
+
     fun destroyTimer() {
         countDownTimer?.cancel()
+    }
+    fun loadCurrentLives() {
+        tryToExecute(
+            callee = { userRepository.getUserStatistics() },
+            onSuccess = { stats ->
+                val currentLives = stats.first
+                view.updateLivesDisplay(currentLives)
+            },
+            onError = { view.showError(it) }
+        )
     }
 }

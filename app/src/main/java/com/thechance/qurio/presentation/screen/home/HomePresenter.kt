@@ -48,7 +48,6 @@ class HomePresenter @Inject constructor(
     }
 
     private fun onGetUserStatisticsSuccess(statistics: Triple<Int, Int, Int>) {
-        println("get$statistics")
         view.setUserStatistics(statistics)
     }
 

@@ -2,10 +2,10 @@ package com.thechance.qurio.presentation.screen.results
 
 import android.os.Bundle
 import android.view.View
-import com.thechance.qurio.R
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentStartPlayBinding
 import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
@@ -29,7 +29,8 @@ class StartPlayFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startPlayPresenter.getQuestions(args.categoryId)
+        startPlayPresenter.getQuestions(args.categoryId, args.difficultyLevel)
+        presenter.loadCurrentLives()
         setupListeners()
     }
 
@@ -40,6 +41,10 @@ class StartPlayFragment :
 
         binding.skipButton.setOnClickListener {
             startPlayPresenter.nextQuestion()
+        }
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigate(StartPlayFragmentDirections.actionStartPlayFragmentToHomeFragment())
         }
     }
 
@@ -110,7 +115,7 @@ class StartPlayFragment :
 
     override fun onGameSessionSaved(session: GameSession) {
         val action = StartPlayFragmentDirections
-            .actionStartPlayFragmentToResultPlayFragment(session, args.categoryId)
+            .actionStartPlayFragmentToResultPlayFragment(session, args.categoryId, args.difficultyLevel)
         findNavController().navigate(action)
     }
 
@@ -139,5 +144,8 @@ class StartPlayFragment :
 
     override fun toggleSkipButton(visible: Boolean) {
         binding.skipButton.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+    override fun updateLivesDisplay(lives: Int) {
+        binding.livesCount.text = lives.toString()
     }
 }

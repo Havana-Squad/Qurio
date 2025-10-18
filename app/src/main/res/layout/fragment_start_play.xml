@@ -45,8 +45,9 @@
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/back_button"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:rotationY="180"
                         android:src="@drawable/ic_arrow_right_circle" />
@@ -63,11 +64,12 @@
                         app:srcCompat="@drawable/ic_gold_heart" />
 
                     <TextView
+                        android:id="@+id/livesCount"
                         style="@style/Label.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="4"
+                        android:text="7"
                         android:textColor="@color/on_primary" />
                 </LinearLayout>
 
@@ -164,7 +166,7 @@
                 android:id="@+id/loadingLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone">

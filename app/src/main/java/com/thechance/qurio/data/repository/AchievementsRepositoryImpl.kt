@@ -8,9 +8,9 @@ import com.thechance.qurio.domain.repository.AchievementsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
-class AchievementsRepositoryImpl @Inject constructor(private val context: Context) : AchievementsRepository {
+class AchievementsRepositoryImpl @Inject constructor(private val context: Context) :
+    AchievementsRepository {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     override suspend fun getAllAchievements(): List<Achievement> = withContext(Dispatchers.IO) {
@@ -29,10 +29,16 @@ class AchievementsRepositoryImpl @Inject constructor(private val context: Contex
             (prefs.getStringSet(KEY_UNLOCKED, emptySet())?.toMutableSet() ?: mutableSetOf())
         currentAchievementsSet.add(id.toString())
         prefs.edit { putStringSet(KEY_UNLOCKED, currentAchievementsSet) }
+
     }
 
     override suspend fun isAchievementUnlocked(id: Int): Boolean = withContext(Dispatchers.IO) {
         (prefs.getStringSet(KEY_UNLOCKED, emptySet()) ?: emptySet()).contains(id.toString())
+    }
+
+    override suspend fun getUnlockedAchievementsCount(): Int {
+        val unlockedAchievements = prefs.getStringSet(KEY_UNLOCKED, emptySet()) ?: emptySet()
+        return unlockedAchievements.size
     }
 
     companion object {

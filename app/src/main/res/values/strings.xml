@@ -82,7 +82,7 @@
     <!-- Achievement Requirements -->
     <string name="achievement_quiz_rookie_requirement">Complete 5 quizzes.</string>
     <string name="achievement_streak_starter_requirement">Answer 3 questions correctly in a row.</string>
-    <string name="achievement_lucky_guess_requirement">Answer one question correctly without using hints.</string>
+    <string name="achievement_lucky_guess_requirement">Answer the first question of a quiz correctly.</string>
     <string name="achievement_explorer_requirement">Play in at least 4 different categories.</string>
     <string name="achievement_trivia_champ_requirement">Achieve a score of 80% or higher in any quiz.</string>
     <string name="achievement_collector_requirement">Unlock 5 different achievements.</string>
