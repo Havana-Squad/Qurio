@@ -7,7 +7,10 @@ interface BuyLifeView : BaseView {
     fun showPrice(price: Int)
     fun showLoading()
     fun hideLoading()
+    fun onLifeBoughtSuccessfully()
     fun showError(message: String)
     fun onLifeBought(success: Boolean)
+    fun enableBuyButton()
+    fun disableBuyButton()
 }
 

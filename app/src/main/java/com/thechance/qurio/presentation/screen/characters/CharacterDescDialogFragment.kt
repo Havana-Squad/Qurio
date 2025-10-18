@@ -11,6 +11,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.DialogCharacterDescriptionBinding
 import com.thechance.qurio.domain.entity.Character
+import dagger.android.support.AndroidSupportInjection
 
 class CharacterDescDialogFragment : DialogFragment() {
 
@@ -21,6 +22,7 @@ class CharacterDescDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+        AndroidSupportInjection.inject(this)
 
         dialog.window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
@@ -48,8 +50,9 @@ class CharacterDescDialogFragment : DialogFragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        println("parent")
 
+        super.onViewCreated(view, savedInstanceState)
         binding.tvCharacterName.text = character.name
         binding.tvCharacterAge.text ="Age: ${character.age}"
         binding.tvCharacterDesc.text =character.description
@@ -69,14 +72,12 @@ class CharacterDescDialogFragment : DialogFragment() {
 
 
     private fun showBuyDialog() {
-        val buyDialog = CharacterBuyDialogFragment.newInstance(character) {
-        }
-        buyDialog.show(parentFragmentManager, "BuyCharacterDialog")
+        CharacterDialogNavigator.showBuyDialog(parentFragmentManager, character)
     }
+
     private fun showCharacterDialog() {
+        CharacterDialogNavigator.showCharacterList(parentFragmentManager)
         dismiss()
-        CharacterDialogFragment()
-            .show(parentFragmentManager, "Character_dialog")
     }
 
 

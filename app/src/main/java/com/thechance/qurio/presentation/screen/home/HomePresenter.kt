@@ -2,8 +2,8 @@ package com.thechance.qurio.presentation.screen.home
 
 import com.thechance.qurio.domain.entity.GameCategory
 import com.thechance.qurio.domain.entity.PlayedGame
-import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.game.GameRepository
+import com.thechance.qurio.domain.repository.user.UserRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.games_screen.toUi
 import com.thechance.qurio.presentation.screen.played_games_screen.toUi
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 class HomePresenter @Inject constructor(
     private val gameRepository: GameRepository,
-    private val achievementsRepository: AchievementsRepository
+    private val userRepository: UserRepository
 ) : BasePresenter<HomeView>() {
     init {
         getUserCharacter()
@@ -23,7 +23,7 @@ class HomePresenter @Inject constructor(
 
     private fun getUserCharacter() {
         tryToExecute(
-            callee = { "Rika" },
+            callee = { userRepository.getUserCharacter().name },
             onSuccess = ::onGetUserCharacterSuccess,
             onError = ::onError
         )
@@ -39,21 +39,20 @@ class HomePresenter @Inject constructor(
 
     private fun getUserStatistics() {
         tryToExecute(
-            callee = {
-                val achievementsCounts = achievementsRepository.getUnlockedAchievementsCount()
-                Triple(4, 5200,achievementsCounts) },
+            callee = {userRepository.getUserStatistics()},
             onSuccess = ::onGetUserStatisticsSuccess,
             onError = ::onError
         )
     }
 
     private fun onGetUserStatisticsSuccess(statistics: Triple<Int, Int, Int>) {
+        println("get$statistics")
         view.setUserStatistics(statistics)
     }
 
     private fun getUserStreak() {
         tryToExecute(
-            callee =  { 5 },
+            callee =  { userRepository.getUserStreak()},
             onSuccess = ::onGetUserStreakSuccess,
             onError = ::onError
         )
@@ -62,7 +61,10 @@ class HomePresenter @Inject constructor(
     private fun onGetUserStreakSuccess(streak: Int) {
         view.setUserStreak(streak)
     }
-
+    fun refreshData() {
+        getUserStatistics()
+        getUserStreak()
+    }
     private fun getGames() {
         tryToExecute(
             callee = gameRepository::getGames,
