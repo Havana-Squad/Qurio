@@ -250,4 +250,14 @@ class StartPlayPresenter @Inject constructor(
     fun destroyTimer() {
         countDownTimer?.cancel()
     }
+    fun loadCurrentLives() {
+        tryToExecute(
+            callee = { userRepository.getUserStatistics() },
+            onSuccess = { stats ->
+                val currentLives = stats.first
+                view.updateLivesDisplay(currentLives)
+            },
+            onError = { view.showError(it) }
+        )
+    }
 }

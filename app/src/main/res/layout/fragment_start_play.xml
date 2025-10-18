@@ -63,6 +63,7 @@
                         app:srcCompat="@drawable/ic_gold_heart" />
 
                     <TextView
+                        android:id="@+id/livesCount"
                         style="@style/Label.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
