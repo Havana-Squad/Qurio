@@ -11,6 +11,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
 import com.thechance.qurio.databinding.DialogCharacterBuyBinding
 import com.thechance.qurio.domain.entity.Character
+import com.thechance.qurio.presentation.screen.home.HomeFragment
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -23,7 +24,6 @@ class CharacterBuyDialogFragment : DialogFragment(){
     private lateinit var character: Character
     @Inject
     lateinit var presenter : CharacterPresenter
-    private var onBuyConfirmed: (() -> Unit)? = null
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         AndroidSupportInjection.inject(this)
@@ -70,17 +70,23 @@ class CharacterBuyDialogFragment : DialogFragment(){
 
         binding.buttonBuy.setOnClickListener {
             presenter.buyCharacter(character)
-            parentFragmentManager.setFragmentResult("character_bought", Bundle().apply {
-                putBoolean("success", true)
-            })
+            var fragment = parentFragment
+            while (fragment != null && fragment !is HomeFragment) {
+                fragment = fragment.parentFragment
+            }
+
+            if (fragment is HomeFragment) {
+                fragment.childFragmentManager.setFragmentResult("character_bought", Bundle().apply {
+                    putBoolean("success", true)
+                })
+            }
+
             dismiss()
         }
 
-        binding.buttonCancel.setOnClickListener { dismiss() }
-
         binding.buttonCancel.setOnClickListener {
             dismiss()
-
+            CharacterDialogNavigator.showCharacterDetails(parentFragmentManager, character)
         }
     }
 
@@ -95,11 +101,9 @@ class CharacterBuyDialogFragment : DialogFragment(){
     companion object {
         fun newInstance(
             character: Character,
-            onBuyConfirmed: () -> Unit
         ): CharacterBuyDialogFragment {
             return CharacterBuyDialogFragment().apply {
                 this.character = character
-                this.onBuyConfirmed = onBuyConfirmed
             }
         }
     }

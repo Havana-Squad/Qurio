@@ -39,6 +39,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         setupGamesRecyclerView()
         setupAllLastGamesButton()
         setupLifePurchaseListener()
+        setupCharacterPurchaseListener()
+    }
+    private fun setupCharacterPurchaseListener() {
+        childFragmentManager.setFragmentResultListener(
+            "character_bought",
+            viewLifecycleOwner
+        ) { _, bundle ->
+            val success = bundle.getBoolean("success", false)
+            if (success) {
+                presenter.refreshData()
+            }
+        }
     }
     private fun setupLifePurchaseListener() {
         childFragmentManager.setFragmentResultListener("life_bought", viewLifecycleOwner) { _, bundle ->
