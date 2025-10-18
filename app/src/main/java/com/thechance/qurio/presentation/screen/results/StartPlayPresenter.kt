@@ -5,6 +5,7 @@ import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.TGameRepository
 import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
+import com.thechance.qurio.domain.repository.user.UserRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.achievements.AchievementsManager
 import javax.inject.Inject
@@ -12,7 +13,8 @@ import javax.inject.Inject
 class StartPlayPresenter @Inject constructor(
     private val tGameRepository: TGameRepository,
     private val gameSessionRepository: GameSessionRepository,
-    private val achievementsManager: AchievementsManager
+    private val achievementsManager: AchievementsManager,
+    private val userRepository: UserRepository
 ) : BasePresenter<StartPlayView>() {
 
     private var questions: List<Question> = emptyList()
@@ -157,15 +159,18 @@ class StartPlayPresenter @Inject constructor(
 
     private fun saveGameSession() {
         val skipped = (questions.size - (correctCount + wrongCount))
+        val stars = calculateStars()
+
         val session = com.thechance.qurio.data.local.model.GameSession(
             correctAnswers = correctCount,
             wrongAnswers = wrongCount,
             skippedAnswers = skipped,
-            stars = calculateStars(),
+            stars = stars,
             totalTimeSeconds = totalTimeSeconds.toInt(),
             earnedCoins = calculateCoins(),
             date = System.currentTimeMillis()
         )
+
         tryToExecute(
             callee = { gameSessionRepository.insertSession(session) },
             onStart = {},
@@ -178,13 +183,32 @@ class StartPlayPresenter @Inject constructor(
                     totalTimeSeconds = session.totalTimeSeconds,
                     earnedCoins = session.earnedCoins
                 )
-
-                checkAchievements()
-                view.onGameSessionSaved(domainSession)
+                if (stars == 0) {
+                    tryToExecute(
+                        callee = { decreaseLives() },
+                        onSuccess = {
+                            checkAchievements()
+                            view.onGameSessionSaved(domainSession)
+                        },
+                        onError = { view.showError(it) }
+                    )
+                } else {
+                    checkAchievements()
+                    view.onGameSessionSaved(domainSession)
+                }
             },
             onError = { view.showError(it) },
             onFinish = {}
         )
+    }
+
+    private suspend fun decreaseLives() {
+        val stats = userRepository.getUserStatistics()
+        val currentLives = stats.first
+
+        if (currentLives > 0) {
+            userRepository.updateLives(currentLives - 1)
+        }
     }
 
     private fun checkAchievements() {
