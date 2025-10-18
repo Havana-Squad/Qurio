@@ -1,4 +1,3 @@
-
 package com.thechance.qurio.presentation.screen.characters
 
 import android.app.Dialog
@@ -96,6 +95,13 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
                 presenter.onCharacterClicked(character)
             }
         )
+
+        val currentUsedCharacter = com.thechance.qurio.data.local.UserDataSource.getUserCharacter()
+        val confirmedIndex = characters.indexOfFirst { it.id == currentUsedCharacter?.id }
+        if (confirmedIndex != -1) {
+            characterAdapter?.setConfirmedPosition(confirmedIndex)
+        }
+
         binding.recyclerCharacters.adapter = characterAdapter
     }
 
@@ -133,6 +139,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         characterAdapter?.confirmSelection()
 
         presenter.useCharacter(selected.id, true)
+
         lifecycleScope.launch {
             delay(300)
             var fragment = parentFragment
@@ -155,4 +162,4 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
             dismiss()
         }
     }
-    }
+}

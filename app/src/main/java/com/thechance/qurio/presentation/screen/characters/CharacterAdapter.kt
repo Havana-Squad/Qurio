@@ -69,6 +69,12 @@ class CharacterAdapter(
         confirmedPosition = selectedPosition
         notifyDataSetChanged()
     }
+    fun setConfirmedPosition(position: Int) {
+        println("index")
+        confirmedPosition = position
+        selectedPosition = position
+        notifyDataSetChanged()
+    }
 
     fun cancelSelection() {
         selectedPosition = confirmedPosition
