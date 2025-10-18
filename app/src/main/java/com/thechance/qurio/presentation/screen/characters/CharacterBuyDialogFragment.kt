@@ -95,8 +95,8 @@ class CharacterBuyDialogFragment : DialogFragment(){
 
         binding.buttonCancel.setOnClickListener {
             dismiss()
-            CharacterDialogNavigator.showCharacterDetails(parentFragmentManager, character)
         }
+        binding.buttonExit.setOnClickListener { dismiss()}
     }
 
 

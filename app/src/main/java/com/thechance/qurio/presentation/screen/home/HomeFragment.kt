@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.thechance.qurio.R
 import com.thechance.qurio.databinding.FragmentHomeBinding
+import com.thechance.qurio.domain.entity.Character
 import com.thechance.qurio.presentation.base.BaseFragment
 import com.thechance.qurio.presentation.model.GameUi
 import com.thechance.qurio.presentation.screen.achievements.AchievementsDialogFragment
@@ -39,11 +40,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         setupGamesRecyclerView()
         setupAllLastGamesButton()
         setupLifePurchaseListener()
+        updateCharacterListener()
         setupCharacterPurchaseListener()
     }
     private fun setupCharacterPurchaseListener() {
         childFragmentManager.setFragmentResultListener(
             "character_bought",
+            viewLifecycleOwner
+        ) { _, bundle ->
+            val success = bundle.getBoolean("success", false)
+            if (success) {
+                presenter.refreshData()
+            }
+        }
+    }
+    private fun updateCharacterListener() {
+        childFragmentManager.setFragmentResultListener(
+            "character_updated",
             viewLifecycleOwner
         ) { _, bundle ->
             val success = bundle.getBoolean("success", false)
@@ -147,9 +160,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         }
     }
 
-    override fun setUserCharacter(character: String) {
-        binding.imageSelectedCharacter.setImageDrawable(getDrawable(R.drawable.rika))
-        binding.textCharacterName.text = character
+    override fun setUserCharacter(character: Character) {
+        binding.imageSelectedCharacter.setImageResource(character.imageUnlockedRes)
+        binding.textCharacterName.text = character.name
     }
 
     override fun setUserStatistics(statistics: Triple<Int, Int, Int>) {

@@ -11,9 +11,6 @@ import com.thechance.qurio.data.ApiService
 import com.thechance.qurio.data.local.dao.GameSessionDao
 import com.thechance.qurio.data.local.dao.PlayedGameDao
 import com.thechance.qurio.data.local.database.QurioDatabase
-import com.thechance.qurio.data.remote.service.GameService
-import com.thechance.qurio.data.util.LoggingInterceptor
-import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json

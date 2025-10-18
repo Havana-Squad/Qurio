@@ -40,10 +40,14 @@ class CharacterPresenter @Inject constructor(
         tryToExecute(
             callee = {
                 charactersRepository.updateCharacterUsedState(characterId , isUsed  )
+                val char =charactersRepository.getCharacterById(characterId)!!
+                userRepository.updateUserCharacter(char)
+                println("rika${charactersRepository.getCharacterById(1)}")
                 charactersRepository.getAllCharacters()
+
             },
             onSuccess = { updatedCharacters ->
-                view.showCharacters(updatedCharacters)
+               view.showCharacters(updatedCharacters)
             },
             onError = { t -> view.showError(t.message ?: "Failed to use") }
         )

@@ -66,18 +66,22 @@ class CharacterDescDialogFragment : DialogFragment() {
             showBuyDialog()
         }
 
-        binding.buttonExit.setOnClickListener { showCharacterDialog() }
+        binding.buttonExit.setOnClickListener { showCharacterDialog()}
         binding.buttonOk.setOnClickListener { showCharacterDialog()}
     }
 
 
     private fun showBuyDialog() {
         CharacterDialogNavigator.showBuyDialog(parentFragmentManager, character)
+        dismiss()
+
+
     }
 
     private fun showCharacterDialog() {
         CharacterDialogNavigator.showCharacterList(parentFragmentManager)
         dismiss()
+
     }
 
 
