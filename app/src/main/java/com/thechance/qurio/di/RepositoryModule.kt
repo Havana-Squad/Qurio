@@ -4,13 +4,13 @@ import com.thechance.qurio.data.repository.AchievementsRepositoryImpl
 import com.thechance.qurio.data.repository.CharactersRepositoryImpl
 import com.thechance.qurio.data.repository.ExampleRepositoryImpl
 import com.thechance.qurio.data.repository.GameProgressRepositoryImpl
-import com.thechance.qurio.data.repository.TGameRepository
-import com.thechance.qurio.data.repository.TGameRepositoryImpl
+import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.GameSessionRepositoryImpl
 import com.thechance.qurio.data.repository.ResultsRepositoryImpl
+import com.thechance.qurio.data.repository.TGameRepository
+import com.thechance.qurio.data.repository.TGameRepositoryImpl
 import com.thechance.qurio.data.repository.UserPreferencesRepositoryImpl
-import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.data.repository.UserRepositoryImpl
 import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.CharactersRepository

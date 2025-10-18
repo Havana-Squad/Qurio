@@ -60,7 +60,9 @@ class ResultPlayFragment :
         binding.btnPlayAgain.setOnClickListener {
             findNavController().navigate(
                 ResultPlayFragmentDirections.actionResultPlayFragmentToStartPlayFragment(
-                    categoryId = args.categoryId
+                    categoryId = args.categoryId,
+                    difficultyLevel = args.difficultyLevel
+
                 )
             )
         }

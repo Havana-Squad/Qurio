@@ -29,8 +29,8 @@ class GamesFragment() : BaseFragment<FragmentGamesBinding, GamesView, GamesPrese
     }
 
     override fun onGameItemClick(gameId: Int) {
-        DifficultyLevelDialogFragment.newInstance {
-            val action = GamesFragmentDirections.actionGameFragmentToStartPlayFragment(gameId)
+        DifficultyLevelDialogFragment.newInstance { difficultyLevel ->
+            val action = GamesFragmentDirections.actionGameFragmentToStartPlayFragment(categoryId = gameId, difficultyLevel = difficultyLevel)
             findNavController().navigate(action)
         }.show(childFragmentManager, "DifficultyLevelDialog" )
     }

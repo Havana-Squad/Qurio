@@ -21,7 +21,7 @@ class UserPreferencesRepositoryImpl @Inject constructor(
 
     override suspend fun markAppAsLaunched() {
         preferencesDataStore.edit {
-            it[KEY_IS_FIRST_LAUNCH] ?: false
+            it[KEY_IS_FIRST_LAUNCH] = false
         }
     }
 

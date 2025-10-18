@@ -3,11 +3,13 @@ package com.thechance.qurio.presentation.screen.achievements
 import com.thechance.qurio.domain.entity.Achievement
 import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.game.GameProgressRepository
+import com.thechance.qurio.domain.repository.user.UserRepository
 import jakarta.inject.Inject
 
 class AchievementsManager @Inject constructor(
     private val gameProgressRepository: GameProgressRepository,
-    private val achievementsRepository: AchievementsRepository
+    private val achievementsRepository: AchievementsRepository,
+    private val userRepository: UserRepository
 ) {
 
     suspend fun checkAndUnlockAchievements(
@@ -31,7 +33,14 @@ class AchievementsManager @Inject constructor(
         checkKnowledgeSeeker(unlocked)
         checkCollector(unlocked)
 
+        getUserAwardsCount()
+
         return unlocked
+    }
+
+    private suspend fun getUserAwardsCount() {
+        val achievementsCount = achievementsRepository.getUnlockedAchievementsCount()
+        userRepository.updateAwards(achievementsCount)
     }
 
     private suspend fun checkQuizzesCompleted(unlocked: MutableList<Achievement>) {
