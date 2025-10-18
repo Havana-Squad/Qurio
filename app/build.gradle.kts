@@ -54,7 +54,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
     // splash api
     implementation(libs.androidx.core.splashscreen)
 
@@ -87,4 +86,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     //kotlin datetime
     implementation(libs.kotlinx.datetime)
+
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
 }
