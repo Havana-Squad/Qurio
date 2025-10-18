@@ -11,7 +11,7 @@ class OnboardingPresenter @Inject constructor(
     fun firstAppLaunch() {
         tryToExecute(
             callee = { userPreferences.markAppAsLaunched() },
-            onSuccess = { view.navigateToHome() },
+            onSuccess = {},
             onError = { view.showErrorMessage(it.message?:"Unknown error") }
         )
     }

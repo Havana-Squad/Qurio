@@ -32,11 +32,6 @@ class OnboardingFragment :
         presenter.firstAppLaunch()
     }
 
-    override fun navigateToHome() {
-        val navController = findNavController()
-        navController.navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment())
-    }
-
     override fun showErrorMessage(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
