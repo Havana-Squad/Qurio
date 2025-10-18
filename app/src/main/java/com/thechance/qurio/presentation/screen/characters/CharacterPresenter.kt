@@ -42,6 +42,7 @@ class CharacterPresenter @Inject constructor(
                 charactersRepository.updateCharacterUsedState(characterId , isUsed  )
                 val char =charactersRepository.getCharacterById(characterId)!!
                 userRepository.updateUserCharacter(char)
+                println("rika${charactersRepository.getCharacterById(1)}")
                 charactersRepository.getAllCharacters()
 
             },
