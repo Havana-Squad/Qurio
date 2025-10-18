@@ -50,7 +50,7 @@ object CharactersDataSource {
             description = context.getString(R.string.nature_s_little_explorer_rika_talks_to_mushrooms_and_swears_squirrels_give_her_battle_advice_always_ready_for_an_adventure),
             age = context.getString(R.string._12_sunblooms),
             imageLockedRes = R.drawable.rika,
-            imageUnlockedRes = R.drawable.rika_selected,
+            imageUnlockedRes = R.drawable.rika,
             isUnlocked = true,
             isCharacterUsed = false,
             price=0,

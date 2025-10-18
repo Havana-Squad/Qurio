@@ -27,7 +27,7 @@ class CharacterAdapter(
             )
 
             val colorRes = when {
-                isConfirmed -> R.color.primary
+                //isConfirmed -> R.color.primary
                 isSelected -> R.color.primary
                 else -> R.color.shade_tertiary
             }
@@ -70,7 +70,6 @@ class CharacterAdapter(
         notifyDataSetChanged()
     }
     fun setConfirmedPosition(position: Int) {
-        println("index")
         confirmedPosition = position
         selectedPosition = position
         notifyDataSetChanged()
