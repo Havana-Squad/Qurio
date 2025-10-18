@@ -7,4 +7,5 @@ interface AchievementsRepository {
     suspend fun getAchievementById(id: Int): Achievement?
     suspend fun unlockAchievement(id: Int)
     suspend fun isAchievementUnlocked(id: Int): Boolean
+    suspend fun getUnlockedAchievementsCount(): Int
 }
