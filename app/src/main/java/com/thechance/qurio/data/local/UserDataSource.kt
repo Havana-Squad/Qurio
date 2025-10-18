@@ -28,4 +28,5 @@ object UserDataSource{
     fun updateStreak(newStreak: Int) { currentStreak = newStreak }
     fun incrementStreak() { currentStreak++ }
     fun resetStreak() { currentStreak = 0 }
+
 }

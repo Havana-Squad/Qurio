@@ -9,6 +9,7 @@ import com.thechance.qurio.presentation.screen.games_screen.toUi
 import com.thechance.qurio.presentation.screen.played_games_screen.toUi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import com.thechance.qurio.domain.entity.Character
 class HomePresenter @Inject constructor(
     private val gameRepository: GameRepository,
     private val userRepository: UserRepository
@@ -23,13 +24,14 @@ class HomePresenter @Inject constructor(
 
     private fun getUserCharacter() {
         tryToExecute(
-            callee = { userRepository.getUserCharacter().name },
+            callee = { userRepository.getUserCharacter() },
             onSuccess = ::onGetUserCharacterSuccess,
             onError = ::onError
         )
     }
 
-    private fun onGetUserCharacterSuccess(character: String) {
+    private fun onGetUserCharacterSuccess(character: Character) {
+        println("user$character")
         view.setUserCharacter(character)
     }
 
@@ -64,6 +66,7 @@ class HomePresenter @Inject constructor(
     fun refreshData() {
         getUserStatistics()
         getUserStreak()
+        getUserCharacter()
     }
     private fun getGames() {
         tryToExecute(

@@ -17,6 +17,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.thechance.qurio.databinding.DialogCharactersBinding
 import com.thechance.qurio.domain.entity.Character
+import com.thechance.qurio.presentation.screen.home.HomeFragment
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -129,6 +130,16 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         characterAdapter?.confirmSelection()
 
         presenter.useCharacter(selected.id, true)
+        var fragment = parentFragment
+        while (fragment != null && fragment !is HomeFragment) {
+            fragment = fragment.parentFragment
+        }
+
+        if (fragment is HomeFragment) {
+            fragment.childFragmentManager.setFragmentResult("character_updated", Bundle().apply {
+                putBoolean("success", true)
+            })
+        }
         Toast.makeText(
             requireContext(),
             "${selected.name} is now your active character!",
