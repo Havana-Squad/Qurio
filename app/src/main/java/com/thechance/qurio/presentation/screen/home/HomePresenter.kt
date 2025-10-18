@@ -2,6 +2,7 @@ package com.thechance.qurio.presentation.screen.home
 
 import com.thechance.qurio.domain.entity.GameCategory
 import com.thechance.qurio.domain.entity.PlayedGame
+import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.games_screen.toUi
@@ -9,7 +10,8 @@ import com.thechance.qurio.presentation.screen.played_games_screen.toUi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 class HomePresenter @Inject constructor(
-    private val gameRepository: GameRepository
+    private val gameRepository: GameRepository,
+    private val achievementsRepository: AchievementsRepository
 ) : BasePresenter<HomeView>() {
     init {
         getUserCharacter()
@@ -37,7 +39,9 @@ class HomePresenter @Inject constructor(
 
     private fun getUserStatistics() {
         tryToExecute(
-            callee = { Triple(4, 5200,2) },
+            callee = {
+                val achievementsCounts = achievementsRepository.getUnlockedAchievementsCount()
+                Triple(4, 5200,achievementsCounts) },
             onSuccess = ::onGetUserStatisticsSuccess,
             onError = ::onError
         )
