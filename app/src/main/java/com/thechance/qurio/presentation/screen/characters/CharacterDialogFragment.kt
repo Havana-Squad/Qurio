@@ -1,3 +1,4 @@
+
 package com.thechance.qurio.presentation.screen.characters
 
 import android.app.Dialog
@@ -23,10 +24,11 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
 
     private var _binding: DialogCharactersBinding? = null
     private val binding get() = _binding!!
-    private var selectedCharacter: Character? = null
+    private var characterAdapter: CharacterAdapter? = null
 
     @Inject
     lateinit var presenter : CharacterPresenter
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         AndroidSupportInjection.inject(this)
@@ -60,11 +62,6 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
 
-        binding.recyclerCharacters.adapter = CharacterAdapter(emptyList()) {
-            selectedCharacter=it
-            presenter.onCharacterClicked(it)
-        }
-
         binding.buttonOk.setOnClickListener { dismiss() }
         binding.buttonExit.setOnClickListener { dismiss() }
         binding.buttonConfirm.setOnClickListener { onConfirmClicked() }
@@ -81,8 +78,13 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         }
 
         binding.recyclerCharacters.layoutManager = layoutManager
-        binding.recyclerCharacters.adapter =
-            CharacterAdapter(characters) { presenter.onCharacterClicked(it) }
+
+        // Create and store the adapter reference
+        characterAdapter = CharacterAdapter(characters) { character ->
+            presenter.onCharacterClicked(character)
+        }
+
+        binding.recyclerCharacters.adapter = characterAdapter
     }
 
     override fun showLoading() {}
@@ -93,17 +95,26 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     }
 
     override fun openCharacterDetails(character: Character) {
-        dismiss()
         CharacterDialogNavigator.showCharacterDetails(parentFragmentManager, character)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         presenter.detachView()
+        characterAdapter = null
         _binding = null
     }
-    private fun onConfirmClicked(){
-        presenter.useCharacter(selectedCharacter?.id ?:1, true)
+
+    private fun onConfirmClicked() {
+        // Get the selected character from the adapter
+        val selectedCharacter = characterAdapter?.getSelectedCharacter()
+
+        if (selectedCharacter != null) {
+            presenter.useCharacter(selectedCharacter.id, true)
+            Toast.makeText(requireContext(), "Character ${selectedCharacter.name} selected!", Toast.LENGTH_SHORT).show()
+            dismiss()
+        } else {
+            Toast.makeText(requireContext(), "Please select an unlocked character first", Toast.LENGTH_SHORT).show()
+        }
     }
 }

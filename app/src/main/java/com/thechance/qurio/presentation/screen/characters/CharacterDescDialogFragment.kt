@@ -67,7 +67,7 @@ class CharacterDescDialogFragment : DialogFragment() {
         }
 
         binding.buttonExit.setOnClickListener { dismiss()}
-        binding.buttonOk.setOnClickListener { dismiss()}
+        binding.buttonOk.setOnClickListener { showCharacterDialog()}
     }
 
 
