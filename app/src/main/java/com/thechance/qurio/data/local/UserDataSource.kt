@@ -9,7 +9,7 @@ object UserDataSource{
     private var currentCharacter: Character?=null
 
     private var lives: Int = 4
-    private var points: Int = 500
+    private var points: Int = 700
     private var awards: Int = 0
     private var currentStreak: Int = 0
 
@@ -18,6 +18,7 @@ object UserDataSource{
 
     fun getUserStatistics(): Triple<Int, Int, Int> = Triple(lives, points, awards)
     fun updateLives(newLives: Int) { lives = newLives }
+
     fun updatePoints(newPoints: Int) { points = newPoints }
     fun addPoints(pointsToAdd: Int) { points += pointsToAdd }
     fun updateAwards(newAwards: Int) { awards = newAwards }

@@ -69,19 +69,28 @@ class CharacterBuyDialogFragment : DialogFragment(){
         binding.text.text
 
         binding.buttonBuy.setOnClickListener {
-            presenter.buyCharacter(character)
-            var fragment = parentFragment
-            while (fragment != null && fragment !is HomeFragment) {
-                fragment = fragment.parentFragment
-            }
+            binding.buttonBuy.isEnabled = false
+            presenter.buyCharacter(
+                character = character,
+                onSuccess = {
+                    var fragment = parentFragment
+                    while (fragment != null && fragment !is HomeFragment) {
+                        fragment = fragment.parentFragment
+                    }
 
-            if (fragment is HomeFragment) {
-                fragment.childFragmentManager.setFragmentResult("character_bought", Bundle().apply {
-                    putBoolean("success", true)
-                })
-            }
+                    if (fragment is HomeFragment) {
+                        fragment.childFragmentManager.setFragmentResult("character_bought", Bundle().apply {
+                            putBoolean("success", true)
+                        })
+                    }
 
-            dismiss()
+                    dismiss()
+                },
+                onError = { errorMessage ->
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+                    binding.buttonBuy.isEnabled = true
+                }
+            )
         }
 
         binding.buttonCancel.setOnClickListener {

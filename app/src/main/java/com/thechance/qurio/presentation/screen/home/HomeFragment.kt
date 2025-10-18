@@ -48,6 +48,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
         ) { _, bundle ->
             val success = bundle.getBoolean("success", false)
             if (success) {
+                println("suc")
                 presenter.refreshData()
             }
         }

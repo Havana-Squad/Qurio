@@ -51,33 +51,39 @@ class CharacterPresenter @Inject constructor(
 
    var characterPoint = 0
     var characterId = 0
-    fun buyCharacter(character: Character) {
+    fun buyCharacter(character: Character, onSuccess: () -> Unit = {}, onError: (String) -> Unit = {}) {
         view.showLoading()
-        characterPoint=character.price
-        characterId=character.id
+        characterPoint = character.price
+        characterId = character.id
 
         tryToExecute(
             callee = { userRepository.getUserStatistics() },
-            onSuccess = ::onBuyLifeSuccess,
-            onError = {}
+            onSuccess = { statistics ->
+                onBuyCharacterSuccess(statistics, onSuccess, onError)
+            },
+            onError = { throwable ->
+                view.hideLoading()
+                onError(throwable.message ?: "Failed to buy character")
+            }
         )
     }
 
-    private suspend fun onBuyLifeSuccess(statistics: Triple<Int, Int, Int> ) {
+    private suspend fun onBuyCharacterSuccess(
+        statistics: Triple<Int, Int, Int>,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
         val (_, points, _) = statistics
 
         if (points >= characterPoint) {
             userRepository.updatePoints(points - characterPoint)
-            val j =userRepository.getUserStatistics().second
-            unlockCharacter(characterId , true)
+            unlockCharacter(characterId, true)
             view.hideLoading()
-            onCharacterBoughtSuccessfully()
+            onSuccess()
         } else {
             view.hideLoading()
-            view.showError("Not enough points to buy a Character!")
+            onError("Not enough points to buy a Character!")
         }
-    }  fun onCharacterBoughtSuccessfully() {
-
     }
 
 

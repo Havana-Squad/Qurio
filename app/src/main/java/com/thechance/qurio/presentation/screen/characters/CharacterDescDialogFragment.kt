@@ -53,14 +53,6 @@ class CharacterDescDialogFragment : DialogFragment() {
         println("parent")
 
         super.onViewCreated(view, savedInstanceState)
-        childFragmentManager.setFragmentResultListener("character_bought", viewLifecycleOwner) { _, bundle ->
-            val success = bundle.getBoolean("success", false)
-            if (success) {
-                // Forward the result to HomeFragment
-                parentFragmentManager.setFragmentResult("character_bought", bundle)
-                dismiss() // Close this dialog too
-            }
-        }
         binding.tvCharacterName.text = character.name
         binding.tvCharacterAge.text ="Age: ${character.age}"
         binding.tvCharacterDesc.text =character.description

@@ -59,13 +59,6 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
-        childFragmentManager.setFragmentResultListener("character_bought", viewLifecycleOwner) { _, bundle ->
-            val success = bundle.getBoolean("success", false)
-            if (success) {
-                parentFragmentManager.setFragmentResult("character_bought", bundle)
-                dismiss()
-            }
-        }
 
         binding.recyclerCharacters.adapter = CharacterAdapter(emptyList()) {
             selectedCharacter=it
