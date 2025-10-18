@@ -9,6 +9,9 @@ import com.thechance.qurio.domain.repository.user.UserRepository
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.achievements.AchievementsManager
 import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevel
+import kotlinx.datetime.Clock
+import kotlinx.datetime.daysUntil
+import kotlinx.datetime.toLocalDateTime
 import javax.inject.Inject
 
 class StartPlayPresenter @Inject constructor(
@@ -184,6 +187,7 @@ class StartPlayPresenter @Inject constructor(
                     totalTimeSeconds = session.totalTimeSeconds,
                     earnedCoins = session.earnedCoins
                 )
+                updateStreak()
                 if (stars == 0) {
                     tryToExecute(
                         callee = { decreaseLives() },
@@ -201,6 +205,18 @@ class StartPlayPresenter @Inject constructor(
             onError = { view.showError(it) },
             onFinish = {}
         )
+    }
+
+    private suspend fun updateStreak() {
+        val lastPlayedGame = userRepository.getLastPlayedDate()
+        val today = Clock.System.now()
+            .toLocalDateTime(kotlinx.datetime.TimeZone.currentSystemDefault()).date
+        val daysBetween = today.daysUntil(lastPlayedGame)
+        when (daysBetween) {
+            0 -> Unit
+            1 -> { userRepository.incrementStreak() }
+            else -> { userRepository.resetStreak() }
+        }
     }
 
     private suspend fun decreaseLives() {
