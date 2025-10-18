@@ -2,6 +2,9 @@ package com.thechance.qurio.di
 
 import com.thechance.qurio.presentation.screen.achievements.AchievementsDialogFragment
 import com.thechance.qurio.presentation.screen.buylife.BuyLifeDialogFragment
+import com.thechance.qurio.presentation.screen.characters.CharacterBuyDialogFragment
+import com.thechance.qurio.presentation.screen.characters.CharacterDescDialogFragment
+import com.thechance.qurio.presentation.screen.characters.CharacterDialogFragment
 import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevelDialogFragment
 import com.thechance.qurio.presentation.screen.example.ExampleFragment
 import com.thechance.qurio.presentation.screen.games_screen.GamesFragment
@@ -46,7 +49,12 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun contributeBuyLifeDialogFragment(): BuyLifeDialogFragment
-
+    @ContributesAndroidInjector
+    abstract fun contributeCharacterDialogFragment(): CharacterDialogFragment
+    @ContributesAndroidInjector
+    abstract fun contributeCharacterDescDialogFragment(): CharacterDescDialogFragment
+    @ContributesAndroidInjector
+    abstract fun contributeCharacterBuyDialogFragment(): CharacterBuyDialogFragment
     @ContributesAndroidInjector
     abstract fun contributeDifficultyLevelDialogFragment(): DifficultyLevelDialogFragment
 }

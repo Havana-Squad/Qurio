@@ -6,8 +6,9 @@ import com.thechance.qurio.domain.entity.Character
 import com.thechance.qurio.domain.repository.CharactersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class CharactersRepositoryImpl(private val context: Context) : CharactersRepository {
+class CharactersRepositoryImpl @Inject constructor(private val context: Context) : CharactersRepository {
 
     override suspend fun getAllCharacters(): List<Character> = withContext(Dispatchers.IO) {
         CharactersDataSource.getAllCharacters(context)

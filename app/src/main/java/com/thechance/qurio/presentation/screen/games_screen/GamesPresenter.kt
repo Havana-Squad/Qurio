@@ -8,22 +8,18 @@ import javax.inject.Inject
 class GamesPresenter @Inject constructor(
     private val gameRepository: GameRepository
 ) : BasePresenter<GamesView>() {
-    init {
-        getGames()
-    }
+
     fun getGames() {
         tryToExecute(
             callee = gameRepository::getGames,
             onSuccess = ::onGetGamesSuccess,
-            onError = ::onGetGamesError
+            onError = view::showError,
+            onStart = view::showLoading
         )
     }
 
     private fun onGetGamesSuccess(games: List<GameCategory>) {
+        view.hideLoading()
         view.updateGames(games.shuffled().map { it.toUi() })
-    }
-
-    private fun onGetGamesError(throwable: Throwable) {
-
     }
 }
