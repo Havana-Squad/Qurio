@@ -19,7 +19,8 @@ class TGameRepositoryImpl @Inject constructor(
             apiService.getQuestions(
                 amount = amount,
                 difficulty = difficulty,
-                type = type
+                type = type,
+                category = category
             )
         }
         return apiResponse.results

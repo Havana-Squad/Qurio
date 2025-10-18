@@ -7,6 +7,7 @@ import com.thechance.qurio.domain.model.GameSession
 import com.thechance.qurio.domain.model.Question
 import com.thechance.qurio.presentation.base.BasePresenter
 import com.thechance.qurio.presentation.screen.achievements.AchievementsManager
+import com.thechance.qurio.presentation.screen.difficulty.DifficultyLevel
 import javax.inject.Inject
 
 class StartPlayPresenter @Inject constructor(
@@ -33,9 +34,9 @@ class StartPlayPresenter @Inject constructor(
     private var fastestAnswerTime = Long.MAX_VALUE
 
 
-    fun getQuestions(categoryId: Int) {
+    fun getQuestions(categoryId: Int, difficulty: DifficultyLevel) {
         tryToExecute(
-            callee = { tGameRepository.fetchQuestions(12, "easy", "multiple", categoryId) },
+            callee = { tGameRepository.fetchQuestions(12, difficulty.name.lowercase(), "multiple", categoryId) },
             onStart = { view.showLoading() },
             onSuccess = ::onQuestionsSuccess,
             onError = { view.showError(it) },

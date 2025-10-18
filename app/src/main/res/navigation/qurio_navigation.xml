@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_startPlayFragment_to_resultPlayFragment"
             app:destination="@id/resultPlayFragment" />
+        <argument
+            android:name="difficultyLevel"
+            app:argType="com.thechance.qurio.presentation.screen.difficulty.DifficultyLevel" />
     </fragment>
 
     <fragment

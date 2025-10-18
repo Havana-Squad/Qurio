@@ -211,8 +211,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenter>(
     }
 
     override fun navigateToGame(gameId: Int) {
-        DifficultyLevelDialogFragment.newInstance {
-            val action = HomeFragmentDirections.actionHomeFragmentToStartPlayFragment(categoryId = gameId)
+        DifficultyLevelDialogFragment.newInstance { difficultyLevel ->
+            val action = HomeFragmentDirections.actionHomeFragmentToStartPlayFragment(categoryId = gameId, difficultyLevel = difficultyLevel)
             findNavController().navigate(action)
         }.show(childFragmentManager, "DifficultyLevelDialog")
     }
