@@ -1,6 +1,10 @@
 package com.thechance.qurio.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.thechance.qurio.data.ApiService
@@ -13,6 +17,9 @@ import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.data.local.dao.PlayedGameDao
 import com.thechance.qurio.data.local.database.QurioDatabase
+import com.thechance.qurio.data.remote.service.GameService
+import com.thechance.qurio.data.util.LoggingInterceptor
+import com.thechance.qurio.presentation.main.QurioApp
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -93,5 +100,12 @@ class DataModule {
             return database.gameSessionDao()
         }
 
+        @Provides
+        @Singleton
+        fun provideDataStore(context: Context): DataStore<Preferences> {
+            return PreferenceDataStoreFactory.create(
+                produceFile = { context.preferencesDataStoreFile("user_preferences") }
+            )
+        }
     }
 }

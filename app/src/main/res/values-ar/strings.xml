@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">كريو</string>
+    <string name="lives">محاولات</string>
+    <string name="points">نقاط</string>
+    <string name="awards">جوائز</string>
+    <string name="welcome_qurio_explorer">مرحباً بك يا مستكشف كريو</string>
+    <string name="great_job">عمل رائع</string>
+    <string name="result_ribbon">شريط النتائج</string>
+    <string name="result_shadow">ظل النتيجة</string>
+    <string name="correct">إجابة صحيحة</string>
+    <string name="star">نجمة</string>
+    <string name="reward">مكافأة</string>
+    <string name="incorrect">إجابة خاطئة</string>
+    <string name="skipped">تم التخطي</string>
+    <string name="you_lose">لقد خسرت</string>
+    <string name="s">الأحد</string>
+    <string name="m">الإثنين</string>
+    <string name="t">الثلاثاء</string>
+    <string name="w">الأربعاء</string>
+    <string name="th">الخميس</string>
+    <string name="f">الجمعة</string>
+    <string name="submit">إرسال</string>
+    <string name="play_now">العب الآن</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">مرحباً بالمكون الفارغ</string>
+    <string name="buy_life">شراء محاولة</string>
+    <string name="buy">شراء</string>
+    <string name="cancel">إلغاء</string>
+    <string name="skip">تخطي</string>
+    <string name="check">تحقق</string>
+    <string name="character">شخصية</string>
+    <string name="loading">جاري تحميل اللعبة</string>
+    <string name="no_internet_connection">لا يوجد اتصال</string>
+    <string name="check_your_internet">عذرًا! يبدو أنك غير متصل بالإنترنت.\nيرجى التحقق من اتصالك للمتابعة في اللعب</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="achievements">الإنجازات</string>
+    <string name="ok">حسنًا</string>
+    <string name="click_on_achievement_to_view_details">*اضغط على الإنجاز لعرض التفاصيل</string>
+    <string name="share_with_friends">شارك مع الأصدقاء</string>
+    <string name="how_to_get">كيفية الحصول عليه:</string>
+    <string name="achievement">إنجاز</string>
+    <string name="celebration">احتفال</string>
+
+    <string name="achievement_quiz_rookie_name">مبتدئ في المسابقات</string>
+    <string name="achievement_streak_starter_name">بداية السلسلة</string>
+    <string name="achievement_lucky_guess_name">تخمين محظوظ</string>
+    <string name="achievement_explorer_name">مستكشف</string>
+    <string name="achievement_trivia_champ_name">بطل التريفيا</string>
+    <string name="achievement_collector_name">جامع الإنجازات</string>
+    <string name="achievement_legend_name">أسطورة</string>
+    <string name="achievement_untouchable_name">لا يُقهَر</string>
+    <string name="achievement_quick_thinker_name">مُفكر سريع</string>
+    <string name="achievement_perfect_game_name">لعبة مثالية</string>
+    <string name="achievement_knowledge_seeker_name">باحث عن المعرفة</string>
+
+    <!-- Achievement Locked Descriptions -->
+    <string name="achievement_quiz_rookie_locked">أنت في بداية رحلتك. استمر في اللعب لإثبات مهاراتك!</string>
+    <string name="achievement_streak_starter_locked">أنت تكتسب الخبرة! استمر بالإجابة الصحيحة لبناء سلسلة.</string>
+    <string name="achievement_lucky_guess_locked">أحيانًا الحظ يلعب دورًا كبيرًا! خُض بعض المخاطرات.</string>
+    <string name="achievement_explorer_locked">اكتشف المزيد لفتح هذا الإنجاز.</string>
+    <string name="achievement_trivia_champ_locked">الأبطال لا يستسلمون! استمر بالإجابات الصحيحة للحصول على هذا اللقب.</string>
+    <string name="achievement_collector_locked">اجمع المزيد من الإنجازات لتحصل على هذا!</string>
+    <string name="achievement_legend_locked">يُصنع الأساطير بالمُثابرة. استمر!</string>
+    <string name="achievement_untouchable_locked">نادراً ما ترتكب أخطاء! أنت في مستوىٍ عالٍ وتسيطر على اللعبة.</string>
+    <string name="achievement_quick_thinker_locked">السرعة مهمة! كن أسرع لتحصل على هذا الإنجاز.</string>
+    <string name="achievement_perfect_game_locked">الكمال في متناول اليد. حاول إنهاء الجولة بلا خطأ!</string>
+    <string name="achievement_knowledge_seeker_locked">الفضول مفتاح النجاح. استمر في استكشاف المعلومات!</string>
+
+    <!-- Achievement Unlocked Descriptions -->
+    <string name="achievement_quiz_rookie_unlocked">لقد أجريت أول 5 مسابقات! مرحبًا بك في عالم التريفيا!</string>
+    <string name="achievement_streak_starter_unlocked">بدأت أول سلسلة فوز — ثلاث إجابات صحيحة متتالية!</string>
+    <string name="achievement_lucky_guess_unlocked">أجبت بشكل صحيح بعد لا تَستخدم أي تلميحات — يا لها من حظ صافي!</string>
+    <string name="achievement_explorer_unlocked">أنت تحب التجربة والاكتشاف! جربت عدة فئات ولا تقتصر على واحدة فقط.</string>
+    <string name="achievement_trivia_champ_unlocked">هيمنت على المسابقة! دقتك تعكس مهارة التريفيا الحقيقية!</string>
+    <string name="achievement_collector_unlocked">ها أنت جامع الإنجازات! فتحت عدة محطات مميزة!</string>
+    <string name="achievement_legend_unlocked">لقد أثبت نفسك مرارًا وتكرارًا — أنت حقًا أسطورة!</string>
+    <string name="achievement_untouchable_unlocked">نصر بلا بقع! أجبت على كل الأسئلة دون أي خطأ!</string>
+    <string name="achievement_quick_thinker_unlocked">تفكير سريع! أجبت على سؤال في وقت قياسي!</string>
+    <string name="achievement_perfect_game_unlocked">لا يُصدّق! أنهيت مسابقة بلا خطأ واحد!</string>
+    <string name="achievement_knowledge_seeker_unlocked">استكشفت الكثير من الأسئلة — فضولك لا يضاهى!</string>
+
+    <!-- Achievement Requirements -->
+    <string name="achievement_quiz_rookie_requirement">أكمل 5 مسابقات.</string>
+    <string name="achievement_streak_starter_requirement">أجب 3 أسئلة صحيحة على التوالي.</string>
+    <string name="achievement_lucky_guess_requirement">أجب على سؤال صحيح بدون استخدام تلميحات.</string>
+    <string name="achievement_explorer_requirement">اللعب في على الأقل 4 فئات مختلفة.</string>
+    <string name="achievement_trivia_champ_requirement">احصل على درجة 80٪ أو أكثر في أي مسابقة.</string>
+    <string name="achievement_collector_requirement">افتح 5 إنجازات مختلفة.</string>
+    <string name="achievement_legend_requirement">العب 50 مسابقة في المجموع.</string>
+    <string name="achievement_untouchable_requirement">أجب بشكل صحيح على 10 أسئلة متتالية في لعبة واحدة بدون أي خطأ.</string>
+    <string name="achievement_quick_thinker_requirement">أجب على سؤال بشكل صحيح خلال أقل من 3 ثوان.</string>
+    <string name="achievement_perfect_game_requirement">أنهِ أي مسابقة دون إجابة خاطئة.</string>
+    <string name="achievement_knowledge_seeker_requirement">أجب على 100 سؤال في المجموع.</string>
+
+    <string name="share_achievement_text">لقد فُتِح لي الإنجاز «%1$s» في كريو! 🎉</string>
+    <string name="share_via">شارك عبر</string>
+    <string name="settings">الإعدادات</string>
+    <string name="save_changes">حفظ التغييرات</string>
+    <string name="discard">إلغاء</string>
+    <string name="sound">الصوت</string>
+    <string name="icon_minus">أيقونة ناقص</string>
+    <string name="icon_plus">أيقونة زائد</string>
+    <string name="Music">موسيقى</string>
+    <string name="hard">صعب</string>
+    <string name="difficulty_level">مستوى الصعوبة</string>
+    <string name="easy">سهل</string>
+    <string name="medium">متوسط</string>
+    <string name="confirm">تأكيد</string>
+    <string name="game_img">صورة اللعبة</string>
+    <string name="games">الألعاب</string>
+    <string name="arrow_back_icon">أيقونة العودة</string>
+    <string name="play_again">العب مرة أخرى</string>
+    <string name="back_to_home">العودة إلى الصفحة الرئيسية</string>
+    <string name="last_games">أخر الألعاب</string>
+    <string name="discarded">تم إلغاؤه</string>
+    <string name="settings_saved">تم حفظ الإعدادات</string>
+    <string name="close">إغلاق</string>
+    <string name="music">موسيقى</string>
+
+    <!-- Characters Names -->
+    <string name="rika">ريكا</string>
+    <string name="kaiyo">كايو</string>
+    <string name="mimi">مِيمي</string>
+    <string name="yoru">يُورو</string>
+    <string name="kuro">كُورو</string>
+    <string name="miko">ميكو</string>
+    <string name="aori">أُوري</string>
+    <string name="nara">نارا</string>
+    <string name="renji">رينجي</string>
+
+    <!-- Characters Descriptions -->
+    <string name="nature_s_little_explorer_rika_talks_to_mushrooms_and_swears_squirrels_give_her_battle_advice_always_ready_for_an_adventure">مستكشفة الطبيعة الصغيرة! ريكا تتكلم مع الفطر وتقسم أن السناجب تمنحها نصائح المعارك. دائمًا جاهزة للمغامرة.</string>
+    <string name="a_calm_storm_in_human_form_kaiyo_trains_with_ancient_scrolls_by_day_and_drinks_spicy_tea_by_night_sword_sharp_heart_sharper">عاصفة هادئة في شكل بشر. كايو تتدرب على اللفائف القديمة بالنهار وتشرب الشاي الحار ليلاً. سيفها حاد، وقلبها أحَدّ.</string>
+    <string name="tiny_but_terrifying_mimi_is_always_grumpy_but_don_t_let_that_scare_you_unless_you_like_pranks_involving_firecrackers">صغيرة لكنها مروعة! ميمي دائمًا عابسة، لكن لا تدع ذلك يخيفك — إلا إذا كنت تحب المقالب التي تشمل الألعاب النارية.</string>
+    <string name="quiet_mysterious_and_probably_watching_you_right_now_yoru_shows_up_when_you_least_expect_it">هادئة، غامضة، وربما تراقبك الآن. يورو تظهر عندما لا تتوقعها.</string>
+    <string name="cool_jacket_cooler_moves_kuro_never_backs_down_from_a_challenge">سترة أنيقة، وحركات أبرع. كورو لا يتراجع أبدًا أمام التحدي.</string>
+    <string name="energetic_cheerful_and_faster_than_a_leaf_in_the_wind_miko_can_turn_any_trivia_into_a_giggle_fest">نشِطة، مبهجة، وأسرع من ورقة في الريح. ميكو يمكن أن تجعل أي مسابقة تريفيا مهرجان ضحك.</string>
+    <string name="the_sword_chooses_the_wielder_and_it_chose_aori_calm_focused">السيف يختار من يحملُه — وقد اختار أُوري. هادئة، مركزة.</string>
+    <string name="part_magic_part_sass_nara_sparkles_even_when_she_s_mad">جزء سحر، جزء جرأة. نارا تتألّق حتى حين تغضب.</string>
+    <string name="small_but_mighty_renji_dreams_of_glory_carries_a_shield_too_big_for_him">صغير لكنه قوي! رينجي يحلم بالمجد ويحمل درعًا أكبر منه.</string>
+
+    <!-- Characters Ages -->
+    <string name="_12_sunblooms">12 زهرة شمس</string>
+    <string name="_14_storms">14 عاصفة</string>
+    <string name="_10_volcano_puffs">10 نفخات بركان</string>
+    <string name="_13_shadows">13 ظلًّا</string>
+    <string name="_15_thunder_beats">15 دقات رعد</string>
+    <string name="_11_leaf_turns">11 تقلب ورقة</string>
+    <string name="_13_blade_echoes">13 صدى نصل</string>
+    <string name="_12_crystal_songs">12 أغنية كريستال</string>
+    <string name="_11_hero_coins">11 عملة بطل</string>
+    <string name="all">الكل</string>
+    <string name="zero_streak_title">سلسلة من 0 يوم، ابدأ الآن!</string>
+    <string name="zero_streak_subtitle">كل يوم يصنع فرقًا!</string>
+    <string name="numbered_streak_title">سلسلة من %1$d يوم، استمر وابنِ سلسلة ضخمة!</string>
+    <string name="numbered_streak_subtitle">تابع على هذا المنوال!</string>
+
+
+    <!-- Onboarding -->
+    <string name="swipe_up_to_play">اسحب للأعلى للعب!</string>
+    <string name="welcome_to_qurio">مرحبًا بك في كريو</string>
+    <string name="collect_them_all">اجمعهم جميعًا!</string>
+    <string name="choose_your_character">اختر شخصيتك</string>
+    <string name="challenge_and_win">تحدى واربح</string>
+    <string name="welcome_to_the_world_of_qurio_where_questions_spark_curiosity_and_prizes_await_the_smartest_ready_to_begin_the_challenge">مرحبًا بك في عالم كريو، حيث تُشعل الأسئلة فضولك وتنتظرك الجوائز إن كنت من الأذكى. هل أنت مستعد للتحدي؟</string>
+    <string name="unlock_characters_earn_badges_and_climb_the_leaderboards_qurio_is_fascinating_but_you_can_handle_it">افتح الشخصيات، احصل على الأوسمة، وتسلّق قائمة المتصدرين. كريو لعبة ممتعة لكنها لا ترحم — وأنت قدها!</string>
+    <string name="each_hero_has_their_own_unique_style_choose_from_unique_characters_and_start_your_adventure_in_your_own_style">لكل بطل أسلوبه الخاص! اختر من بين شخصيات فريدة وابدأ مغامرتك بطريقتك.</string>
+    <string name="answer_quickly_earn_points_and_share_with_your_friends">أجب بسرعة، اجمع النقاط، وشاركها مع أصدقائك!\nكل فئة من التريفيا تجربة جديدة.</string>
+
+</resources>

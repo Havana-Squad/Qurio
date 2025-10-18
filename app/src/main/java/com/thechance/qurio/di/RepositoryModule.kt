@@ -8,12 +8,14 @@ import com.thechance.qurio.data.repository.TGameRepositoryImpl
 import com.thechance.qurio.data.repository.GameSessionRepository
 import com.thechance.qurio.data.repository.GameSessionRepositoryImpl
 import com.thechance.qurio.data.repository.ResultsRepositoryImpl
+import com.thechance.qurio.data.repository.UserPreferencesRepositoryImpl
 import com.thechance.qurio.data.repository.GameRepositoryImpl
 import com.thechance.qurio.data.repository.UserRepositoryImpl
 import com.thechance.qurio.domain.repository.AchievementsRepository
 import com.thechance.qurio.domain.repository.CharactersRepository
 import com.thechance.qurio.domain.repository.ExampleRepository
 import com.thechance.qurio.domain.repository.ResultsRepository
+import com.thechance.qurio.domain.repository.UserPreferencesRepository
 import com.thechance.qurio.domain.repository.game.GameRepository
 import com.thechance.qurio.domain.repository.user.UserRepository
 import dagger.Binds
@@ -41,6 +43,11 @@ abstract class RepositoryModule {
     abstract fun bindGameSessionRepository(
         impl: GameSessionRepositoryImpl
     ): GameSessionRepository
+
+    @Binds
+    abstract fun bindUserPreferencesImpl(
+        impl: UserPreferencesRepositoryImpl
+    ): UserPreferencesRepository
 
     @Binds
     abstract fun bindAchievementsRepository(
