@@ -95,6 +95,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     }
 
     override fun openCharacterDetails(character: Character) {
+        dismiss()
         CharacterDialogNavigator.showCharacterDetails(parentFragmentManager, character)
     }
 
@@ -116,5 +117,6 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         } else {
             Toast.makeText(requireContext(), "Please select an unlocked character first", Toast.LENGTH_SHORT).show()
         }
+        dismiss()
     }
 }
