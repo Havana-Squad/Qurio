@@ -27,7 +27,7 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     private var characterAdapter: CharacterAdapter? = null
 
     @Inject
-    lateinit var presenter : CharacterPresenter
+    lateinit var presenter: CharacterPresenter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -62,8 +62,14 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
 
-        binding.buttonOk.setOnClickListener { dismiss() }
-        binding.buttonExit.setOnClickListener { dismiss() }
+        binding.buttonOk.setOnClickListener {
+            characterAdapter?.cancelSelection()
+            dismiss()
+        }
+        binding.buttonExit.setOnClickListener {
+            characterAdapter?.cancelSelection()
+            dismiss()
+        }
         binding.buttonConfirm.setOnClickListener { onConfirmClicked() }
 
         presenter.loadCharacters()
@@ -76,16 +82,19 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
             alignItems = AlignItems.CENTER
             flexWrap = FlexWrap.WRAP
         }
-
         binding.recyclerCharacters.layoutManager = layoutManager
 
-        // Create and store the adapter reference
-        characterAdapter = CharacterAdapter(characters) { character ->
-            presenter.onCharacterClicked(character)
-        }
-
+        characterAdapter = CharacterAdapter(
+            characters,
+            onItemClick = { character ->
+            },
+            onLockedClick = { character ->
+                presenter.onCharacterClicked(character)
+            }
+        )
         binding.recyclerCharacters.adapter = characterAdapter
     }
+
 
     override fun showLoading() {}
     override fun hideLoading() {}
@@ -107,16 +116,24 @@ class CharacterDialogFragment : DialogFragment(), CharacterView {
     }
 
     private fun onConfirmClicked() {
-        // Get the selected character from the adapter
-        val selectedCharacter = characterAdapter?.getSelectedCharacter()
-
-        if (selectedCharacter != null) {
-            presenter.useCharacter(selectedCharacter.id, true)
-            Toast.makeText(requireContext(), "Character ${selectedCharacter.name} selected!", Toast.LENGTH_SHORT).show()
-            dismiss()
-        } else {
-            Toast.makeText(requireContext(), "Please select an unlocked character first", Toast.LENGTH_SHORT).show()
+        val selected = characterAdapter?.getSelectedCharacter()
+        if (selected == null || !selected.isUnlocked) {
+            Toast.makeText(
+                requireContext(),
+                "Please select an unlocked character first",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
         }
+
+        characterAdapter?.confirmSelection()
+
+        presenter.useCharacter(selected.id, true)
+        Toast.makeText(
+            requireContext(),
+            "${selected.name} is now your active character!",
+            Toast.LENGTH_SHORT
+        ).show()
         dismiss()
     }
 }
