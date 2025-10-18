@@ -73,6 +73,8 @@ class CharacterDescDialogFragment : DialogFragment() {
 
     private fun showBuyDialog() {
         CharacterDialogNavigator.showBuyDialog(parentFragmentManager, character)
+        dismiss()
+
 
     }
 
