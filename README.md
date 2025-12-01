@@ -28,11 +28,11 @@ This app is developed as part of the Havana Squad project and uses the Open Triv
 
 | | | |
 |:--:|:--:|:--:|
-| <img src="https://github.com/user-attachments/assets/153dd06d-eb5a-4748-97a5-bfaed2e4fb09" width="200"/> | <img src="https://github.com/user-attachments/assets/a1b5607c-df53-4445-999c-1a9fc572f1b5" width="200"/> | <img src="https://github.com/user-attachments/assets/38b3fe86-63a9-445a-9b77-e03a6312b8cc" width="200"/> |
+| <img src="https://github.com/user-attachments/assets/8d99a4f0-f1a4-45f0-aef4-2605bd549d04" width="200"/> | <img src="https://github.com/user-attachments/assets/a1b5607c-df53-4445-999c-1a9fc572f1b5" width="200"/> | <img src="https://github.com/user-attachments/assets/c49e2a5e-8015-43b5-85bd-37b7b10cb260" width="200"/> |
 | <img src="https://github.com/user-attachments/assets/0ed5109a-b36f-40f7-9248-ba2cf90e5426" width="200"/> | <img src="https://github.com/user-attachments/assets/0c9ea565-98c3-4b12-880c-62ca67bc1f26" width="200"/> | <img src="https://github.com/user-attachments/assets/03750fde-2e8a-459b-a176-bd167b2249f4" width="200"/> |
-| <img src="https://github.com/user-attachments/assets/b7c04293-78ee-46bc-913e-0f98070236e3" width="200"/> | <img src="https://github.com/user-attachments/assets/8d99a4f0-f1a4-45f0-aef4-2605bd549d04" width="200"/> | <img src="https://github.com/user-attachments/assets/c49e2a5e-8015-43b5-85bd-37b7b10cb260" width="200"/> |
+| <img src="https://github.com/user-attachments/assets/b7c04293-78ee-46bc-913e-0f98070236e3" width="200"/> | <img src="https://github.com/user-attachments/assets/153dd06d-eb5a-4748-97a5-bfaed2e4fb09" width="200"/> | <img src="https://github.com/user-attachments/assets/38b3fe86-63a9-445a-9b77-e03a6312b8cc" width="200"/> |
 
-[Demo](https://drive.google.com/file/d/1YIb1v9tOz5LbJB7hbO4G_yUnz9R89WZS/view?usp=sharing)
+[Demo](https://drive.google.com/file/d/1YIb1v9tOz5LbJB7hbO4G_yUnz9R89WZS/view?usp=sharing)  
 
 
 ## Tech Stack
