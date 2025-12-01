@@ -75,4 +75,3 @@ To get started with Qurio locally:
   <img src="https://contrib.rocks/image?repo=Havana-Squad/Qurio" />
 </a>
 
----
